@@ -1,0 +1,25 @@
+body {
+  background-image: url("delicacy.jpg");
+  background-repeat: repeat;
+}
+h1 {
+  color:#A4A400;
+  text-decoration:underline;
+  font-size: 35pt;
+  font-family: Verdana;
+  text-align:center;
+}
+p {
+  font-size:15pt;
+  font-family:Georgia;
+}
+a {
+  color:#A4A400;
+}
+h2 {
+  color:#A4A400;
+  text-decoration:underline;
+  font-size: 25pt;
+  background-color:#F0F0F0;
+  font-family: Verdana;
+}
