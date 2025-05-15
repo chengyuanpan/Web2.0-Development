@@ -1,172 +1,171 @@
 * {
-	padding: 0px;
-	margin: 0px;
-	font-family: Microsoft YaHei;
-	font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+  font-family: Microsoft YaHei;
+  font-weight: bold;
 }
-#at-plus-container {}
-#bottom-positioner {}
-#button {}
 ul {
-	list-style: none;
+  list-style: none;
 }
 #info-bar {
-	width: 60px;
-	height: 60px;
-	border-radius: 50% 50% 50% 50%;
-	background-color: rgb(170, 170, 170);
-	background-position: 50% 50%;
-	-webkit-transition: all 0.5s linear;
-	position: absolute;
-	left: 650px;
-	top: 480px;
-	opacity: 0;
-	overflow: hidden;
+  width: 60px;
+  height: 60px;
+  border-radius: 50% 50% 50% 50%;
+  background-color: rgb(170, 170, 170);
+  background-position: 50% 50%;
+  -webkit-transition: all 0.5s linear;
+  position: absolute;
+  left: 650px;
+  top: 480px;
+  opacity: 0;
+  overflow: hidden;
 }
-#button:hover #info-bar{
-	width: 150px;
-	height: 150px;
-	position: absolute;
-	top: 305px;
-	left: 608px;
-	opacity: 1;
+#button:hover #info-bar {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: 305px;
+  left: 608px;
+  opacity: 1;
 }
 .info {
-	padding-top: 15px;
-	text-align: center;
-	color: white;
+  padding-top: 15px;
+  text-align: center;
+  color: rgb(27, 172, 198);
 }
-.page span{
-	padding-left: 10px;
+.page span {
+  padding-left: 10px;
 }
 .mine {
-	display: inline;
+  display: inline;
 }
 .mine span {
-	padding-left: 5px;
+  padding-left: 5px;
 }
 .user {
-	font-size: 15pt;
+  font-size: 15pt;
 }
 .comment {
-	font-size: 30pt;
+  font-size: 30pt;
 }
 .posted {
-	font-size: 20pt;
-	color: #079E6E;
+  font-size: 20pt;
+  color: #079e6e;
 }
 .like {
-	font-size: 20pt;
-	color: #079E6E;
+  font-size: 20pt;
+  color: #079e6e;
 }
-#control-ring-container li{
-	width: 60px;
-	height: 60px;
-	border-radius: 50% 50% 50% 50%;
-	background-color: gray;
-	-webkit-transition: all 0.5s linear;
-	position: absolute;
-	left: 650px;
-	top: 500px;
-	opacity: 0;
-	-webkit-transition: all 0.5s linear;
+#control-ring-container li {
+  width: 60px;
+  height: 60px;
+  border-radius: 50% 50% 50% 50%;
+  background-color: gray;
+  -webkit-transition: all 0.5s linear;
+  position: absolute;
+  left: 650px;
+  top: 500px;
+  opacity: 0;
+  -webkit-transition: all 0.5s linear;
 }
-#control-ring {}
+#control-ring {
+}
 .mask {
-	background-image: url("assets/images/mask.png");
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  background-image: url('assets/images/mask.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
-#button:hover .mask{
-	width: 50px;
-	height: 50px;
-	opacity: 1;
-	position: absolute;
-	left: 570px;
-	top: 440px;
+#button:hover .mask {
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  position: absolute;
+  left: 570px;
+  top: 440px;
 }
 .history {
-	background-image: url("assets/images/history.png");
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  background-image: url('assets/images/history.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 #button:hover .history {
-	width: 50px;
-	height: 50px;
-	opacity: 1;
-	left: 550px;
-	top: 500px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  left: 550px;
+  top: 500px;
 }
 .unread {
-	width: 20px;
-	height: 20px;
-	border-radius: 50% 50% 50% 50%;
-	background-color: red;
-	float: right;
-	text-align: center;
-	font-family: Microsoft YaHei;
-	color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50%;
+  background-color: red;
+  float: right;
+  text-align: center;
+  font-family: Microsoft YaHei;
+  color: white;
 }
 .message {
-	background-image: url("assets/images/message.png");
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  background-image: url('assets/images/message.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 #button:hover .message {
-	width: 50px;
-	height: 50px;
-	opacity: 1;
-	left: 590px;
-	top: 560px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  left: 590px;
+  top: 560px;
 }
 .setting {
-	background-image: url("assets/images/setting.png");
-	background-repeat: no-repeat;
-	width: 0px;
-	height: 0px;
-	border-radius: 50% 50% 50% 50%;
-	background-color: gray;
-	background-position: 50% 50%;
-	-webkit-transition: all 1s ease-in-out;
+  background-image: url('assets/images/setting.png');
+  background-repeat: no-repeat;
+  width: 0px;
+  height: 0px;
+  border-radius: 50% 50% 50% 50%;
+  background-color: gray;
+  background-position: 50% 50%;
+  -webkit-transition: all 1s ease-in-out;
 }
 #button:hover .setting {
-	width: 50px;
-	height: 50px;
-	opacity: 1;
-	left: 660px;
-	top: 585px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  left: 660px;
+  top: 585px;
 }
 .sign {
-	background-image: url("assets/images/signin.png");
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
+  background-image: url('assets/images/signin.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 #button:hover .sign {
-	width: 50px;
-	height: 50px;
-	opacity: 1;
-	left: 730px;
-	top: 560px;
+  width: 50px;
+  height: 50px;
+  opacity: 1;
+  left: 730px;
+  top: 560px;
 }
 .apb {
-	background-image: url("assets/images/atplus_white.png");
-	background-color: #7171C6;
-	background-repeat: no-repeat;
-	width: 50px;
-	height: 50px;
-	border-radius: 50% 50% 50% 50%;
-	background-position: 50% 50%;
-	position: absolute;
-	left: 650px;
-	top: 480px;
-	-webkit-transition: all 0.5s 0.8s ease-in-out;
+  background-image: url('assets/images/atplus_white.png');
+  background-color: #7171c6;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  border-radius: 50% 50% 50% 50%;
+  background-position: 50% 50%;
+  position: absolute;
+  left: 650px;
+  top: 480px;
+  -webkit-transition: all 0.5s 0.8s ease-in-out;
 }
 #button:hover .apb {
-	width: 75px;
-	height: 75px;
-	top: 470px;
-	background-image: url("assets/images/atplus_green.png");
-	background-color: rgba(48, 63, 159, 1);
-	-webkit-transition: all 0.5s ease-in-out;
+  width: 75px;
+  height: 75px;
+  top: 470px;
+  background-image: url('assets/images/atplus_green.png');
+  background-color: rgba(48, 63, 159, 1);
+  -webkit-transition: all 0.5s ease-in-out;
 }
-.icon {}
+.icon {
+}
