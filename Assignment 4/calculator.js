@@ -18,7 +18,7 @@ window.onload = function () {
 	let result = "";
 
 	const displayInput = document.getElementById("display");
-	const resultInput = document.getElementById("result");
+	const resultOutput = document.getElementById("result");
 
 	function updateDisplay() {
 		displayInput.value = display;
@@ -59,7 +59,7 @@ window.onload = function () {
 			if (result !== "") {
 				display = result;
 				result = "";
-				resultInput.value = "";
+				resultOutput.value = "";
 			}
 			display += btn.op;
 			updateDisplay();
@@ -75,12 +75,12 @@ window.onload = function () {
 		display = "";
 		result = "";
 		updateDisplay();
-		resultInput.value = "";
+		resultOutput.value = "";
 	};
 
 	document.getElementById("equal").onclick = () => {
 		result = caculate(display);
-		resultInput.value = "=" + result;
+		resultOutput.value = "=" + result;
 		updateDisplay();
 	};
 };
