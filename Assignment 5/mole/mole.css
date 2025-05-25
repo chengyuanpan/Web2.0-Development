@@ -59,14 +59,14 @@ h3 {
 	background-size: 49px 49px;
 }
 
-#mouseAppear {
+#moleAppear {
 	background-image: url("image/1.jpg");
 }
 
-#mouseHitted {
+#moleHitted {
 	background-image: url("image/2.jpg");
 }
 
-.star {
+.mousePointer {
 	cursor: pointer;
 }

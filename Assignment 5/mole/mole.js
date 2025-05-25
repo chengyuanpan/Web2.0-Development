@@ -1,62 +1,73 @@
 let score = 0;
-let time = 30;
-let _hole;
-let start = 0;
-let mousePos = -1;
+let time = 10;
+let holeElement;
+let start = 0; // 0: not started, 1: gaming, -1: paused
+let molePos = -1;
 let clock;
-let delay1, delay2;
+let delay;
 
-function insertHole() {
-	let i, j;
+const holesRowNum = 6;
+const holesColNum = 10;
+const totalHoles = holesRowNum * holesColNum;
+
+const refresh = () => {
+	holeElement[molePos].id = "";
+	molePos = Math.floor(Math.random() * totalHoles);
+	holeElement[molePos].id = "moleAppear";
+};
+
+const check = (event) => {
+	if (start == 1) {
+		if (event.target.id == "moleAppear") {
+			score++;
+			holeElement[molePos].id = "moleHitted";
+			delay = window.setTimeout(refresh, 150);
+		} else {
+			score--;
+		}
+		document.getElementById("scoreDisplay").value = score;
+	}
+};
+
+const insertHole = () => {
 	let hole;
 	let gameArea = document.getElementById("gameArea");
-	for (i = 0; i < 6; i++) {
-		for (j = 0; j < 10; j++) {
+	for (let i = 0; i < holesRowNum; i++) {
+		for (let j = 0; j < holesColNum; j++) {
 			hole = document.createElement("div");
 			hole.className = "hole";
 			hole.addEventListener('click', check);
 			gameArea.appendChild(hole);
 		}
 	}
-	_hole = document.getElementsByClassName("hole");
-}
+	holeElement = document.getElementsByClassName("hole");
+};
 
-function check(event) {
-	if (start == 1) {
-		if (event.target.id == "mouseAppear") {
-			_hole[mousePos].id = "mouseHitted";
-			delay2 = window.setTimeout(refresh, 150);
-		} else score--;
-		document.getElementById("scoreDisplay").value = score;
-	}
-}
-
-function myReset() {
-	time = 30;
+const myReset = () => {
+	time = 10;
 	score = 0;
 	start = 0;
-	_hole[mousePos].id = "";
-	mousePos = -1;
+	holeElement[molePos].id = "";
+	molePos = -1;
 	clearInterval(clock);
-	clearTimeout(delay1);
-	clearTimeout(delay2);
+	clearTimeout(delay);
 	document.getElementById("result").value = "Pressing button to restart";
-}
+};
 
-function timeSub() {
+const timeSub = () => {
 	time--;
 	document.getElementById("timeDisplay").value = time;
 	if (time == 0) {
-		alert("Game Over, you have got" + score);
+		alert("Game Over, you have got: " + score);
 		myReset();
 	}
-}
+};
 
-function judgeStatus() {
+const judgeStatus = () => {
 	if (start == 0) {
 		start = 1;
-		mousePos = Math.round(Math.random() * 60);
-		_hole[mousePos].id = "mouseAppear";
+		molePos = Math.round(Math.random() * 60);
+		holeElement[molePos].id = "moleAppear";
 		document.getElementById("scoreDisplay").value = score;
 		document.getElementById("timeDisplay").value = time;
 		clock = window.setInterval(timeSub, 1000);
@@ -70,24 +81,12 @@ function judgeStatus() {
 		document.getElementById("result").value = "Gaming";
 		clock = window.setInterval(timeSub, 1000);
 	}
-}
+};
 
-function hitted() {
-	_hole[mousePos].id = "mouseHitted";
-}
-
-function refresh() {
-	_hole[mousePos].id = "";
-	score++;
-	mousePos = Math.round(Math.random() * 60);
-	if (mousePos >= 60) mousePos = 59;
-	_hole[mousePos].id = "mouseAppear";
-}
-
-window.onload = function () {
+window.onload = () => {
 	insertHole();
 	document.getElementById("start/stopButton").onclick = judgeStatus;
-	document.getElementById("gameArea").onmouseover = function () {
-		this.className = "star";
-	}
-}
+	document.getElementById("gameArea").onmouseover = () => {
+		this.className = "mousePointer";
+	};
+};
