@@ -3,31 +3,53 @@ var result = "";
 
 function isValid() {
 	if (display == "") return true;
-	if (display[0] == '+' || display[0] == '-' || display[0] == '*' || display[0] == '/' || display[0] == ')' || display[0] == '.') return false;
+	if (display[0] == '+' || display[0] == '-' ||
+		display[0] == '*' || display[0] == '/' ||
+		display[0] == ')' || display[0] == '.') {
+		return false;
+	}
 	var max = display.length - 1;
-	if (display[max] == '+' || display[max] == '-' || display[max] == '*' || display[max] == '/' || display[max] == '(' || display[max] == '.') return false;
+	if (display[max] == '+' || display[max] == '-' ||
+		display[max] == '*' || display[max] == '/' ||
+		display[max] == '(' || display[max] == '.') {
+		return false;
+	}
 	var leftBracket = 0, rightBracket = 0;
 	for (var i = 1; i <= max; i++) {
-		if ((display[i] == '+' || display[i] == '-' || display[i] == '*' || display[i] == '/') &&
-			(display[i - 1] == '+' || display[i - 1] == '-' || display[i - 1] == '*' || display[i - 1] == '/')) return false;
+		if ((display[i] == '+' || display[i] == '-' ||
+			display[i] == '*' || display[i] == '/') &&
+			(display[i - 1] == '+' || display[i - 1] == '-' ||
+				display[i - 1] == '*' || display[i - 1] == '/')) {
+			return false;
+		}
 		if (display[i] == '.') {
-			if ((display[i - 1] > '9' || display[i - 1] < '0') || (display[i + 1] > '9' || display[i + 1] < '0')) return false;
+			if ((display[i - 1] > '9' || display[i - 1] < '0') ||
+				(display[i + 1] > '9' || display[i + 1] < '0')) {
+				return false;
+			}
 		}
 		if (display[i] == '(') {
-			if (display[i + 1] == '+' || display[i + 1] == '-' || display[i + 1] == '*' || display[i + 1] == '/' || display[i + 1] == ')' || display[i + 1] == '.') return false;
+			if (display[i + 1] == '+' || display[i + 1] == '-' ||
+				display[i + 1] == '*' || display[i + 1] == '/' ||
+				display[i + 1] == ')' || display[i + 1] == '.') {
+				return false;
+			}
 			leftBracket++;
 		}
 		if (display[i] == ')') {
-			if (rightBracket >= leftBracket) return false;
-			if (display[i - 1] == '+' || display[i - 1] == '-' || display[i - 1] == '*' || display[i - 1] == '/' || display[i - 1] == '.') return false;
+			if (rightBracket >= leftBracket) {
+				return false;
+			}
+			if (display[i - 1] == '+' || display[i - 1] == '-' ||
+				display[i - 1] == '*' || display[i - 1] == '/' ||
+				display[i - 1] == '.') {
+				return false;
+			}
 			rightBracket++;
 		}
 	}
 	if (leftBracket != rightBracket) return false;
 	return true;
-}
-
-function calculate() {
 }
 
 window.onload = function () {

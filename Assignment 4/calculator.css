@@ -16,7 +16,8 @@ h1 {
 	height: 60px;
 	text-align: center;
 	border: 3px solid gray;
-	margin-left: 10px;
+	margin-left: 15px;
+	font-size: medium;
 }
 
 #display {
@@ -24,18 +25,19 @@ h1 {
 	border: 0px;
 	height: 30px;
 	text-align: right;
+	font-size: medium;
 }
 
 #result {
 	width: 315px;
 	border: 0px;
-	height: 29px;
+	height: 30px;
 	text-align: right;
+	font-size: medium;
 }
 
 #button {
-	padding-top: 1px;
-	height: 320px;
+	height: 290px;
 	overflow: hidden;
 	padding-left: 2px;
 }
