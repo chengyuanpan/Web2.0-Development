@@ -11,3 +11,7 @@ All course materials and assignments of Sun Yat-sen University's Web 2.0 course
 ## Preview of Assignment 3
 https://github.com/user-attachments/assets/b4bcab1f-d41c-4741-bdff-7aa2816be7cc
 
+## Preview of Assignment 4
+<img width="685" alt="image" src="https://github.com/user-attachments/assets/00bd2123-62de-48e2-8217-832d7c753c92" />
+
+
