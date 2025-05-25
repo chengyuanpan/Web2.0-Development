@@ -1,5 +1,5 @@
-var start = 0;
-var through = 0;
+let start = 0;
+let through = 0;
 
 function warning(event) {
 	if (start == 1) {
@@ -14,8 +14,8 @@ function myReset(event) {
 }
 
 function addListener() {
-	var i, j;
-	var _area, _path;
+	let i, j;
+	let _area, _path;
 	for (i = 1; i <= 6; i++) {
 		_area = document.getElementsByClassName("area" + i);
 		for (j = 0; j < _area.length; j++) {
