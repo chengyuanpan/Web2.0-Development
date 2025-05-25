@@ -29,7 +29,7 @@ p {
 }
 
 #wall {
-	background-color: rgb(230, 230, 230);
+	background-color: rgb(180, 180, 180);
 }
 
 #error {
@@ -130,7 +130,7 @@ p {
 #example {
 	height: 60px;
 	width: 116px;
-	background-color: rgb(230, 230, 230);
+	background-color: rgb(180, 180, 180);
 	float: left;
-	margin-left: 600px;
+	margin-left: 700px;
 }
