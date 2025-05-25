@@ -1,15 +1,15 @@
-var score = 0;
-var time = 30;
-var _hole;
-var start = 0;
-var mousePos = -1;
-var clock;
-var delay1, delay2;
+let score = 0;
+let time = 30;
+let _hole;
+let start = 0;
+let mousePos = -1;
+let clock;
+let delay1, delay2;
 
 function insertHole() {
-	var i, j;
-	var hole;
-	var gameArea = document.getElementById("gameArea");
+	let i, j;
+	let hole;
+	let gameArea = document.getElementById("gameArea");
 	for (i = 0; i < 6; i++) {
 		for (j = 0; j < 10; j++) {
 			hole = document.createElement("div");
