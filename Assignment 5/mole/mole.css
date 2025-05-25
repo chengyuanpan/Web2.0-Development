@@ -2,34 +2,43 @@
 	margin: 0px;
 	padding: 0px;
 }
+
 h2 {
 	text-align: center;
 }
+
 h3 {
 	text-align: center;
 }
+
 #playerUI {
 	margin-left: 500px;
 }
+
 #time {
 	display: inline;
 }
+
 #timeDisplay {
 	width: 30px;
-	background-color:white;
+	background-color: white;
 }
+
 #result {
 	background-color: white;
 }
+
 #score {
-	display:inline;
+	display: inline;
 	margin-bottom: 10px;
 }
+
 #scoreDisplay {
 	margin-bottom: 10px;
 	width: 30px;
-	background-color:white;
+	background-color: white;
 }
+
 #gameArea {
 	border: 2px solid gray;
 	margin: auto;
@@ -38,6 +47,7 @@ h3 {
 	overflow: hidden;
 	padding: 5px;
 }
+
 .hole {
 	border-radius: 50% 50% 50% 50%;
 	float: left;
@@ -47,12 +57,15 @@ h3 {
 	margin: 5px;
 	background-size: 49px 49px;
 }
+
 #mouseAppear {
 	background-image: url("image/1.jpg");
 }
+
 #mouseHitted {
 	background-image: url("image/2.jpg");
 }
+
 .star {
 	cursor: crosshair;
 }

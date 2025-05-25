@@ -20,7 +20,7 @@ function insertHole() {
 	}
 	_hole = document.getElementsByClassName("hole");
 }
- 
+
 function check(event) {
 	if (start == 1) {
 		if (event.target.id == "mouseAppear") {
@@ -47,47 +47,47 @@ function timeSub() {
 	time--;
 	document.getElementById("timeDisplay").value = time;
 	if (time == 0) {
-		alert("Game Over, you have got"+score);
+		alert("Game Over, you have got" + score);
 		myReset();
 	}
 }
 
 function judgeStatus() {
-	 if (start == 0) {
-		 start = 1;
-		 mousePos = Math.round(Math.random()*60);
+	if (start == 0) {
+		start = 1;
+		mousePos = Math.round(Math.random() * 60);
 		_hole[mousePos].id = "mouseAppear";
 		document.getElementById("scoreDisplay").value = score;
 		document.getElementById("timeDisplay").value = time;
 		clock = window.setInterval(timeSub, 1000);
 		document.getElementById("result").value = "Gaming";
-	 } else if (start == 1) {
-		 start = -1;
-		 clearInterval(clock);
-		 document.getElementById("result").value = "Pausing";
-	 } else if (start == -1) {
-		 start = 1;
-		 document.getElementById("result").value = "Gaming";
-		 clock = window.setInterval(timeSub, 1000);
-	 }
+	} else if (start == 1) {
+		start = -1;
+		clearInterval(clock);
+		document.getElementById("result").value = "Pausing";
+	} else if (start == -1) {
+		start = 1;
+		document.getElementById("result").value = "Gaming";
+		clock = window.setInterval(timeSub, 1000);
+	}
 }
- 
- function hitted() {
-	 _hole[mousePos].id = "mouseHitted";
- }
- 
+
+function hitted() {
+	_hole[mousePos].id = "mouseHitted";
+}
+
 function refresh() {
-	 _hole[mousePos].id = "";
-	 score++;
-	 mousePos = Math.round(Math.random()*60);
-	 if (mousePos >= 60) mousePos = 59;
-	 _hole[mousePos].id = "mouseAppear";
+	_hole[mousePos].id = "";
+	score++;
+	mousePos = Math.round(Math.random() * 60);
+	if (mousePos >= 60) mousePos = 59;
+	_hole[mousePos].id = "mouseAppear";
 }
- 
-window.onload = function() {
+
+window.onload = function () {
 	insertHole();
 	document.getElementById("start/stopButton").onclick = judgeStatus;
-	document.getElementById("gameArea").onmouseover = function() {
+	document.getElementById("gameArea").onmouseover = function () {
 		this.className = "star";
 	}
 }
