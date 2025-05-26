@@ -22,6 +22,9 @@ https://github.com/user-attachments/assets/b4bcab1f-d41c-4741-bdff-7aa2816be7cc
 ### Preview of Assignment 5.2 Whack a Mole
 <img width="811" alt="image" src="https://github.com/user-attachments/assets/2d639134-4ca4-4849-91cc-caa02aaaf1ef" />
 
+## Preview of Assignment 6
+<img width="751" alt="image" src="https://github.com/user-attachments/assets/5cdaae4d-806b-49ce-95ea-17a60f7b8d4d" />
+
 
 
 
