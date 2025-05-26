@@ -37,7 +37,7 @@ const isPlayable = () => {
 	else return false;
 };
 
-const addPic = () => {
+const addPicture = () => {
 	let game = document.createDocumentFragment();
 	let i, j;
 	let pic;
@@ -135,6 +135,6 @@ const refresh = () => {
 };
 
 window.onload = () => {
-	addPic();
+	addPicture();
 	document.getElementById("restart").onclick = refresh;
 };
