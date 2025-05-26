@@ -77,15 +77,15 @@ const refresh = () => {
 	start = 1;
 };
 
-const picMove = (event) => {
-	if (event.target.id == "blank" || start == 0) return;
-	let i, j;
-	let isValid = 0;
-	let direction = "";
+const movePicture = (event) => {
+	if (event.target.id == "blank" || start == 0) {
+		return;
+	}
+	let isValid = false;
 	let posX, posY;
 	let blankX, blankY;
-	for (i = 0; i < gameAreaRow; i++) {
-		for (j = 0; j < gameAreaCol; j++) {
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
 			if ("pic" + pos[i][j] == event.target.id) {
 				posX = i;
 				posY = j;
@@ -98,22 +98,18 @@ const picMove = (event) => {
 	}
 	if (blankX == posX) {
 		if (blankY - posY == -1) {
-			isValid = 1;
-			direction = "up";
+			isValid = true;
 		} else if (blankY - posY == 1) {
-			isValid = 1;
-			direction = "down";
+			isValid = true;
 		}
 	} else if (blankY == posY) {
 		if (blankX - posX == -1) {
-			isValid = 1;
-			direction = "left";
+			isValid = true;
 		} else if (blankX - posX == 1) {
-			isValid = 1;
-			direction = "right";
+			isValid = true;
 		}
 	}
-	if (isValid == 1) {
+	if (isValid) {
 		pos[blankX][blankY] = pos[posX][posY];
 		pos[posX][posY] = 0;
 		let blank = document.getElementById("blank");
@@ -125,25 +121,28 @@ const picMove = (event) => {
 
 const addPicture = () => {
 	let gameFragments = document.createDocumentFragment();
-	let i, j;
-	let pic;
-	for (i = 0; i < gameAreaRow; i++) {
-		for (j = 0; j < gameAreaCol; j++) {
+
+	// process pictures
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
 			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
-				pic = document.createElement("div");
+				let pic = document.createElement("div");
 				pic.className = "pic row" + (i + 1) + " col" + (j + 1);
 				pic.id = "pic" + (gameAreaRow * i + j + 1);
-				pic.addEventListener('click', picMove);
+				pic.addEventListener('click', movePicture);
 				gameFragments.appendChild(pic);
 			}
 		}
 	}
-	let blank = document.createElement("div");
-	blank.className = "blank row" + gameAreaRow + " col" + gameAreaCol;
-	blank.id = "blank";
-	blank.addEventListener('click', picMove);
+
+	// process blank space
+	let blankSpace = document.createElement("div");
+	blankSpace.className = "blank row" + gameAreaRow + " col" + gameAreaCol;
+	blankSpace.id = "blank";
+	blankSpace.addEventListener('click', movePicture);
 	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
-	gameFragments.appendChild(blank);
+	gameFragments.appendChild(blankSpace);
+
 	document.getElementById("gameArea").appendChild(gameFragments);
 };
 
