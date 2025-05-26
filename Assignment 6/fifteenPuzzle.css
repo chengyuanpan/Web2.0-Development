@@ -32,7 +32,7 @@ h1 {
 	background-image: url("BGI.jpg");
 	background-size: 500px 500px;
 	position: absolute;
-	transition: 0.1s linear;
+	transition: 0.1s ease-in-out;
 }
 
 .blank {
