@@ -21,15 +21,16 @@ h1 {
 	width: 120px;
 	height: 40px;
 	font-size: 20px;
-	margin-left: 610px;
+	margin: 20px auto;
+	display: block;
 }
 
 .pic {
 	width: 125px;
 	height: 125px;
+	margin: 2px;
 	background-image: url("BGI.jpg");
 	background-size: 500px 500px;
-	margin: 2px;
 	position: absolute;
 	transition: 0.1s linear;
 }
