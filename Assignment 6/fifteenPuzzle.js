@@ -94,7 +94,7 @@ const picMove = (event) => {
 };
 
 const addPicture = () => {
-	let gameFragment = document.createDocumentFragment();
+	let gameFragments = document.createDocumentFragment();
 	let i, j;
 	let pic;
 	for (i = 0; i < gameAreaRow; i++) {
@@ -104,7 +104,7 @@ const addPicture = () => {
 				pic.className = "pic row" + (i + 1) + " col" + (j + 1);
 				pic.id = "pic" + (gameAreaRow * i + j + 1);
 				pic.addEventListener('click', picMove);
-				gameFragment.appendChild(pic);
+				gameFragments.appendChild(pic);
 			}
 		}
 	}
@@ -113,8 +113,8 @@ const addPicture = () => {
 	blank.id = "blank";
 	blank.addEventListener('click', picMove);
 	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
-	gameFragment.appendChild(blank);
-	document.getElementById("gameArea").appendChild(gameFragment);
+	gameFragments.appendChild(blank);
+	document.getElementById("gameArea").appendChild(gameFragments);
 };
 
 const check = () => {
