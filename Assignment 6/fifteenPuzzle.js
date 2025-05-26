@@ -5,20 +5,38 @@ const totalGameArea = gameAreaRow * gameAreaCol - 1;
 const pos = Array.from({ length: gameAreaRow }, () =>
 	Array.from({ length: gameAreaCol }, () => 0)
 );
-// Initialize the position array
+
 let start = 0;
 
 const isPlayable = () => {
+	let flat = [];
+
+	// Flatten a 2D array into a 1D array
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
+			flat.push(pos[i][j]);
+		}
+	}
+
+	// Calculate inversions (excluding 0)
 	let count = 0;
-	for (let i = 0; i < totalGameArea; i++) {
-		for (let j = 0; j < totalGameArea; j++) {
-			if (pos[Math.floor(i / gameAreaRow)][i % gameAreaCol] >
-				pos[Math.floor(i / gameAreaRow)][i % gameAreaCol]) {
+	for (let i = 0; i < flat.length; i++) {
+		if (flat[i] === 0) continue;
+		for (let j = i + 1; j < flat.length; j++) {
+			if (flat[j] !== 0 && flat[i] > flat[j]) {
 				count++;
 			}
 		}
 	}
-	return (count % 2 == 0) ? true : false;
+
+	// Get the position of the blank space (row number from the bottom)
+	// Counting starts from 1
+	const zeroIndex = flat.indexOf(0);
+	const blankRowFromBottom =
+	    gameAreaRow - Math.floor(zeroIndex / gameAreaCol);
+
+	// Check the rules
+	return (count + blankRowFromBottom) % 2 === 0;
 };
 
 const shuffleArray = () => {
