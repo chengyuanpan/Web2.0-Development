@@ -1,7 +1,7 @@
 let pos = [[0], [0], [0], [0]];
 let start = 0;
 
-function randomArray() {
+const randomArray = () => {
 	let i, j;
 	let random, tmp;
 	for (i = 0; i < 4; i++) {
@@ -24,9 +24,9 @@ function randomArray() {
 			pos[Math.floor(random / 4)][random % 4] = tmp;
 		}
 	}
-}
+};
 
-function isPlayable() {
+const isPlayable = () => {
 	let count = 0;
 	for (let i = 0; i < 15; i++) {
 		for (let j = 0; j < 15; j++) {
@@ -35,9 +35,9 @@ function isPlayable() {
 	}
 	if (count % 2 == 0) return true;
 	else return false;
-}
+};
 
-function addPic() {
+const addPic = () => {
 	let game = document.createDocumentFragment();
 	let i, j;
 	let pic;
@@ -59,9 +59,9 @@ function addPic() {
 	pos[3][3] = 0;
 	game.appendChild(blank);
 	document.getElementById("gameArea").appendChild(game);
-}
+};
 
-function picMove(event) {
+const picMove = (event) => {
 	if (event.target.id == "blank" || start == 0) return;
 	let i, j;
 	let isValid = 0;
@@ -105,9 +105,9 @@ function picMove(event) {
 		blank.className = "blank row" + (posX + 1) + " col" + (posY + 1);
 	}
 	check();
-}
+};
 
-function check() {
+const check = () => {
 	for (let i = 0; i < 4; i++) {
 		for (let j = 0; j < 4; j++) {
 			if (pos[i][j] != 4 * i + j + 1 && !(i == 3 && j == 3)) return;
@@ -115,9 +115,9 @@ function check() {
 	}
 	alert("Finished");
 	start = 0;
-}
+};
 
-function refresh() {
+const refresh = () => {
 	let pic = document.getElementsByClassName("pic");
 	randomArray();
 	for (let i = 0; i < 4; i++) {
@@ -132,9 +132,9 @@ function refresh() {
 	blank[0].className = "blank row4 col4";
 	blank[0].id = "blank";
 	start = 1;
-}
+};
 
-window.onload = function () {
+window.onload = () => {
 	addPic();
 	document.getElementById("restart").onclick = refresh;
-}
+};
