@@ -47,6 +47,36 @@ const isPlayable = () => {
 	return (count % 2 == 0) ? true : false;
 };
 
+const check = () => {
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
+			if (pos[i][j] != gameAreaRow * i + j + 1 &&
+				!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				return;
+			}
+		}
+	}
+	alert("Finished");
+	start = 0;
+};
+
+const refresh = () => {
+	let pic = document.getElementsByClassName("pic");
+	randomArray();
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
+			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				pic[gameAreaRow * i + j].className = "pic row" + (i + 1) + " col" + (j + 1);
+				pic[gameAreaRow * i + j].id = "pic" + pos[i][j];
+			}
+		}
+	}
+	let blank = document.getElementsByClassName("blank");
+	blank[0].className = "blank row" + gameAreaRow + " col" + gameAreaCol;
+	blank[0].id = "blank";
+	start = 1;
+};
+
 const picMove = (event) => {
 	if (event.target.id == "blank" || start == 0) return;
 	let i, j;
@@ -115,36 +145,6 @@ const addPicture = () => {
 	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
 	gameFragments.appendChild(blank);
 	document.getElementById("gameArea").appendChild(gameFragments);
-};
-
-const check = () => {
-	for (let i = 0; i < gameAreaRow; i++) {
-		for (let j = 0; j < gameAreaCol; j++) {
-			if (pos[i][j] != gameAreaRow * i + j + 1 &&
-				!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
-				return;
-			}
-		}
-	}
-	alert("Finished");
-	start = 0;
-};
-
-const refresh = () => {
-	let pic = document.getElementsByClassName("pic");
-	randomArray();
-	for (let i = 0; i < gameAreaRow; i++) {
-		for (let j = 0; j < gameAreaCol; j++) {
-			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
-				pic[gameAreaRow * i + j].className = "pic row" + (i + 1) + " col" + (j + 1);
-				pic[gameAreaRow * i + j].id = "pic" + pos[i][j];
-			}
-		}
-	}
-	let blank = document.getElementsByClassName("blank");
-	blank[0].className = "blank row" + gameAreaRow + " col" + gameAreaCol;
-	blank[0].id = "blank";
-	start = 1;
 };
 
 window.onload = () => {
