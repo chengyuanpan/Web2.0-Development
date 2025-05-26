@@ -1,64 +1,74 @@
 let pos = [[0], [0], [0], [0]];
 let start = 0;
 
+const gameAreaRow = 4;
+const gameAreaCol = 4;
+const totalGameArea = gameAreaRow * gameAreaCol - 1;
+
 const randomArray = () => {
 	let i, j;
 	let random, tmp;
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
-			if (!(i == 3 && j == 3)) pos[i][j] = 4 * i + j + 1;
+	for (i = 0; i < gameAreaRow; i++) {
+		for (j = 0; j < gameAreaCol; j++) {
+			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				pos[i][j] = gameAreaRow * i + j + 1;
+			}
 		}
 	}
-	pos[3][3] = 0;
-	for (i = 14; i >= 0; i--) {
+	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
+	for (i = totalGameArea - 1; i >= 0; i--) {
 		random = Math.round(Math.random() * i);
-		tmp = pos[Math.floor(i / 4)][i % 4];
-		pos[Math.floor(i / 4)][i % 4] = pos[Math.floor(random / 4)][random % 4];
-		pos[Math.floor(random / 4)][random % 4] = tmp;
+		tmp = pos[Math.floor(i / gameAreaRow)][i % gameAreaCol];
+		pos[Math.floor(i / gameAreaRow)][i % gameAreaCol] =
+			pos[Math.floor(random / gameAreaRow)][random % gameAreaCol];
+		pos[Math.floor(random / gameAreaRow)][random % gameAreaCol] = tmp;
 	}
 	while (!isPlayable()) {
-		for (i = 14; i >= 0; i--) {
+		for (i = totalGameArea - 1; i >= 0; i--) {
 			random = Math.round(Math.random() * i);
-			tmp = pos[Math.floor(i / 4)][i % 4];
-			pos[Math.floor(i / 4)][i % 4] = pos[Math.floor(random / 4)][random % 4];
-			pos[Math.floor(random / 4)][random % 4] = tmp;
+			tmp = pos[Math.floor(i / gameAreaRow)][i % gameAreaCol];
+			pos[Math.floor(i / gameAreaRow)][i % gameAreaCol] =
+				pos[Math.floor(random / gameAreaRow)][random % gameAreaCol];
+			pos[Math.floor(random / gameAreaRow)][random % gameAreaCol] = tmp;
 		}
 	}
 };
 
 const isPlayable = () => {
 	let count = 0;
-	for (let i = 0; i < 15; i++) {
-		for (let j = 0; j < 15; j++) {
-			if (pos[Math.floor(i / 4)][i % 4] > pos[Math.floor(i / 4)][i % 4]) count++;
+	for (let i = 0; i < totalGameArea; i++) {
+		for (let j = 0; j < totalGameArea; j++) {
+			if (pos[Math.floor(i / gameAreaRow)][i % gameAreaCol] >
+			    pos[Math.floor(i / gameAreaRow)][i % gameAreaCol]) {
+				count++;
+			}
 		}
 	}
-	if (count % 2 == 0) return true;
-	else return false;
+	return (count % 2 == 0) ? true : false;
 };
 
 const addPicture = () => {
-	let game = document.createDocumentFragment();
+	let gameFragment = document.createDocumentFragment();
 	let i, j;
 	let pic;
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
-			if (!(i == 3 && j == 3)) {
+	for (i = 0; i < gameAreaRow; i++) {
+		for (j = 0; j < gameAreaCol; j++) {
+			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
 				pic = document.createElement("div");
 				pic.className = "pic row" + (i + 1) + " col" + (j + 1);
-				pic.id = "pic" + (4 * i + j + 1);
+				pic.id = "pic" + (gameAreaRow * i + j + 1);
 				pic.addEventListener('click', picMove);
-				game.appendChild(pic);
+				gameFragment.appendChild(pic);
 			}
 		}
 	}
 	let blank = document.createElement("div");
-	blank.className = "blank row4 col4";
+	blank.className = "blank row" + gameAreaRow + " col" + gameAreaCol;
 	blank.id = "blank";
 	blank.addEventListener('click', picMove);
-	pos[3][3] = 0;
-	game.appendChild(blank);
-	document.getElementById("gameArea").appendChild(game);
+	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
+	gameFragment.appendChild(blank);
+	document.getElementById("gameArea").appendChild(gameFragment);
 };
 
 const picMove = (event) => {
@@ -68,8 +78,8 @@ const picMove = (event) => {
 	let direction = "";
 	let posX, posY;
 	let blankX, blankY;
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
+	for (i = 0; i < gameAreaRow; i++) {
+		for (j = 0; j < gameAreaCol; j++) {
 			if ("pic" + pos[i][j] == event.target.id) {
 				posX = i;
 				posY = j;
@@ -108,9 +118,12 @@ const picMove = (event) => {
 };
 
 const check = () => {
-	for (let i = 0; i < 4; i++) {
-		for (let j = 0; j < 4; j++) {
-			if (pos[i][j] != 4 * i + j + 1 && !(i == 3 && j == 3)) return;
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
+			if (pos[i][j] != gameAreaRow * i + j + 1 &&
+				!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				return;
+			}
 		}
 	}
 	alert("Finished");
@@ -120,16 +133,16 @@ const check = () => {
 const refresh = () => {
 	let pic = document.getElementsByClassName("pic");
 	randomArray();
-	for (let i = 0; i < 4; i++) {
-		for (let j = 0; j < 4; j++) {
-			if (!(i == 3 && j == 3)) {
-				pic[4 * i + j].className = "pic row" + (i + 1) + " col" + (j + 1);
-				pic[4 * i + j].id = "pic" + pos[i][j];
+	for (let i = 0; i < gameAreaRow; i++) {
+		for (let j = 0; j < gameAreaCol; j++) {
+			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				pic[gameAreaRow * i + j].className = "pic row" + (i + 1) + " col" + (j + 1);
+				pic[gameAreaRow * i + j].id = "pic" + pos[i][j];
 			}
 		}
 	}
 	let blank = document.getElementsByClassName("blank");
-	blank[0].className = "blank row4 col4";
+	blank[0].className = "blank row" + gameAreaRow + " col" + gameAreaCol;
 	blank[0].id = "blank";
 	start = 1;
 };
