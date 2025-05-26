@@ -47,30 +47,6 @@ const isPlayable = () => {
 	return (count % 2 == 0) ? true : false;
 };
 
-const addPicture = () => {
-	let gameFragment = document.createDocumentFragment();
-	let i, j;
-	let pic;
-	for (i = 0; i < gameAreaRow; i++) {
-		for (j = 0; j < gameAreaCol; j++) {
-			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
-				pic = document.createElement("div");
-				pic.className = "pic row" + (i + 1) + " col" + (j + 1);
-				pic.id = "pic" + (gameAreaRow * i + j + 1);
-				pic.addEventListener('click', picMove);
-				gameFragment.appendChild(pic);
-			}
-		}
-	}
-	let blank = document.createElement("div");
-	blank.className = "blank row" + gameAreaRow + " col" + gameAreaCol;
-	blank.id = "blank";
-	blank.addEventListener('click', picMove);
-	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
-	gameFragment.appendChild(blank);
-	document.getElementById("gameArea").appendChild(gameFragment);
-};
-
 const picMove = (event) => {
 	if (event.target.id == "blank" || start == 0) return;
 	let i, j;
@@ -115,6 +91,30 @@ const picMove = (event) => {
 		blank.className = "blank row" + (posX + 1) + " col" + (posY + 1);
 	}
 	check();
+};
+
+const addPicture = () => {
+	let gameFragment = document.createDocumentFragment();
+	let i, j;
+	let pic;
+	for (i = 0; i < gameAreaRow; i++) {
+		for (j = 0; j < gameAreaCol; j++) {
+			if (!(i == gameAreaRow - 1 && j == gameAreaCol - 1)) {
+				pic = document.createElement("div");
+				pic.className = "pic row" + (i + 1) + " col" + (j + 1);
+				pic.id = "pic" + (gameAreaRow * i + j + 1);
+				pic.addEventListener('click', picMove);
+				gameFragment.appendChild(pic);
+			}
+		}
+	}
+	let blank = document.createElement("div");
+	blank.className = "blank row" + gameAreaRow + " col" + gameAreaCol;
+	blank.id = "blank";
+	blank.addEventListener('click', picMove);
+	pos[gameAreaRow - 1][gameAreaCol - 1] = 0;
+	gameFragment.appendChild(blank);
+	document.getElementById("gameArea").appendChild(gameFragment);
 };
 
 const check = () => {
