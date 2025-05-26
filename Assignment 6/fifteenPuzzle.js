@@ -1,9 +1,9 @@
-var pos = [[0], [0], [0], [0]];
-var start = 0;
+let pos = [[0], [0], [0], [0]];
+let start = 0;
 
 function randomArray() {
-	var i, j;
-	var random, tmp;
+	let i, j;
+	let random, tmp;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			if (!(i == 3 && j == 3)) pos[i][j] = 4 * i + j + 1;
@@ -27,9 +27,9 @@ function randomArray() {
 }
 
 function isPlayable() {
-	var count = 0;
-	for (var i = 0; i < 15; i++) {
-		for (var j = 0; j < 15; j++) {
+	let count = 0;
+	for (let i = 0; i < 15; i++) {
+		for (let j = 0; j < 15; j++) {
 			if (pos[Math.floor(i / 4)][i % 4] > pos[Math.floor(i / 4)][i % 4]) count++;
 		}
 	}
@@ -38,9 +38,9 @@ function isPlayable() {
 }
 
 function addPic() {
-	var game = document.createDocumentFragment();
-	var i, j;
-	var pic;
+	let game = document.createDocumentFragment();
+	let i, j;
+	let pic;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			if (!(i == 3 && j == 3)) {
@@ -52,7 +52,7 @@ function addPic() {
 			}
 		}
 	}
-	var blank = document.createElement("div");
+	let blank = document.createElement("div");
 	blank.className = "blank row4 col4";
 	blank.id = "blank";
 	blank.addEventListener('click', picMove);
@@ -63,11 +63,11 @@ function addPic() {
 
 function picMove(event) {
 	if (event.target.id == "blank" || start == 0) return;
-	var i, j;
-	var isValid = 0;
-	var direction = "";
-	var posX, posY;
-	var blankX, blankY;
+	let i, j;
+	let isValid = 0;
+	let direction = "";
+	let posX, posY;
+	let blankX, blankY;
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 4; j++) {
 			if ("pic" + pos[i][j] == event.target.id) {
@@ -100,7 +100,7 @@ function picMove(event) {
 	if (isValid == 1) {
 		pos[blankX][blankY] = pos[posX][posY];
 		pos[posX][posY] = 0;
-		var blank = document.getElementById("blank");
+		let blank = document.getElementById("blank");
 		event.target.className = "pic row" + (blankX + 1) + " col" + (blankY + 1);
 		blank.className = "blank row" + (posX + 1) + " col" + (posY + 1);
 	}
@@ -108,8 +108,8 @@ function picMove(event) {
 }
 
 function check() {
-	for (var i = 0; i < 4; i++) {
-		for (var j = 0; j < 4; j++) {
+	for (let i = 0; i < 4; i++) {
+		for (let j = 0; j < 4; j++) {
 			if (pos[i][j] != 4 * i + j + 1 && !(i == 3 && j == 3)) return;
 		}
 	}
@@ -118,17 +118,17 @@ function check() {
 }
 
 function refresh() {
-	var pic = document.getElementsByClassName("pic");
+	let pic = document.getElementsByClassName("pic");
 	randomArray();
-	for (var i = 0; i < 4; i++) {
-		for (var j = 0; j < 4; j++) {
+	for (let i = 0; i < 4; i++) {
+		for (let j = 0; j < 4; j++) {
 			if (!(i == 3 && j == 3)) {
 				pic[4 * i + j].className = "pic row" + (i + 1) + " col" + (j + 1);
 				pic[4 * i + j].id = "pic" + pos[i][j];
 			}
 		}
 	}
-	var blank = document.getElementsByClassName("blank");
+	let blank = document.getElementsByClassName("blank");
 	blank[0].className = "blank row4 col4";
 	blank[0].id = "blank";
 	start = 1;
