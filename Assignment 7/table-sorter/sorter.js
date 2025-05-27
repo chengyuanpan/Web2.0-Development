@@ -1,4 +1,4 @@
-var order = { todo: 0, staff: 0 };
+let order = { todo: 0, staff: 0 };
 
 function judge(event) {
   if (
@@ -6,12 +6,12 @@ function judge(event) {
     event.target.innerHTML == "When?" ||
     event.target.innerHTML == "Location"
   ) {
-	var tableId = "todo";
+	let tableId = "todo";
   } else {
-	var tableId = "staff";
+	let tableId = "staff";
   }
-  var rows = document.getElementById(tableId).rows;
-  for (var i = 0; i < 3; i++) {
+  let rows = document.getElementById(tableId).rows;
+  for (let i = 0; i < 3; i++) {
     if (rows[0].cells[i].innerHTML == event.target.innerHTML) {
       sort(tableId, i, rows);
       if (order[tableId] == 1) order[tableId] = -1;
@@ -24,10 +24,10 @@ function judge(event) {
 }
 
 function sort(tableId, i, rows) {
-  var up;
-  for (var j = 1; j < 3; j++) {
+  let up;
+  for (let j = 1; j < 3; j++) {
     up = rows[j];
-    for (var k = j + 1; k < 4; k++) {
+    for (let k = j + 1; k < 4; k++) {
       if (order[tableId] == 0 || order[tableId] == -1) {
         if (rows[k].cells[i].innerHTML < up.cells[i].innerHTML) up = rows[k];
       } else {
@@ -39,7 +39,7 @@ function sort(tableId, i, rows) {
 }
 
 function swap(rowA, rowB) {
-  var tmp;
+  let tmp;
   tmp = rowA.innerHTML;
   rowA.innerHTML = rowB.innerHTML;
   rowB.innerHTML = tmp;
