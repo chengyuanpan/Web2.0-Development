@@ -1,14 +1,15 @@
 let order = { todo: 0, staff: 0 };
 
-function judge(event) {
+const judge = (event) => {
+  let tableId;
   if (
     event.target.innerHTML == "What?" ||
     event.target.innerHTML == "When?" ||
     event.target.innerHTML == "Location"
   ) {
-	let tableId = "todo";
+	tableId = "todo";
   } else {
-	let tableId = "staff";
+    tableId = "staff";
   }
   let rows = document.getElementById(tableId).rows;
   for (let i = 0; i < 3; i++) {
@@ -21,9 +22,9 @@ function judge(event) {
   $("#" + tableId + " th").attr("class", "normal");
   if (order[tableId] == 1) event.target.className = "sortedAscend";
   else event.target.className = "sortedDescend";
-}
+};
 
-function sort(tableId, i, rows) {
+const sort = (tableId, i, rows) => {
   let up;
   for (let j = 1; j < 3; j++) {
     up = rows[j];
@@ -36,15 +37,15 @@ function sort(tableId, i, rows) {
     }
     swap(rows[j], up);
   }
-}
+};
 
-function swap(rowA, rowB) {
+const swap = (rowA, rowB) => {
   let tmp;
   tmp = rowA.innerHTML;
   rowA.innerHTML = rowB.innerHTML;
   rowB.innerHTML = tmp;
-}
+};
 
-window.onload = function () {
+window.onload = () => {
   $("th").click(judge);
 };
