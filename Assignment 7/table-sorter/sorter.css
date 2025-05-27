@@ -5,21 +5,26 @@ th {
 	width: 200px;
 	cursor: pointer;
 }
+
 .alternate {
 	background-color: #E0EEE0;
 }
+
 table {
 	border: 1px solid gray;
 }
+
 .normal {
 	background-color: #000080;
 }
+
 .sortedAscend {
 	background-color: #ADD8E6;
 	background-image: url("ascend.png");
 	background-position: 90% 50%;
 	background-repeat: no-repeat;
 }
+
 .sortedDescend {
 	background-color: #ADD8E6;
 	background-image: url("descend.png");

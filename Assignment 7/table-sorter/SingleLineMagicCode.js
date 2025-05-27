@@ -7,7 +7,7 @@ $("th").click(function (event) {
 			var up;
 			for (var j = 1; j < rows.length; j++) {
 				up = rows[j];
-				for (var k = j+1; k < rows.length; k++) {
+				for (var k = j + 1; k < rows.length; k++) {
 					if (order == 0 || order == -1) {
 						if (parseInt(rows[k].cells[i].innerHTML) < parseInt(up.cells[i].innerHTML)) up = rows[k];
 					} else {
