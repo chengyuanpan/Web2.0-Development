@@ -2,10 +2,12 @@
 	margin: 0px;
 	padding: 0px;
 }
+
 h1 {
 	margin-top: 50px;
 	text-align: center;
 }
+
 #gameArea {
 	margin: auto;
 	width: 520px;
@@ -14,12 +16,15 @@ h1 {
 	overflow: hidden;
 	position: relative;
 }
+
 #restart {
 	width: 120px;
 	height: 40px;
 	font-size: 20px;
-	margin-left: 610px;
+	margin: 20px auto;
+	display: block;
 }
+
 .pic {
 	width: 125px;
 	height: 125px;
@@ -27,81 +32,104 @@ h1 {
 	background-size: 500px 500px;
 	margin: 2px;
 	position: absolute;
-	transition: 0.1s linear;
+	transition: 0.1s ease-in-out;
 }
+
 .blank {
 	width: 125px;
 	height: 125px;
 	margin: 2px;
 	position: absolute;
 }
+
 #pic1 {
 	background-position: 0px 0px;
 }
+
 #pic2 {
 	background-position: -125px 0px;
 }
+
 #pic3 {
 	background-position: -250px 0px;
 }
+
 #pic4 {
 	background-position: -375px 0px;
 }
+
 #pic5 {
 	background-position: 0px -125px;
 }
+
 #pic6 {
 	background-position: -125px -125px;
 }
+
 #pic7 {
 	background-position: -250px -125px;
 }
+
 #pic8 {
 	background-position: -375px -125px;
 }
+
 #pic9 {
 	background-position: 0px -250px;
 }
+
 #pic10 {
 	background-position: -125px -250px;
 }
+
 #pic11 {
 	background-position: -250px -250px;
 }
+
 #pic12 {
 	background-position: -375px -250px;
 }
+
 #pic13 {
 	background-position: 0px -375px;
 }
+
 #pic14 {
 	background-position: -125px -375px;
 }
+
 #pic15 {
 	background-position: -250px -375px;
 }
-#blank {}
+
 .row1 {
 	top: 2px;
 }
+
 .row2 {
 	top: 131px;
 }
+
 .row3 {
 	top: 260px;
 }
+
 .row4 {
 	top: 389px;
 }
+
 .col1 {
 	left: 2px;
 }
+
 .col2 {
 	left: 131px;
 }
+
 .col3 {
 	left: 260px;
 }
+
 .col4 {
 	left: 389px;
 }
