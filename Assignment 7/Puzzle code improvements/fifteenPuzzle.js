@@ -10,8 +10,8 @@ let start = 0;
 
 const isPlayable = () => {
 	let count = 0;
-	for (let i = 0; i < 15; i++) {
-		for (let j = i + 1; j < 15; j++) {
+	for (let i = 0; i < totalGameArea; i++) {
+		for (let j = i + 1; j < totalGameArea; j++) {
 			if (
 				pos[Math.floor(i / gameAreaRow)][i % gameAreaCol] >
 				pos[Math.floor(j / gameAreaRow)][j % gameAreaCol]
