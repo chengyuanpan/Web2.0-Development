@@ -2,6 +2,10 @@
 	margin: 20px;
 }
 
+table {
+	border: 1px solid rgba(103, 103, 103, 0.364);
+}
+
 th {
 	background-color: #8a8aff;
 	color: white;
@@ -11,16 +15,14 @@ th {
 	font-family: Verdana, Tahoma, sans-serif;
 }
 
-td, h1, h2 {
+td,
+h1,
+h2 {
 	font-family: Verdana, Tahoma, sans-serif;
 }
 
 .alternate {
 	background-color: #c9f4c9;
-}
-
-table {
-	border: 1px solid rgb(255, 255, 255);
 }
 
 .normal {
