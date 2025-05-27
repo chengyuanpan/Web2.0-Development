@@ -1,32 +1,41 @@
+* {
+	margin: 20px;
+}
+
 th {
-	background-color: #000080;
+	background-color: #8a8aff;
 	color: white;
 	font-weight: 900;
 	width: 200px;
 	cursor: pointer;
+	font-family: Verdana, Tahoma, sans-serif;
+}
+
+td, h1, h2 {
+	font-family: Verdana, Tahoma, sans-serif;
 }
 
 .alternate {
-	background-color: #E0EEE0;
+	background-color: #c9f4c9;
 }
 
 table {
-	border: 1px solid gray;
+	border: 1px solid rgb(255, 255, 255);
 }
 
 .normal {
-	background-color: #000080;
+	background-color: #8a8aff;
 }
 
 .sortedAscend {
-	background-color: #ADD8E6;
+	background-color: #4dc2e9;
 	background-image: url("ascend.png");
 	background-position: 90% 50%;
 	background-repeat: no-repeat;
 }
 
 .sortedDescend {
-	background-color: #ADD8E6;
+	background-color: #4dc2e9;
 	background-image: url("descend.png");
 	background-position: 90% 50%;
 	background-repeat: no-repeat;
