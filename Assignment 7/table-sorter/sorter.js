@@ -27,7 +27,7 @@ const sort = (tableId, i, rows) => {
     }
     if (upIndex !== j) {
       swap(rows[j], rows[upIndex]);
-      // 由于 rows 可能已被 DOM 移动，重新刷新 rows 引用
+      // Since the rows may have been moved by the DOM, refresh the rows reference
       rows = document.getElementById(tableId).rows;
     }
   }
