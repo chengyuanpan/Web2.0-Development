@@ -33,8 +33,7 @@ const sort = (tableId, i, rows) => {
   }
 };
 
-// Determines which table to sort based on the clicked header
-// and calls the sort function
+// Determines which table to sort based on the clicked header and calls the sort function
 const judge = (event) => {
   let tableId;
   const targetText = event.target.textContent.trim();
