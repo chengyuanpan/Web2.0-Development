@@ -1,7 +1,9 @@
 let order = { todo: 0, staff: 0 };
 
-const rowsNumber = 4; // Number of rows to sort, including the header
-const columnsNumber = 3; // Number of columns in the table
+// Number of rows to sort, including the header
+const rowsNumber = 4;
+// Number of columns in the table
+const columnsNumber = 3;
 
 // Swaps the position of two rows in the DOM
 const swap = (rowA, rowB) => {
