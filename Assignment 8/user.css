@@ -4,7 +4,7 @@
     height: 500px;
     background-color: #ffffff;
     text-align: center;
-    font-family: "宋体", "Consolas";
+    font-family: "Ariel", "Consolas";
     border-radius: 5px;
 }
 
@@ -38,7 +38,7 @@ button, #reg {
     border-radius: 5px;
     border: none;
     font-size: 18px;
-    font-family: "幼圆";
+    font-family: "Ariel";
     color: white;
 }
 
