@@ -4,20 +4,7 @@ let queryString = require("querystring");
 let fs = require("fs");
 let dataPath = "./userData.json";
 
-async function findTest(Obj, callback) {
-  let userData = JSON.parse(await fs.promises.readFile(dataPath, "utf-8"));
-  for (let i of userData) {
-    // console.log(typeof(i));
-    // console.log(res);
-    if (Obj.username && i.username === Obj.username) return i;
-    else if (Obj.studentID && i.studentID === Obj.studentID) return i;
-    else if (Obj.phone && i.phone === Obj.phone) return i;
-    else if (Obj.email && i.email === Obj.email) return i;
-    else continue;
-  }
-  return false; // not exist
-}
-
+// Check if userData.json exists, if not create it
 function find(Obj, callback) {
   fs.readFile(dataPath, "utf-8", (err, data) => {
     let userData = JSON.parse(data);
