@@ -5,7 +5,7 @@ let fs = require("fs");
 let dataPath = "./userData.json";
 
 // Check if userData.json exists, if not create it
-function find(Obj, callback) {
+const find = (Obj, callback) => {
   fs.readFile(dataPath, "utf-8", (err, data) => {
     let userData = JSON.parse(data);
     for (let i of userData) {
@@ -20,7 +20,7 @@ function find(Obj, callback) {
     }
     return callback(false); // not exist
   });
-}
+};
 
 http.createServer(async (request, response) => {
     let content = queryString.parse(url.parse(request.url).query);
