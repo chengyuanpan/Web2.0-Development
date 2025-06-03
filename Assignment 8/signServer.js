@@ -35,8 +35,7 @@ function find(Obj, callback) {
   });
 }
 
-http
-  .createServer(async (request, response) => {
+http.createServer(async (request, response) => {
     let content = queryString.parse(url.parse(request.url).query);
     // console.log(request.url.split('.'));
     console.log(content);
