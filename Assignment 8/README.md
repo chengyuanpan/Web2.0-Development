@@ -1,6 +1,6 @@
 How to use
 1. Unzip the files in the same directory
-2. Run `signSever.js` // node signServer.js
+2. Run `signServer.js` // node signServer.js
 3. Open [http://localhost:8000] to see the page
 
 Related file descriptions
