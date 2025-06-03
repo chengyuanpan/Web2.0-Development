@@ -4,20 +4,20 @@ let queryString = require("querystring");
 let fs = require("fs");
 let dataPath = "./userData.json";
 
-// Check if userData.json exists, if not create it
-const find = (Obj, callback) => {
+function find(Obj, callback) {
   fs.readFile(dataPath, "utf-8", (err, data) => {
     let userData = JSON.parse(data);
     for (let i of userData) {
       if (Obj.username && i.username === Obj.username) return callback(i);
-      else if (Obj.studentID && i.studentID === Obj.studentID) return callback(i);
+      else if (Obj.studentID && i.studentID === Obj.studentID)
+        return callback(i);
       else if (Obj.phone && i.phone === Obj.phone) return callback(i);
       else if (Obj.email && i.email === Obj.email) return callback(i);
       else continue;
     }
     return callback(false); // not exist
   });
-};
+}
 
 http.createServer(async (request, response) => {
     let content = queryString.parse(url.parse(request.url).query);
@@ -60,6 +60,7 @@ http.createServer(async (request, response) => {
     } else if (request.url == "/signUpPost") {
       // User registration
       request.on("data", (chunk) => {
+        // console.log(chunk);
         chunk = queryString.parse(chunk.toString());
         find(chunk, (result) => {
           if (!result) {
@@ -101,4 +102,5 @@ http.createServer(async (request, response) => {
         });
       }
     }
-  }).listen(8000);
+  })
+  .listen(8000);
