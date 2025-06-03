@@ -1,0 +1,15 @@
+#area {
+	margin: 200px 200px 200px 500px;
+	border: 2px solid gray;
+	width: 270px;
+	height: 150px;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+#button {
+	margin-top: 10px;
+	margin-left: 40px;
+}
+#reset {
+	margin-left: 70px;
+}
