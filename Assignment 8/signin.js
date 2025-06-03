@@ -22,10 +22,10 @@ function isValid(params) {
 }
 
 function print(response, info) {
-	response.write("Name："+info['name']);
-	response.write("\nStudent ID："+info["id"]);
-	response.write("\nEmail："+info["email"]);
-	response.write("\nPhone："+info["phone"]);
+	response.write("Name:"+info['name']);
+	response.write("\nStudent ID:"+info["id"]);
+	response.write("\nEmail:"+info["email"]);
+	response.write("\nPhone:"+info["phone"]);
 	response.end();
 }
 
