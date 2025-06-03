@@ -9,11 +9,8 @@ const find = (Obj, callback) => {
   fs.readFile(dataPath, "utf-8", (err, data) => {
     let userData = JSON.parse(data);
     for (let i of userData) {
-      // console.log(typeof(i));
-      // console.log(res);
       if (Obj.username && i.username === Obj.username) return callback(i);
-      else if (Obj.studentID && i.studentID === Obj.studentID)
-        return callback(i);
+      else if (Obj.studentID && i.studentID === Obj.studentID) return callback(i);
       else if (Obj.phone && i.phone === Obj.phone) return callback(i);
       else if (Obj.email && i.email === Obj.email) return callback(i);
       else continue;
@@ -24,7 +21,6 @@ const find = (Obj, callback) => {
 
 http.createServer(async (request, response) => {
     let content = queryString.parse(url.parse(request.url).query);
-    // console.log(request.url.split('.'));
     console.log(content);
     if (request.url == "/") {
       // Home page
@@ -64,7 +60,6 @@ http.createServer(async (request, response) => {
     } else if (request.url == "/signUpPost") {
       // User registration
       request.on("data", (chunk) => {
-        // console.log(chunk);
         chunk = queryString.parse(chunk.toString());
         find(chunk, (result) => {
           if (!result) {

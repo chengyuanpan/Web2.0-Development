@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./signup.css" />
     <title>Sign up</title>
+    <link rel="stylesheet" href="./signup.css" />
+    <script src="./signup.js"></script>
 </head>
 
 <body>
@@ -12,9 +13,9 @@
         <h1>Sign up</h1>
         <form action="http://localhost:8000/signUpPost" method="post">
             <div class="input">
-                <input type="text" name="username" placeholder="Username" />
+                <input type="text" name="username" placeholder="User Name" />
             </div>
-            <div><span id="username">Is the username available?</span></div>
+            <div><span id="username">Is the User Name available?</span></div>
             <div class="input">
                 <input type="text" name="studentID" placeholder="Student ID" />
             </div>
@@ -33,7 +34,6 @@
             </div>
         </form>
     </div>
-    <script src="./signup.js"></script>
 </body>
 
 </html>
