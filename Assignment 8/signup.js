@@ -40,7 +40,11 @@
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
             if (!reg[name].test($(this).val())) {
-              $(`#${name}`).text(`${$(this).attr("placeholder")} isn't in compliance with the rules`);
+              $(`#${name}`).text(
+                `${$(this).attr(
+                  "placeholder"
+                )} isn't in compliance with the rules`
+              );
               status[name] = false;
             } else if (data == "true") {
               // Username already exists
