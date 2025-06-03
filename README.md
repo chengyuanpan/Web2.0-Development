@@ -25,6 +25,9 @@ https://github.com/user-attachments/assets/b4bcab1f-d41c-4741-bdff-7aa2816be7cc
 ## Preview of Assignment 6
 <img width="751" alt="image" src="https://github.com/user-attachments/assets/5cdaae4d-806b-49ce-95ea-17a60f7b8d4d" />
 
+## Preview of Assignment 7
+<img width="722" alt="image" src="https://github.com/user-attachments/assets/b0a1b6ed-8649-407b-bb42-39e4328b040b" />
+
 
 
 
