@@ -32,7 +32,7 @@
       $(`#${name}`).css("color", `#ff5a6a`);
       if ($(this).val().length == 0) {
         status[$(this).attr("name")] = false;
-        $(`#${name}`).text(`Please input${$(this).attr("placeholder")}`);
+        $(`#${name}`).text(`Please input ${$(this).attr("placeholder")}`);
         return;
       } else {
         $.get(
@@ -40,7 +40,7 @@
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
             if (!reg[name].test($(this).val())) {
-              $(`#${name}`).text(`${$(this).attr("placeholder")}不符合规则`);
+              $(`#${name}`).text(`${$(this).attr("placeholder")} isn't in compliance with the rules`);
               status[name] = false;
             } else if (data == "true") {
               // Username already exists
