@@ -1,10 +1,10 @@
-使用方法
-1. 解压文件在同一个目录下
-2. 运行`signSever.js`
-3. 打开[http://localhost:8000](http://localhost:8000)就可以看到页面
+How to use
+1. Unzip the files in the same directory
+2. Run `signSever.js`
+3. Open [http://localhost:8000](http://localhost:8000) to see the page
 
-相关文件说明
-* `signup.*` 是注册页面文件
-* `user.*` 是详情页面相关文件
-* `signServer.js` 是服务端文件
-* `userData.json` 储存用户数据
+Related file descriptions
+* `signup.*` is the registration page file
+* `user.*` is the details page related file
+* `signServer.js` is the server file
+* `userData.json` stores user data
