@@ -106,5 +106,4 @@ http.createServer(async (request, response) => {
         });
       }
     }
-  })
-  .listen(8000);
+  }).listen(8000);
