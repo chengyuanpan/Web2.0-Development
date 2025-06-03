@@ -5,7 +5,7 @@
   background-color: #ffffff;
   text-align: center;
   font-family: "Ariel", "Consolas";
-  border-radius: 5px;
+  border-radius: 25px;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 input {
-  border-radius: 5px;
+  border-radius:10px;
   border-color: gray;
   border-style: solid;
   border-width: 1px;
@@ -28,7 +28,7 @@ input {
 span {
   height: 20px;
   opacity: 0;
-  color: #ff5a6a;
+  color: #fd808d;
   font-weight: bold;
   user-select: none;
 }
@@ -39,7 +39,7 @@ button,
   width: 170px;
   height: 40px;
   background-color: #1890ff;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   font-size: 18px;
   font-family: "Ariel";
@@ -48,9 +48,9 @@ button,
 
 h1 {
   background-color: #e9f6fe;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 25px 25px 0px 0px;
   height: 50px;
-  color: #409edb;
+  color: #1890ff;
   font-size: 20px;
   line-height: 50px;
 }
