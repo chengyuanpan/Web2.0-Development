@@ -1,28 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./signup.css">
-    <title>注册</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./signup.css" />
+    <title>Sign up</title>
 </head>
+
 <body>
     <div id="main">
-        <h1>注册</h1>
+        <h1>Sign up</h1>
         <form action="http://localhost:8000/signUpPost" method="post">
-            <div class="input"><input type='text' name='username' placeholder="用户名"/></div>
-            <div><span id="username">用户名是否被注册</span></div>
-            <div class="input"><input type='text' name='studentID' placeholder="学号"/></div>
-            <div><span id="studentID">学号是否正确</span></div>
-            <div clasws="input"><input type='text' name='phone' placeholder="手机号"/></div>
-            <div><span id="phone">手机是否正确</span></div>
-            <div class="input"><input type='text' name='email' placeholder="邮箱"/></div>
-            <div><span id="email">邮箱是否正确</span></div>
+            <div class="input">
+                <input type="text" name="username" placeholder="Username" />
+            </div>
+            <div><span id="username">Is the username available?</span></div>
+            <div class="input">
+                <input type="text" name="studentID" placeholder="Student ID" />
+            </div>
+            <div><span id="studentID">Is the Student ID available?</span></div>
+            <div class="input">
+                <input type="text" name="phone" placeholder="Phone Number" />
+            </div>
+            <div><span id="phone">Is the Phone Number available?</span></div>
+            <div class="input">
+                <input type="text" name="email" placeholder="Email" />
+            </div>
+            <div><span id="email">Is the Email available?</span></div>
             <div>
-                <button id="reset" type="button">重置</button>
-                <input id="reg" type="submit" value="注册">    
+                <button id="reset" type="button">Reset</button>
+                <input id="reg" type="submit" value="Sign up" />
             </div>
         </form>
     </div>
     <script src="./signup.js"></script>
 </body>
+
 </html>
