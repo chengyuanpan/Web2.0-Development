@@ -1,0 +1,70 @@
+html, body {
+    top: 5px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 0 auto;
+    background: url('images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+	overflow: hidden;
+	font-size: 18px;
+}
+
+#SignUp {
+	position: relative;
+	width: 600px;
+	height: 600px;
+	margin: auto;
+	top: 160px;
+	border-radius: 300px;
+	background-color: #FFF5EE;
+	border: 5px solid #CD5C5C;
+}
+
+h1{
+	margin-left: 160px;
+    margin-bottom: 30px;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: #8B2500;
+	text-shadow:2px 2px 0px black;
+}
+
+#information{
+	left: 50px;
+	position: absolute;
+	margin-top: 70px;
+}
+
+
+#username, #studentId, #phone, #email {
+	position: relative;
+	height: 30px;
+	width: 240px;
+	background-color: #F0FFFF;
+	border:1px solid #1874CD;
+	left: 130px;
+	border-radius: 5px;
+}
+
+#SignUp div p {
+	position: absolute;
+	left: 20px;
+	top: -15px;
+}
+
+#username{
+	top: 0px;
+}
+#studentId{
+	top: 50px;
+}
+#phone{
+	top: 100px;
+}
+#email{
+	top: 150px;
+}

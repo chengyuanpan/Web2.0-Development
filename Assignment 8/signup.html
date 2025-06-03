@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./signup.css">
+    <title>注册</title>
+</head>
+<body>
+    <div id="main">
+        <h1>注册</h1>
+        <form action="http://localhost:8000/signUpPost" method="post">
+            <div class="input"><input type='text' name='username' placeholder="用户名"/></div>
+            <div><span id="username">用户名是否被注册</span></div>
+            <div class="input"><input type='text' name='studentID' placeholder="学号"/></div>
+            <div><span id="studentID">学号是否正确</span></div>
+            <div clasws="input"><input type='text' name='phone' placeholder="手机号"/></div>
+            <div><span id="phone">手机是否正确</span></div>
+            <div class="input"><input type='text' name='email' placeholder="邮箱"/></div>
+            <div><span id="email">邮箱是否正确</span></div>
+            <div>
+                <button id="reset" type="button">重置</button>
+                <input id="reg" type="submit" value="注册">    
+            </div>
+        </form>
+    </div>
+    <script src="./signup.js"></script>
+</body>
+</html>

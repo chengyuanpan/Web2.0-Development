@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>注册页面</title>
+	<meta http-equiv = "Content-Type" content = "text/html; charset = utf-8" />
+	<script src = "signUp.js" type = "text/JavaScript"></script>
+	<link rel = "stylesheet" type = "text/css" href = "signUp.css" />
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js "></script>
+	<div id = "SignUp">
+		<div id = "information">
+			<h1>注册页面</h1>
+			<form id = "data" method = "post">
+				<p>用户 ： <input id = "username" name = "username" type = "text" value = ""><span></span></p>
+				<p>学号 ： <input id = "studentId" name = "studentId" type = "text" value = ""><span></span><p>
+				<p>电话 ： <input id = "phone" name = "phone" type = "text" value = ""><span></span><p>
+				<p>邮箱 ： <input id = "email" name = "email" type = "text" value = ""><span></span><p>
+				<input id = "reset" name = "reset" type = "button" value = "重置">
+				<input id = "submit" name = "submit" type = "submit" value = "提交">
+			</form>
+			<div id="hint">
+				<p>
+					注册提示：</br>
+					用户名为6~18位英文字母、数字或下划线（以英文字母开头）</br>
+					学号8位数字，不能以0开头</br>
+					电话11位数字，不能以0开头</br>
+					邮箱格式为标准格式</br>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
