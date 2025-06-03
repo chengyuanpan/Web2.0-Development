@@ -22,10 +22,10 @@ function isValid(params) {
 }
 
 function print(response, info) {
-	response.write("姓名："+info['name']);
-	response.write("\n学号："+info["id"]);
-	response.write("\n邮箱："+info["email"]);
-	response.write("\n手机："+info["phone"]);
+	response.write("Name："+info['name']);
+	response.write("\nStudent ID："+info["id"]);
+	response.write("\nEmail："+info["email"]);
+	response.write("\nPhone："+info["phone"]);
 	response.end();
 }
 
@@ -51,12 +51,12 @@ function handleRegist(request, response, postData, database) {
 			print(response, params);
 		} else {
 			response.writeHead(200, {"Content-Type":"text/plain;charset=utf-8"});
-			response.write("您的输入信息有误");
+			response.write("Your input information is incorrect");
 			response.end();
 		}
 	} else {
 		response.writeHead(200, {"Content-Type":"text/plain;charset=utf-8"});
-		response.write("该用户已存在，信息如下；\n");
+		response.write("User already exists, information as follows:\n");
 		print(response, database[i]);
 	}	
 }
@@ -102,7 +102,7 @@ function start() {
 			}
 			if (isFound == 0) {
 				response.writeHead(200, {"Content-Type":"text/plain;charset=utf-8"});
-				response.write("不存在这样的用户");
+				response.write("User does not exist");
 				response.end();
 			}
 		}
