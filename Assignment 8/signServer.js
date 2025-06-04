@@ -8,7 +8,7 @@ function find(Obj, callback) {
   fs.readFile(dataPath, "utf-8", (err, data) => {
     let userData = JSON.parse(data);
     for (let i of userData) {
-      if (Obj.username && i.username === Obj.username) return callback(i);
+      if (Obj.userName && i.userName === Obj.userName) return callback(i);
       else if (Obj.studentID && i.studentID === Obj.studentID)
         return callback(i);
       else if (Obj.phone && i.phone === Obj.phone) return callback(i);
@@ -34,7 +34,7 @@ http.createServer(async (request, response) => {
         response.end(`${!(result === false)}`);
       });
       // console.log(find(content));
-    } else if (request.url.startsWith("/?username")) {
+    } else if (request.url.startsWith("/?userName")) {
       // User details
       find(content, (result) => {
         // console.log(result);
@@ -47,7 +47,7 @@ http.createServer(async (request, response) => {
         } else {
           // User exists
           fs.readFile("./user.html", "utf-8", (err, html) => {
-            html = html.replace("Target Username", result.username);
+            html = html.replace("Target Username", result.userName);
             html = html.replace("Target Student ID", result.studentID);
             html = html.replace("Target Phone", result.phone);
             html = html.replace("Target Email", result.email);
@@ -65,7 +65,7 @@ http.createServer(async (request, response) => {
         find(chunk, (result) => {
           if (!result) {
             let user = {
-              username: chunk.username,
+              userName: chunk.userName,
               studentID: chunk.studentID,
               phone: chunk.phone,
               email: chunk.email,
@@ -76,7 +76,7 @@ http.createServer(async (request, response) => {
                 userData.push(user);
                 fs.writeFile(dataPath, JSON.stringify(userData), (err) => {
                   response.writeHead(302, {
-                    location: `http://localhost:8000/?username=${user.username}`,
+                    location: `http://localhost:8000/?userName=${user.userName}`,
                   });
                   response.end();
                 });

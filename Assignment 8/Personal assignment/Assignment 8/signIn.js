@@ -30,7 +30,7 @@ function check(request,response) {
 			var error_email = "";
 
 			for(var i in jsonObj.users) {
-				if(jsonObj.users[i].username == user.username) {
+				if(jsonObj.users[i].userName == user.userName) {
 					error_username = "用户已注册";
 					crash = true;
 				}
@@ -53,12 +53,12 @@ function check(request,response) {
 				fs.writeFile('./data.json',JSON.stringify(jsonObj),function(err){
 					if(err) throw err;
 				});
-				response.writeHead(301, {Location: '?username=' + user.username});
+				response.writeHead(301, {Location: '?userName=' + user.userName});
 				alert("成功注册\n");
 				response.end();					
 			}
 			else {
-				var nname = user.username;
+				var nname = user.userName;
 				var nId = user.studentId;
 				var nphone = user.phone;
 				var nemail = user.email;
@@ -68,11 +68,11 @@ function check(request,response) {
 }
 
 function displayPage(request,response) {
-	var username = querystring.parse(url.parse(request.url).query).username;
-	if(!username || !!!jsonObj.users[username]) {
+	var userName = querystring.parse(url.parse(request.url).query).userName;
+	if(!userName || !!!jsonObj.users[userName]) {
 		//test whether the user has signed up
 		// for(var i = 0; i < jsonObj.users.length; i++){
-		// 	if(jsonObj.users[i].username == username){
+		// 	if(jsonObj.users[i].userName == userName){
 		// 		user = jsonObj.users[i];
 		// 		break;
 		// 	}
@@ -108,7 +108,7 @@ function displayPage(request,response) {
 	}
 	else {
 		var pathName = request.url;
-		if(pathName == '/' || pathname.indexOf("/?username=") != -1) {
+		if(pathName == '/' || pathname.indexOf("/?userName=") != -1) {
 			pathName = "./display.html";
 		}
 		else {
@@ -122,7 +122,7 @@ function displayPage(request,response) {
 			}
 
 			else if(file.indexOf("html") != -1) {
-				detailDisplay(response,jsonObj.users[username].username,jsonObj.users[username].studentId,jsonObj.users[username].phone,jsonObj.users[username].email);		
+				detailDisplay(response,jsonObj.users[userName].userName,jsonObj.users[userName].studentId,jsonObj.users[userName].phone,jsonObj.users[userName].email);		
 			}
 
 			else if(file.indexOf("css") != -1){
@@ -156,7 +156,7 @@ function errorDisplay(response,error_1,error_2,error_3,error_4,
 		response.write("<form id = \"data\" method = \"post\" onsubmit = \"return isValid()\">");
 			response.write("<p>");
 			response.write("用户 ： ");
-			response.write("<input id = \"username\" name = \"username\" type = \"text\" value = " + nname + ">");
+			response.write("<input id = \"userName\" name = \"userName\" type = \"text\" value = " + nname + ">");
 			response.write("<span>");
 			response.write(error_1);
 			response.write("</span>");
@@ -202,7 +202,7 @@ function errorDisplay(response,error_1,error_2,error_3,error_4,
 	response.end();			
 }
 
-function detailDisplay(response,username,studentId,phone,email) {
+function detailDisplay(response,userName,studentId,phone,email) {
 	response.writeHead(200, {'Content-Type':'text/html'});
 	response.write("<!DOCTYPE \"html\">");
 	response.write("<html>");
@@ -216,9 +216,9 @@ function detailDisplay(response,username,studentId,phone,email) {
 	response.write("<div id = \"information\">");
 
 		response.write("<h1>用户信息</h1>");
-		response.write("<div id = \"username\">");
+		response.write("<div id = \"userName\">");
 		response.write("<p>用户：");
-		response.write(username);
+		response.write(userName);
 		response.write("</p>");
 		response.write("</div>");
 

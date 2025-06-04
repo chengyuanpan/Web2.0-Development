@@ -61,7 +61,7 @@ h1{
 	box-shadow: 0 0 5px 5px #CD5555;
 }
 
-#username, #studentId, #phone, #email {
+#userName, #studentId, #phone, #email {
 	background-color: #F0FFFF;
 }
 

@@ -14,16 +14,10 @@
   }
 
   function initial() {
-    let reg = {
-      // Username: 6 to 18 characters long, including English letters, numbers or underscores.
-      // Must start with an English letter
-      username: /^[a-zA-Z][\w_]{5,17}$/,
-      // Student ID: 8 digits, cannot start with 0
+    let rules = {
+      userName: /^[a-zA-Z][\w_]{5,17}$/,
       studentID: /^[1-9]\d{7}$/,
-      // Phone Number: 11 digits, cannot start with 0
       phone: /^[1-9]\d{10}$/,
-      // Email: Must contain an @ symbol, followed by a domain name and a top-level domain (e.g., .com, .cn, etc.)
-      // The domain name can contain letters, numbers, underscores, and hyphens.
       email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
     };
     $("input[type=text]").blur(function () {
@@ -39,7 +33,7 @@
           "http://localhost:8000/signSearch",
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
-            if (!reg[name].test($(this).val())) {
+            if (!rules[name].test($(this).val())) {
               $(`#${name}`).text(
                 `${$(this).attr(
                   "placeholder"
@@ -72,7 +66,7 @@
 
     $("form").on(`submit`, function (event) {
       if (
-        !(status.username && status.studentID && status.phone && status.email)
+        !(status.userName && status.studentID && status.phone && status.email)
       ) {
         alert(`Please fill in the user information correctly`);
         event.preventDefault();
@@ -81,7 +75,7 @@
   }
 
   const status = {
-    username: false,
+    userName: false,
     studentID: false,
     email: false,
     phone: false,

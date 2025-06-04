@@ -7,29 +7,29 @@ window.onload = function() {
 }
 
 function initialize() {
-	$("#username").val("");
+	$("#userName").val("");
 	$("#studentId").val("");
 	$("#phone").val("");
 	$("#email").val("");
-	$("#username").next("span").text("");
+	$("#userName").next("span").text("");
 	$("#studentId").next("span").text("");
 	$("#phone").next("span").text("");
 	$("#email").next("span").text("");
 }
 
 function isValid() {
-	var username = $("#username").val();
+	var userName = $("#userName").val();
 	var studentId = $("#studentId").val();
 	var phone = $("#phone").val();
 	var email = $("#email").val();
 	var valid = true;
 
-	if(!(/^[a-zA-Z]\w{5,17}$/.test(username))) {
-		$("#username").next("span").text("名称不合法");
+	if(!(/^[a-zA-Z]\w{5,17}$/.test(userName))) {
+		$("#userName").next("span").text("名称不合法");
 		valid = false;
 	}
 	else {
-		$("#username").next("span").text("");
+		$("#userName").next("span").text("");
 	}
 
 	if(!(/^[1-9][0-9]{7}$/.test(studentId))) {

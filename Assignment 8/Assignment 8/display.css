@@ -40,7 +40,7 @@ h1{
 }
 
 
-#username, #studentId, #phone, #email {
+#userName, #studentId, #phone, #email {
 	position: relative;
 	height: 30px;
 	width: 240px;
@@ -56,7 +56,7 @@ h1{
 	top: -15px;
 }
 
-#username{
+#userName{
 	top: 0px;
 }
 #studentId{
