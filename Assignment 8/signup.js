@@ -15,11 +15,12 @@
 
   function initial() {
     let rules = {
-      userName: /^[a-zA-Z][\w_]{5,17}$/,
+      userName: /^[A-Za-z]+( [A-Za-z]+)*$/,
       studentID: /^[1-9]\d{7}$/,
       phone: /^[1-9]\d{10}$/,
-      email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+      email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
     };
+  
     $("input[type=text]").blur(function () {
       let name = $(this).attr("name");
       $(`#${name}`).css("opacity", "1");
