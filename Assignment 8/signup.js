@@ -9,7 +9,7 @@
     document.body.appendChild(b);
     a.onload = b.onload = () => {
       flag++;
-      if (flag == 2) main();
+      if (2 == flag) main();
     };
   }
 
