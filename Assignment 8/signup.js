@@ -65,9 +65,7 @@
     });
 
     $("form").on(`submit`, function (event) {
-      if (
-        !(status.userName && status.studentID && status.phone && status.email)
-      ) {
+      if (!(status.userName && status.studentID && status.phone && status.email)) {
         alert(`Please fill in the user information correctly`);
         event.preventDefault();
       }
