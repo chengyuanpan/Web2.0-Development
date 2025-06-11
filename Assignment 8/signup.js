@@ -30,8 +30,7 @@
         $(`#${name}`).text(`Please input ${$(this).attr("placeholder")}`);
         return;
       } else {
-        $.get(
-          "http://localhost:8000/signSearch",
+        $.get("http://localhost:8000/signSearch",
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
             if (!rules[name].test($(this).val())) {
