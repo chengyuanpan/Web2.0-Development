@@ -35,10 +35,7 @@
           (data) => {
             if (!rules[name].test($(this).val())) {
               $(`#${name}`).text(
-                `${$(this).attr(
-                  "placeholder"
-                )} isn't in compliance with the rules`
-              );
+                `${$(this).attr("placeholder")} isn't in compliance with the rules`);
               status[name] = false;
             } else if (data == "true") {
               // Username already exists
