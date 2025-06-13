@@ -49,7 +49,7 @@ http.createServer(async (request, response) => {
           fs.readFile("./user.html", "utf-8", (err, html) => {
             html = html.replace("Target Username", result.userName);
             html = html.replace("Target Student ID", result.studentID);
-            html = html.replace("Target Phone", result.phone);
+            html = html.replace("Target Phone Number", result.phone);
             html = html.replace("Target Email", result.email);
 
             response.writeHead(200, { "Content-Type": "text/html" });
@@ -102,5 +102,4 @@ http.createServer(async (request, response) => {
         });
       }
     }
-  })
-  .listen(8000);
+  }).listen(8000);
