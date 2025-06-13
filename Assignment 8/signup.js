@@ -56,6 +56,7 @@
         ); // 1 existed, 2 not existed
       }
     });
+
     $("#reset").click(function () {
       $("span").css("opacity", "0");
       $("input[type=text]").val(``);
