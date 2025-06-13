@@ -29,21 +29,14 @@
       $(`#${name}`).css("opacity", "1");
       $(`#${name}`).css("color", `#ff5a6a`);
       if ($(this).val().length > 0) {
-        $.get(
-          // 1 existed, 2 not existed
-          "http://localhost:8000/signSearch",
+        // 1 existed, 2 not existed
+        $.get("http://localhost:8000/signSearch",
           $(this).val().length == 0 ? {} : { [name]: $(this).val() }, (data) => {
             if (!rules[name].test($(this).val())) {
-              $(`#${name}`).text(
-                `${$(this).attr(
-                  "placeholder"
-                )} isn't in compliance with the rules`
-              );
+              $(`#${name}`).text(`${$(this).attr("placeholder")} isn't in compliance with the rules`);
               status[name] = false;
             } else if (data == "true") {
-              $(`#${name}`).text(
-                `${$(this).attr("placeholder")} already exists`
-              );
+              $(`#${name}`).text(`${$(this).attr("placeholder")} already exists`);
               status[name] = false;
             } else {
               $(`#${name}`).text(`This ${$(this).attr("placeholder")} can be used`);
