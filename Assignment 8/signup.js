@@ -1,6 +1,6 @@
 // This code is executed immediately after it is defined, Immediately Invoked Function Expression(IIFE)
-// (function() {}): Anonymous function expressions;
-// (); :This is the syntax of a function call, which means that the function is executed immediately after it is defined.
+// (function() {}) : Anonymous function expressions;
+// (); : This is the syntax of a function call, which means that the function is executed immediately after it is defined.
 (function () {
   if (typeof $ === "undefined") {
     let flag = 0,
