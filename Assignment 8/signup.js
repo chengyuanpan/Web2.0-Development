@@ -27,11 +27,11 @@
     $("input[type=text]").blur(function () {
       let name = $(this).attr("name");
       $(`#${name}`).css("opacity", "1");
-      $(`#${name}`).css("color", `#ff5a6a`);
       if ($(this).val().length > 0) {
         // 1 existed, 2 not existed
         $.get("http://localhost:8000/signSearch",
-          $(this).val().length == 0 ? {} : { [name]: $(this).val() }, (data) => {
+          { [name]: $(this).val() },
+          (data) => {
             if (!rules[name].test($(this).val())) {
               $(`#${name}`).text(`${$(this).attr("placeholder")} isn't in compliance with the rules`);
               status[name] = false;
@@ -50,13 +50,12 @@
 
     $("#reset").click(function () {
       $("span").css("opacity", "0");
-      $("input[type=text]").val(``);
+      $("input[type=text]").val("");
     });
 
     $("form").on(`submit`, function (event) {
-      if (
-        !(status.userName && status.studentID && status.phone && status.email)
-      ) {
+      if (!(status.userName && status.studentID &&
+            status.phone && status.email)) {
         alert(`Please fill in the user information correctly`);
         event.preventDefault();
       }
@@ -68,7 +67,7 @@
     studentID: false,
     email: false,
     phone: false,
-  }; // 0 null, 1 error, 2 ok
+  };
 
   function main() {
     initial();
