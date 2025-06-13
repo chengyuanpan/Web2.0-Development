@@ -20,7 +20,7 @@
       phone: /^[1-9]\d{10}$/,
       email: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
     };
-  
+
     $("input[type=text]").blur(function () {
       let name = $(this).attr("name");
       $(`#${name}`).css("opacity", "1");
@@ -30,12 +30,16 @@
         $(`#${name}`).text(`Please input ${$(this).attr("placeholder")}`);
         return;
       } else {
-        $.get("http://localhost:8000/signSearch",
+        $.get(
+          "http://localhost:8000/signSearch",
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
             if (!rules[name].test($(this).val())) {
               $(`#${name}`).text(
-                `${$(this).attr("placeholder")} isn't in compliance with the rules`);
+                `${$(this).attr(
+                  "placeholder"
+                )} isn't in compliance with the rules`
+              );
               status[name] = false;
             } else if (data == "true") {
               // Username already exists
@@ -63,7 +67,9 @@
     });
 
     $("form").on(`submit`, function (event) {
-      if (!(status.userName && status.studentID && status.phone && status.email)) {
+      if (
+        !(status.userName && status.studentID && status.phone && status.email)
+      ) {
         alert(`Please fill in the user information correctly`);
         event.preventDefault();
       }
