@@ -16,6 +16,13 @@
     };
   }
 
+  const status = {
+    userName: false,
+    studentID: false,
+    email: false,
+    phone: false,
+  };
+
   function initial() {
     let rules = {
       userName: /^[A-Za-z]+( [A-Za-z]+)*$/,
@@ -26,9 +33,9 @@
 
     $("input[type=text]").blur(function () {
       let name = $(this).attr("name");
-      $(`#${name}`).css("opacity", "1");
       if ($(this).val().length > 0) {
         // 1 existed, 2 not existed
+        $(`#${name}`).css("opacity", "1");
         $.get("http://localhost:8000/signSearch",
           { [name]: $(this).val() },
           (data) => {
@@ -50,6 +57,7 @@
 
     $("#reset").click(function () {
       $("span").css("opacity", "0");
+      $("span").text("");
       $("input[type=text]").val("");
     });
 
@@ -61,13 +69,6 @@
       }
     });
   }
-
-  const status = {
-    userName: false,
-    studentID: false,
-    email: false,
-    phone: false,
-  };
 
   function main() {
     initial();
