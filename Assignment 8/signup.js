@@ -33,7 +33,7 @@
         $(`#${name}`).text(`Please input ${$(this).attr("placeholder")}`);
         return;
       } else {
-        $.get(
+        $.get( // 1 existed, 2 not existed
           "http://localhost:8000/signSearch",
           $(this).val().length == 0 ? {} : { [name]: $(this).val() },
           (data) => {
@@ -60,7 +60,7 @@
               // $("#name").css("opacity", "1");
             }
           }
-        ); // 1 existed, 2 not existed
+        );
       }
     });
 
