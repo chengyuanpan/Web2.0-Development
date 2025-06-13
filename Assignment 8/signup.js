@@ -28,15 +28,11 @@
       let name = $(this).attr("name");
       $(`#${name}`).css("opacity", "1");
       $(`#${name}`).css("color", `#ff5a6a`);
-      if ($(this).val().length == 0) {
-        status[$(this).attr("name")] = false;
-        $(`#${name}`).text(`Please input ${$(this).attr("placeholder")}`);
-        return;
-      } else {
-        $.get( // 1 existed, 2 not existed
+      if ($(this).val().length > 0) {
+        $.get(
+          // 1 existed, 2 not existed
           "http://localhost:8000/signSearch",
-          $(this).val().length == 0 ? {} : { [name]: $(this).val() },
-          (data) => {
+          $(this).val().length == 0 ? {} : { [name]: $(this).val() }, (data) => {
             if (!rules[name].test($(this).val())) {
               $(`#${name}`).text(
                 `${$(this).attr(
@@ -45,19 +41,14 @@
               );
               status[name] = false;
             } else if (data == "true") {
-              // Username already exists
               $(`#${name}`).text(
                 `${$(this).attr("placeholder")} already exists`
               );
               status[name] = false;
-              // $("#name").css("opacity", "1");
             } else {
-              $(`#${name}`).text(
-                `This ${$(this).attr("placeholder")} can be used`
-              );
+              $(`#${name}`).text(`This ${$(this).attr("placeholder")} can be used`);
               $(`#${name}`).css("color", "#42ca6b");
               status[name] = true;
-              // $("#name").css("opacity", "1");
             }
           }
         );
