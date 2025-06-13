@@ -1,6 +1,6 @@
 (function () {
   if (typeof $ === "undefined") {
-    var flag = 0,
+    let flag = 0,
       a = document.createElement("script"),
       b = document.createElement("script");
     a.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js";
