@@ -25,7 +25,8 @@ http.createServer(async (request, response) => {
     console.log('Received parameters:', content);
   }
   console.log(request.url);
-  if (request.url == "/") { // Load the signup page (Home page)
+  if (request.url == "/") {
+    // Load the signup page (Home page)
     fs.readFile('./signup.html', 'utf-8', (err, data) => {
       if (err) {
         response.writeHead(500, { "Content-Type": "text/plain" });
@@ -35,14 +36,16 @@ http.createServer(async (request, response) => {
       response.writeHead(200, { "Content-Type": "text/html" });
       response.end(data);
     });
-  } else if (request.url.startsWith("/signSearch")) { // Check if content exists
+  } else if (request.url.startsWith("/signSearch")) {
+    // Check if content exists
     find(content, (result) => {
       // Return true if exists, false if not
       response.end(`${!(result === false)}`);
     });
-  } else if (request.url == "/signUpPost") { // User clicks the Sign Up button
+  } else if (request.url == "/signUpPost") {
+    // User clicks the Sign Up button
     request.on("data", (chunk) => {
-      // console.log(chunk);
+      // chunk.toString() : userName=AlvinPan&studentID=15331248&phone=13719175357&email=panchy7%40qq.com
       chunk = queryString.parse(chunk.toString());
       find(chunk, (result) => {
         if (!result) {
@@ -67,9 +70,9 @@ http.createServer(async (request, response) => {
         }
       });
     });
-  } else if (request.url.startsWith("/?userName")) { // Display user details
+  } else if (request.url.startsWith("/?userName")) {
+    // Display user details
     find(content, (result) => {
-      // console.log(result);
       if (result === false) {
         // User does not exist, return to registration
         fs.readFile("./signup.html", "utf-8", (err, html) => {
@@ -78,14 +81,14 @@ http.createServer(async (request, response) => {
         });
       } else {
         // User exists
-        fs.readFile("./user.html", "utf-8", (err, html) => {
-          html = html.replace("Target Username", result.userName);
-          html = html.replace("Target Student ID", result.studentID);
-          html = html.replace("Target Phone Number", result.phone);
-          html = html.replace("Target Email", result.email);
+        fs.readFile("./user.html", "utf-8", (err, data) => {
+          data = data.replace("Target Username", result.userName);
+          data = data.replace("Target Student ID", result.studentID);
+          data = data.replace("Target Phone Number", result.phone);
+          data = data.replace("Target Email", result.email);
 
           response.writeHead(200, { "Content-Type": "text/html" });
-          response.end(html);
+          response.end(data);
         });
       }
     });
