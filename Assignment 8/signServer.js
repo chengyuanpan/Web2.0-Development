@@ -9,8 +9,7 @@ function find(Obj, callback) {
     let userData = JSON.parse(data);
     for (let i of userData) {
       if (Obj.userName && i.userName === Obj.userName) return callback(i);
-      else if (Obj.studentID && i.studentID === Obj.studentID)
-        return callback(i);
+      else if (Obj.studentID && i.studentID === Obj.studentID) return callback(i);
       else if (Obj.phone && i.phone === Obj.phone) return callback(i);
       else if (Obj.email && i.email === Obj.email) return callback(i);
       else continue;
