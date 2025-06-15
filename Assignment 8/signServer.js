@@ -69,7 +69,8 @@ http
                 });
               });
             }
-          } else { // User already exists, redirect to the signup page
+          } else {
+            // User already exists, redirect to the signup page
             fs.readFile("./signup.html", "utf-8", (err, html) => {
               response.writeHead(302, { location: "http://localhost:8000" });
               response.end();
