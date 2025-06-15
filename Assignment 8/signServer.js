@@ -25,8 +25,7 @@ http.createServer(async (request, response) => {
     console.log('Received parameters:', content);
   }
   console.log(request.url);
-  if (request.url == "/") {
-    // Load the signup page (Home page)
+  if (request.url == "/") { // Load the signup page (Home page)
     fs.readFile('./signup.html', 'utf-8', (err, data) => {
       if (err) {
         response.writeHead(500, { "Content-Type": "text/plain" });
