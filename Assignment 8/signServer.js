@@ -26,10 +26,15 @@ http.createServer(async (request, response) => {
   }
   console.log(request.url);
   if (request.url == "/") {
-    // Home page
-    fs.readFile("./signup.html", "utf-8", (err, html) => {
+    // Load the signup page (Home page)
+    fs.readFile('./signup.html', 'utf-8', (err, data) => {
+      if (err) {
+        response.writeHead(500, { "Content-Type": "text/plain" });
+        response.end("Server Error");
+        return;
+      }
       response.writeHead(200, { "Content-Type": "text/html" });
-      response.end(html);
+      response.end(data);
     });
   } else if (request.url.startsWith("/signSearch")) {
     // Check if content exists
