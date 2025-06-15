@@ -20,7 +20,6 @@ function find(Obj, callback) {
 
 http.createServer(async (request, response) => {
     let content = queryString.parse(url.parse(request.url).query);
-    console.log(content);
     if (request.url == "/") {
       // Home page
       fs.readFile("./signup.html", "utf-8", (err, html) => {
