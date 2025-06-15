@@ -35,12 +35,11 @@ http.createServer(async (request, response) => {
       response.writeHead(200, { "Content-Type": "text/html" });
       response.end(data);
     });
-  } else if (request.url.startsWith("/signSearch")) {
-    // Check if content exists
+  } else if (request.url.startsWith("/signSearch")) { // Check if content exists
     find(content, (result) => {
+      // Return true if exists, false if not
       response.end(`${!(result === false)}`);
     });
-    // console.log(find(content));
   } else if (request.url.startsWith("/?userName")) {
     // User details
     find(content, (result) => {
