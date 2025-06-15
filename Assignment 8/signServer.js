@@ -22,7 +22,6 @@ http.createServer(async (request, response) => {
     const myURL = new url.URL(request.url, `http://${request.headers.host}`);
     const content = Object.fromEntries(myURL.searchParams.entries());
     console.log(content);
-    console.log(request.url);
     if (request.url == "/") {
       // Home page
       fs.readFile("./signup.html", "utf-8", (err, html) => {
