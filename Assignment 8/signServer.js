@@ -15,7 +15,7 @@ function find(Obj, callback) {
       else if (Obj.email && i.email === Obj.email) return callback(i);
       else continue;
     }
-    return callback(false); // not exist
+    return callback(false);
   });
 }
 
