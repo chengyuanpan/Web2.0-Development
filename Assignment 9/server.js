@@ -39,6 +39,10 @@ function handlePage(req, res, pathname) {
   }
 }
 
+function getRandomNumber(limit) {
+  return Math.round(Math.random() * limit);
+}
+
 function handleAjax(req, res) {
   let random_time = 1000 + getRandomNumber(2000);
   let random_num = 1 + getRandomNumber(9);
@@ -61,7 +65,3 @@ http
   .listen(port, function () {
     console.log("server listen on ", port);
   });
-
-function getRandomNumber(limit) {
-  return Math.round(Math.random() * limit);
-}
