@@ -21,6 +21,7 @@ function find(Obj, callback) {
 http
   .createServer(async (request, response) => {
     const myURL = new url.URL(request.url, `http://${request.headers.host}`);
+    const pathname = myURL.pathname;
     const content = Object.fromEntries(myURL.searchParams.entries());
     if (Object.keys(content).length > 0) {
       console.log("Received parameters:", content);
@@ -43,7 +44,7 @@ http
         // Return true if exists, false if not
         response.end(`${!(result === false)}`);
       });
-    } else if (request.url == "/signUpPost") {
+    } else if (pathname == "/signUpPost" && request.method === "POST") {
       // User clicks the Sign Up button
       // chunk.toString() : userName=AlvinPan&studentID=15331248&phone=13719175357&email=panchy7%40qq.com
       let body = "";
@@ -112,7 +113,6 @@ http
             json: "application/json",
             ico: "image/x-icon",
           };
-          const pathname = new URL(request.url, `http://${request.headers.host}`).pathname;
           const ext = pathname.split(".").pop();
           const type = mimeTypes[ext] || "text/plain";
           response.writeHead(200, { "Content-Type": type });
