@@ -45,16 +45,20 @@ http
       });
     } else if (request.url == "/signUpPost") {
       // User clicks the Sign Up button
-      request.on("data", (chunk) => {
-        // chunk.toString() : userName=AlvinPan&studentID=15331248&phone=13719175357&email=panchy7%40qq.com
-        chunk = queryString.parse(chunk.toString());
-        find(chunk, (result) => {
+      // chunk.toString() : userName=AlvinPan&studentID=15331248&phone=13719175357&email=panchy7%40qq.com
+      let body = "";
+      request.on("data", chunk => {
+        body += chunk;
+      });
+      request.on("end", () => {
+        body = queryString.parse(body);
+        find(body, (result) => {
           if (!result) {
             let user = {
-              userName: chunk.userName,
-              studentID: chunk.studentID,
-              phone: chunk.phone,
-              email: chunk.email,
+              userName: body.userName,
+              studentID: body.studentID,
+              phone: body.phone,
+              email: body.email,
             };
             if (user) {
               fs.readFile(dataPath, "utf-8", (err, data) => {

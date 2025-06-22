@@ -46,11 +46,13 @@
                   "placeholder"
                 )} isn't in compliance with the rules`
               );
+              $(`#${name}`).css("color", "#fd808d");
               status[name] = false;
             } else if (data == "true") {
               $(`#${name}`).text(
                 `${$(this).attr("placeholder")} already exists`
               );
+              $(`#${name}`).css("color", "#fd808d");
               status[name] = false;
             } else {
               $(`#${name}`).text(
