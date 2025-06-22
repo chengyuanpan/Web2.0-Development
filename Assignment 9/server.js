@@ -1,11 +1,11 @@
-var http = require("http");
-var url = require("url");
-var path = require("path");
-var fs = require("fs");
-var port = 3000;
+let http = require("http");
+let url = require("url");
+let path = require("path");
+let fs = require("fs");
+let port = 3000;
 
 function getMimeType(pathname) {
-  var validExtensions = {
+  let validExtensions = {
     ".html": "text/html",
     ".js": "application/javascript",
     ".css": "text/css",
@@ -13,14 +13,14 @@ function getMimeType(pathname) {
     ".gif": "image/gif",
     ".png": "image/png",
   };
-  var ext = path.extname(pathname);
-  var type = validExtensions[ext];
+  let ext = path.extname(pathname);
+  let type = validExtensions[ext];
   return type;
 }
 
 function handlePage(req, res, pathname) {
-  var filePath = __dirname + pathname;
-  var mimeType = getMimeType(pathname);
+  let filePath = __dirname + pathname;
+  let mimeType = getMimeType(pathname);
   if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function (err, data) {
       if (err) {
@@ -40,8 +40,8 @@ function handlePage(req, res, pathname) {
 }
 
 function handleAjax(req, res) {
-  var random_time = 1000 + getRandomNumber(2000);
-  var random_num = 1 + getRandomNumber(9);
+  let random_time = 1000 + getRandomNumber(2000);
+  let random_num = 1 + getRandomNumber(9);
   setTimeout(function () {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("" + random_num);
@@ -50,8 +50,8 @@ function handleAjax(req, res) {
 
 http
   .createServer(function (req, res) {
-    var pathname = url.parse(req.url).pathname;
-    var mimeType = getMimeType(pathname);
+    let pathname = url.parse(req.url).pathname;
+    let mimeType = getMimeType(pathname);
     if (!!mimeType) {
       handlePage(req, res, pathname);
     } else {
