@@ -33,19 +33,6 @@ span {
   user-select: none;
 }
 
-button,
-#reg {
-  margin-top: 20px;
-  width: 170px;
-  height: 40px;
-  background-color: #1890ff;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
-  font-family: "Ariel";
-  color: white;
-}
-
 h1 {
   background-color: #e9f6fe;
   border-radius: 25px 25px 0px 0px;
@@ -53,4 +40,24 @@ h1 {
   color: #1890ff;
   font-size: 20px;
   line-height: 50px;
+}
+
+.form-button {
+  margin-top: 20px;
+  width: 175px;
+  height: 40px;
+  background-color: #309bff;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-family: "Ariel";
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #0385ff;
+  color: white;
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
