@@ -28,6 +28,10 @@ https://github.com/user-attachments/assets/b4bcab1f-d41c-4741-bdff-7aa2816be7cc
 ## Preview of Assignment 7
 <img width="722" alt="image" src="https://github.com/user-attachments/assets/b0a1b6ed-8649-407b-bb42-39e4328b040b" />
 
+## Preview of Assignment 8
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/487c2e81-125e-4e78-a8b0-d5543658750c" />
+
+
 
 
 
