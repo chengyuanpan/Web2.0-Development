@@ -1,0 +1,250 @@
+/* 米家龙 18342075 */
+/* 问题：在button处就会触发 */
+html, body {
+    /* 发现不加 height 和 width 会出问题 */
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#at-plus-container {
+    /* background-color: lightgrey; */
+    position: relative;
+    width: 180px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 定位用 */
+#bottom-positioner {
+    position: absolute;
+    bottom: 150px;
+    width: 100%;
+}
+
+#info-bar {
+    position: absolute;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    bottom: 96px;
+    left: 75px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#sum {
+    user-select: none;
+    text-align: center;
+    line-height: 130px;
+    font-size: 30px;
+    color: #38d99e;
+}
+
+#button:hover #info-bar {
+    width: 130px;
+    height: 130px;
+    bottom: 150px;
+    left: 25px;
+    background-color: #7e7e7e;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+#control-ring-container {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    bottom: 20px;
+    left: 0px;
+    border-radius: 50%;
+}
+
+
+#button {
+    width: 26px;
+    height: 26px;
+    margin: 96px 77px;
+}
+
+#button .apb {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    bottom: 96px;
+    left: 77px;
+    border-radius: 50%;
+    background: grey url("./assets/images/atplus_white.png") center no-repeat;
+    /* background: rgba(48, 63, 159, 1) url("./assets/images/atplus_white.png") center no-repeat; */
+    /* 如果size两个相等，会变成拉伸效果 */
+    background-size: 20px 15px;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    /* background: url("./assets/images/atplus_white.png") center no-repeat; no hover */
+
+}
+
+#button:hover .apb {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 85px;
+    left: 65px;
+    border-radius: 50%;
+    background: grey url("./assets/images/atplus_green.png") center no-repeat;
+    /* 如果size两个相等，会变成拉伸效果 */
+    background-size: 40px 30px;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    /* background: url("./assets/images/atplus_white.png") center no-repeat; no hover */
+}
+
+/* #control-ring-container li {
+    opacity: 0;
+} */
+
+ #control-ring-container li {
+    list-style: none;
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-top: 60px;
+    margin-left: 35px;
+    border-radius: 50%;
+    background-size: 18px 18px;
+    opacity: 1;
+}
+
+/* 使用伪元素 */
+#button:hover #control-ring li:nth-child(1) {
+    margin-top: 20px;
+    margin-left: -30px;
+    opacity: 1;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+#control-ring li:nth-child(1) {
+    margin-top: 60px;
+    margin-left: 35px;
+    opacity: 0;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+
+#button:hover #control-ring li:nth-child(2) {
+    margin-top: 60px;
+    margin-left: -40px;
+    opacity: 1;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+#control-ring li:nth-child(2) {
+    margin-top: 60px;
+    margin-left: 35px;
+    opacity: 0;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+
+#button:hover #control-ring li:nth-child(3) {
+    margin-top: 100px;
+    margin-left: -27px;
+    opacity: 1;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+#control-ring li:nth-child(3) {
+    margin-top: 60px;
+    margin-left: 35px;
+    opacity: 0;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#button:hover #control-ring li:nth-child(4) {
+    margin-top: 128px;
+    margin-left: 7px;
+    opacity: 1;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+#control-ring li:nth-child(4) {
+    margin-top: 60px;
+    margin-left: 35px;
+    opacity: 0;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#button:hover #control-ring li:nth-child(5) {
+    margin-top: 128px;
+    margin-left: 53px;
+    opacity: 1;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+#control-ring li:nth-child(5) {
+    margin-top: 60px;
+    margin-left: 35px;
+    opacity: 0;
+    transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+/* #control-ring span.unread {
+    opacity: 0;
+} */
+
+.num {
+    user-select: none;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #58bb9f;
+    background-color: #2e3ba4;
+}
+
+.val {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    width: 18px;
+    height: 18px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+}
+
