@@ -6,7 +6,12 @@ let dataPath = "./userData.json";
 
 function find(Obj, callback) {
   fs.readFile(dataPath, "utf-8", (err, data) => {
-    let userData = JSON.parse(data);
+    let userData = [];
+    try {
+      userData = JSON.parse(data);
+    } catch (err) {
+      console.log("JSON.parse error");
+    }
     for (let i of userData) {
       if (Obj.userName && i.userName === Obj.userName) return callback(i);
       else if (Obj.studentID && i.studentID === Obj.studentID) return callback(i);
@@ -63,7 +68,12 @@ http
             };
             if (user) {
               fs.readFile(dataPath, "utf-8", (err, data) => {
-                let userData = JSON.parse(data);
+                let userData = [];
+                try {
+                  userData = JSON.parse(data);
+                } catch (err) {
+                  console.log("JSON.parse error");
+                }
                 userData.push(user);
                 fs.writeFile(dataPath, JSON.stringify(userData), (err) => {
                   response.writeHead(302, {
