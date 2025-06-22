@@ -103,9 +103,18 @@ http
       try {
         // Load other files
         fs.readFile(`.${request.url}`, (err, data) => {
-          let type = request.url.split(".")[1];
-          if (type == "png" || type == "jpg") type = `image/${type}`;
-          else type = `text/${type}`;
+          const mimeTypes = {
+            html: "text/html",
+            css: "text/css",
+            js: "application/javascript",
+            png: "image/png",
+            jpg: "image/jpeg",
+            json: "application/json",
+            ico: "image/x-icon",
+          };
+          const pathname = new URL(request.url, `http://${request.headers.host}`).pathname;
+          const ext = pathname.split(".").pop();
+          const type = mimeTypes[ext] || "text/plain";
           response.writeHead(200, { "Content-Type": type });
           response.end(data);
         });
