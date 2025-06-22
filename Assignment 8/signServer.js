@@ -80,10 +80,8 @@ http
       find(content, (result) => {
         if (result === false) {
           // User does not exist, return to registration
-          fs.readFile("./signup.html", "utf-8", (err, html) => {
-            response.writeHead(302, { location: "http://localhost:8000" });
-            response.end();
-          });
+          response.writeHead(302, { location: "http://localhost:8000" });
+          response.end();
         } else {
           // User exists
           fs.readFile("./user.html", "utf-8", (err, data) => {
