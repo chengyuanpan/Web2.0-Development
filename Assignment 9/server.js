@@ -1,22 +1,3 @@
-// let http = require('http');
-// let port = 2333;
-
-// function getRandomNumber(limit) {
-//     return Math.round(Math.random() * limit);
-// }
-
-// http.createServer((req, res) => {
-//     let randomTime = 1000 + getRandomNumber(2000);
-//     let randomNum = 1 + getRandomNumber(9);
-//     setTimeout(() => {
-//         res.writeHead(200, {'Content-Type' : 'text/plain'});
-//         res.end(`${randomNum}`);
-//     }, randomTime);
-// }),listen(port, () => {
-//     console.log(`Server listen on ${port}`);
-// });
-
-
 var http = require('http');
 var url = require('url');
 var path = require('path');
@@ -25,8 +6,6 @@ var port = 3000;
 
 http.createServer(function(req,res){
   var pathname = url.parse(req.url).pathname;
-  var re = req.url;
-  console.log(re);
   var mimeType = getMimeType(pathname);
   if (!!mimeType) {
     handlePage(req, res, pathname);
@@ -73,7 +52,7 @@ function handlePage(req, res, pathname) {
 }
 
 function handleAjax(req, res) {
-  var random_time = 50 + getRandomNumber(1000);
+  var random_time = 1000 + getRandomNumber(2000);
   var random_num  = 1 + getRandomNumber(9);
   setTimeout(function(){
     res.writeHead(200, {'Content-Type': 'text/plain'});
