@@ -1,6 +1,6 @@
 window.onload = function () {
-  var clickbutton = [true, true, true, true, true, false, true];
-  var Number = [false, false, false, false, false];
+  let clickbutton = [true, true, true, true, true, false, true];
+  let Number = [false, false, false, false, false];
 
   $("#button").mouseleave(Reset);
 
@@ -33,7 +33,7 @@ window.onload = function () {
 
   function getsum() {
     if (clickbutton[5]) {
-      var sum = 0;
+      let sum = 0;
       sum += parseInt($("#A span").html());
       sum += parseInt($("#B span").html());
       sum += parseInt($("#C span").html());
@@ -46,23 +46,23 @@ window.onload = function () {
   }
 
   function Click(tar) {
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
     return clickbutton[index] && !Number[index];
   }
 
   function action(tar) {
-    var content = $(tar).find("span");
+    let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
     $("#ring-container .button").css("background-color", "#707070");
     clickbutton = [false, false, false, false, false, false];
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
     Number[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
-      var allnum = 0;
-      for (var i = 0; i < 5; i++) {
+      let allnum = 0;
+      for (let i = 0; i < 5; i++) {
         if (!Number[i]) {
           clickbutton[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -80,28 +80,28 @@ window.onload = function () {
   }
 
   function Callback(order) {
-    var callback = [];
-    var buttons = [];
-    for (var i = 0; i < order.length; i++) {
+    let callback = [];
+    let buttons = [];
+    for (let i = 0; i < order.length; i++) {
       buttons[i] = document.querySelector("#" + order[i]);
     }
-    for (var i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       (function (i) {
-        var next = i + 1;
+        let next = i + 1;
         callback[i] = function () {
-          var tar = buttons[i];
-          var content = $(tar).find("span");
+          let tar = buttons[i];
+          let content = $(tar).find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
           $("#ring-container .button").css("background-color", "#707070");
           clickbutton = [false, false, false, false, false, false];
-          var index = tar.id.charCodeAt() - "A".charCodeAt();
+          let index = tar.id.charCodeAt() - "A".charCodeAt();
           Number[index] = true;
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
-            var allnum = 0;
-            for (var i = 0; i < 5; i++) {
+            let allnum = 0;
+            for (let i = 0; i < 5; i++) {
               if (!Number[i]) {
                 clickbutton[i] = true;
                 $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -125,12 +125,12 @@ window.onload = function () {
   }
 
   function getrandomorder() {
-    var order = [];
-    for (var i = 0; i < 5; i++) {
+    let order = [];
+    for (let i = 0; i < 5; i++) {
       order[i] = Math.round(Math.random() * 5);
       order[i] += "A".charCodeAt();
       order[i] = String.fromCharCode(order[i]);
-      for (var j = 0; j < i; j++) {
+      for (let j = 0; j < i; j++) {
         if (order[j] == order[i] || order[i] == "F") {
           i--;
           break;
@@ -142,8 +142,8 @@ window.onload = function () {
   }
 
   function randomorder() {
-    var order = getrandomorder();
-    var callback = Callback(order);
+    let order = getrandomorder();
+    let callback = Callback(order);
     callback[0]();
   }
 };
