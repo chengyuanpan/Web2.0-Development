@@ -1,6 +1,6 @@
 window.onload = function () {
-  var clickbutton = [true, true, true, true, true, false, true];
-  var Number = [false, false, false, false, false];
+  let clickbutton = [true, true, true, true, true, false, true];
+  let Number = [false, false, false, false, false];
 
   $("#button").mouseleave(Reset);
 
@@ -33,7 +33,7 @@ window.onload = function () {
 
   function getsum() {
     if (clickbutton[5]) {
-      var sum = 0;
+      let sum = 0;
       sum += parseInt($("#A span").html());
       sum += parseInt($("#B span").html());
       sum += parseInt($("#C span").html());
@@ -46,23 +46,23 @@ window.onload = function () {
   }
 
   function Click(tar) {
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
     return clickbutton[index] && !Number[index];
   }
 
   function action(tar) {
-    var content = $(tar).find("span");
+    let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
     $("#ring-container .button").css("background-color", "#707070");
     clickbutton = [false, false, false, false, false, false];
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
     Number[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
-      var allnum = 0;
-      for (var i = 0; i < 5; i++) {
+      let allnum = 0;
+      for (let i = 0; i < 5; i++) {
         if (!Number[i]) {
           clickbutton[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -80,7 +80,7 @@ window.onload = function () {
   }
 
   function allNumber() {
-    for (var i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       if (
         $(".text:eq(" + i + ")").html() == "" ||
         $(".text:eq(" + i + ")").html() == "..."
@@ -91,12 +91,12 @@ window.onload = function () {
   }
 
   function Callback() {
-    var callback = [];
+    let callback = [];
     clickbutton = [false, false, false, false, false, false, true];
-    for (var index = 0; index < 5; index++) {
+    for (let index = 0; index < 5; index++) {
       (function (index) {
         callback[index] = function () {
-          var content = $(".button:eq(" + index + ")").find("span");
+          let content = $(".button:eq(" + index + ")").find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
           Number[index] = true;
@@ -117,7 +117,7 @@ window.onload = function () {
   }
 
   function seleteall() {
-    var callback = Callback();
-    for (var i = 0; i < callback.length; i++) callback[i]();
+    let callback = Callback();
+    for (let i = 0; i < callback.length; i++) callback[i]();
   }
 };
