@@ -5,7 +5,7 @@ let fs = require("fs");
 let port = 3000;
 
 function getMimeType(pathname) {
-  let validExtensions = {
+  const validExtensions = {
     ".js": "application/javascript",
     ".html": "text/html",
     ".css": "text/css",
@@ -19,15 +19,16 @@ function getMimeType(pathname) {
     ".pdf": "application/pdf",
     ".txt": "text/plain",
   };
-  let ext = path.extname(pathname);
-  let type = validExtensions[ext];
+  const ext = path.extname(pathname);
+  const type = validExtensions[ext];
   return type;
 }
 
 function handlePage(req, res, pathname) {
   // `__dirname` is a global variable that represents the full path to the directory where the currently executing script is located.
-  let filePath = __dirname + pathname;
-  let mimeType = getMimeType(pathname);
+  const filePath = __dirname + pathname;
+  console.log("filePath: ", filePath);
+  const mimeType = getMimeType(pathname);
   if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function (err, data) {
       if (err) {
@@ -55,8 +56,8 @@ function getRandomNumber(limit) {
 
 function handleAjax(req, res) {
   // Generate a random delay time of 1000ms ~ 2999ms
-  let random_time = 1000 + getRandomNumber(2000);
-  let random_num = 1 + getRandomNumber(9);
+  const random_time = 1000 + getRandomNumber(2000);
+  const random_num = 1 + getRandomNumber(9);
   // After a delay of random_time milliseconds, return a response
   setTimeout(function () {
     res.writeHead(200, { "Content-Type": "text/plain" });
@@ -66,11 +67,8 @@ function handleAjax(req, res) {
 
 http
   .createServer(function (req, res) {
-    console.log("req.url: ", req.url);
-    console.log("req.headers.host: ", req.headers.host);
     const myURL = new URL(req.url, `http://${req.headers.host}`);
     const pathname = myURL.pathname;
-    console.log("pathname: ", pathname);
     let mimeType = getMimeType(pathname);
     // Determine whether mimeType exists
     if (!!mimeType) {
