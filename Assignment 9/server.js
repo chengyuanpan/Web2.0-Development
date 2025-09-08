@@ -6,8 +6,8 @@ let port = 3000;
 
 function getMimeType(pathName) {
   let validExtensions = {
-    ".html": "text/html",
     ".js": "application/javascript",
+    ".html": "text/html",
     ".css": "text/css",
     ".jpg": "image/jpeg",
     ".jpeg": "image/jpeg",
