@@ -41,10 +41,10 @@ function handlePage(req, res, pathName) {
   }
 }
 
+// Return a random integer between 0 and limit
 function getRandomNumber(limit) {
   // Math.random(): returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1)
   // Math.round(): returns the value of a number rounded to the nearest integer
-  // return a random integer between 0 and limit
   return Math.round(Math.random() * limit);
 }
 
