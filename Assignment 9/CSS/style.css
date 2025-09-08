@@ -8,20 +8,6 @@ body {
   font-family: Arial;
 }
 
-#container {
-  position: relative;
-  width: 180px;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#positioner {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
 #info-bar {
   position: absolute;
   width: 26px;
