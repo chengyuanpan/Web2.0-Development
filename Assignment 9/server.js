@@ -63,6 +63,7 @@ http
   .createServer(function (req, res) {
     let pathname = url.parse(req.url).pathname;
     let mimeType = getMimeType(pathname);
+    // Determine whether mimeType exists
     if (!!mimeType) {
       handlePage(req, res, pathname);
     } else {
