@@ -13,6 +13,11 @@ function getMimeType(pathname) {
     ".jpeg": "image/jpeg",
     ".gif": "image/gif",
     ".png": "image/png",
+    ".ico": "image/x-icon",
+    ".svg": "image/svg+xml",
+    ".json": "application/json",
+    ".pdf": "application/pdf",
+    ".txt": "text/plain",
   };
   let ext = path.extname(pathname);
   let type = validExtensions[ext];
@@ -61,7 +66,11 @@ function handleAjax(req, res) {
 
 http
   .createServer(function (req, res) {
-    let pathname = url.parse(req.url).pathname;
+    console.log("req.url: ", req.url);
+    console.log("req.headers.host: ", req.headers.host);
+    const myURL = new URL(req.url, `http://${req.headers.host}`);
+    const pathname = myURL.pathname;
+    console.log("pathname: ", pathname);
     let mimeType = getMimeType(pathname);
     // Determine whether mimeType exists
     if (!!mimeType) {
