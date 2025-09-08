@@ -4,7 +4,7 @@ let path = require("path");
 let fs = require("fs");
 let port = 3000;
 
-function getMimeType(pathname) {
+function getMimeType(pathName) {
   let validExtensions = {
     ".html": "text/html",
     ".js": "application/javascript",
@@ -13,14 +13,14 @@ function getMimeType(pathname) {
     ".gif": "image/gif",
     ".png": "image/png",
   };
-  let ext = path.extname(pathname);
+  let ext = path.extname(pathName);
   let type = validExtensions[ext];
   return type;
 }
 
-function handlePage(req, res, pathname) {
-  let filePath = __dirname + pathname;
-  let mimeType = getMimeType(pathname);
+function handlePage(req, res, pathName) {
+  let filePath = __dirname + pathName;
+  let mimeType = getMimeType(pathName);
   if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function (err, data) {
       if (err) {
@@ -54,10 +54,10 @@ function handleAjax(req, res) {
 
 http
   .createServer(function (req, res) {
-    let pathname = url.parse(req.url).pathname;
-    let mimeType = getMimeType(pathname);
+    let pathName = url.parse(req.url).pathName;
+    let mimeType = getMimeType(pathName);
     if (!!mimeType) {
-      handlePage(req, res, pathname);
+      handlePage(req, res, pathName);
     } else {
       handleAjax(req, res);
     }
