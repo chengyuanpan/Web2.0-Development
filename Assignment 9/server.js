@@ -20,8 +20,7 @@ function getMimeType(pathName) {
 }
 
 function handlePage(req, res, pathName) {
-  // `__dirname` is a global variable that represents the full path
-  // to the directory where the currently executing script is located.
+  // `__dirname` is a global variable that represents the full path to the directory where the currently executing script is located.
   let filePath = __dirname + pathName;
   let mimeType = getMimeType(pathName);
   if (fs.existsSync(filePath)) {
@@ -43,6 +42,9 @@ function handlePage(req, res, pathName) {
 }
 
 function getRandomNumber(limit) {
+  // Math.random(): returns a floating-point, pseudo-random number in the range 0 to less than 1 (inclusive of 0, but not 1)
+  // Math.round(): returns the value of a number rounded to the nearest integer
+  // return a random integer between 0 and limit
   return Math.round(Math.random() * limit);
 }
 
