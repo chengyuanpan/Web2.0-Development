@@ -4,7 +4,7 @@ let path = require("path");
 let fs = require("fs");
 let port = 3000;
 
-function getMimeType(pathName) {
+function getMimeType(pathname) {
   let validExtensions = {
     ".js": "application/javascript",
     ".html": "text/html",
@@ -14,15 +14,15 @@ function getMimeType(pathName) {
     ".gif": "image/gif",
     ".png": "image/png",
   };
-  let ext = path.extname(pathName);
+  let ext = path.extname(pathname);
   let type = validExtensions[ext];
   return type;
 }
 
-function handlePage(req, res, pathName) {
+function handlePage(req, res, pathname) {
   // `__dirname` is a global variable that represents the full path to the directory where the currently executing script is located.
-  let filePath = __dirname + pathName;
-  let mimeType = getMimeType(pathName);
+  let filePath = __dirname + pathname;
+  let mimeType = getMimeType(pathname);
   if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function (err, data) {
       if (err) {
@@ -49,8 +49,10 @@ function getRandomNumber(limit) {
 }
 
 function handleAjax(req, res) {
+  // Generate a random delay time of 1000ms ~ 2999ms
   let random_time = 1000 + getRandomNumber(2000);
   let random_num = 1 + getRandomNumber(9);
+  // After a delay of random_time milliseconds, return a response
   setTimeout(function () {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("" + random_num);
@@ -59,10 +61,10 @@ function handleAjax(req, res) {
 
 http
   .createServer(function (req, res) {
-    let pathName = url.parse(req.url).pathName;
-    let mimeType = getMimeType(pathName);
+    let pathname = url.parse(req.url).pathname;
+    let mimeType = getMimeType(pathname);
     if (!!mimeType) {
-      handlePage(req, res, pathName);
+      handlePage(req, res, pathname);
     } else {
       handleAjax(req, res);
     }
