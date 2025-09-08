@@ -20,6 +20,8 @@ function getMimeType(pathName) {
 }
 
 function handlePage(req, res, pathName) {
+  // `__dirname` is a global variable that represents the full path
+  // to the directory where the currently executing script is located.
   let filePath = __dirname + pathName;
   let mimeType = getMimeType(pathName);
   if (fs.existsSync(filePath)) {
