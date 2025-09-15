@@ -1,6 +1,6 @@
 window.onload = function () {
   let clickButton = [true, true, true, true, true, false];
-  let number = [false, false, false, false, false];
+  let numberFetched = [false, false, false, false, false];
 
   function Reset() {
     // This selector will match all <span> elements on the page, clearing their contents.
@@ -17,14 +17,14 @@ window.onload = function () {
     );
     $("#info-bar").css("background-color", "#1f1f1fff");
     clickButton = [true, true, true, true, true, false];
-    number = [false, false, false, false, false];
+    numberFetched = [false, false, false, false, false];
   }
 
   $("#button").mouseleave(Reset);
 
   function clickable(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    return clickButton[index] && !number[index];
+    return clickButton[index] && !numberFetched[index];
   }
 
   function action(tar) {
@@ -34,13 +34,13 @@ window.onload = function () {
     $("#ring-container .button").css("background-color", "#707070");
     clickButton = [false, false, false, false, false, false];
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    number[index] = true;
+    numberFetched[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       let allnum = 0;
       for (let i = 0; i < 5; i++) {
-        if (!number[i]) {
+        if (!numberFetched[i]) {
           clickButton[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
         } else {
