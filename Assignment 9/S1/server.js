@@ -61,7 +61,7 @@ function handleAjax(req, res) {
   // After a delay of random_time milliseconds, return a response
   setTimeout(function () {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("handleAjax, random_num: " + random_num);
+    res.end("" + random_num);
   }, random_time);
 }
 

@@ -123,10 +123,12 @@ body {
 }
 
 #button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  margin: 75px 55px;
 }
 
 #button .apb {
