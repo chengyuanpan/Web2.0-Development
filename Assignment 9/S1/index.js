@@ -62,8 +62,6 @@ window.onload = function () {
     }
   });
 
-  $("#info-bar").click(getsum);
-
   function getsum() {
     if (clickButton[5]) {
       let sum = 0;
@@ -77,4 +75,6 @@ window.onload = function () {
       clickButton[5] = false;
     }
   }
+
+  $("#info-bar").click(getsum);
 };
