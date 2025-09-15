@@ -13,9 +13,9 @@ window.onload = function () {
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
       "background-color",
-      "rgba(101, 70, 174, 1)"
+      "rgba(48, 159, 48, 1)"
     );
-    $("#info-bar").css("background-color", "#1f1f1fff");
+    $("#info-bar").css("background-color", "#808080");
     buttonClickable = [true, true, true, true, true, false];
     numberFetched = [false, false, false, false, false];
   }
@@ -34,24 +34,24 @@ window.onload = function () {
     $("#ring-container .button").css("background-color", "#707070");
     buttonClickable = [false, false, false, false, false, false];
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    numberFetched[index] = true;
-    $(".button")[index].style.backgroundColor = "rgba(48, 159, 48, 1)";
+    $(".button")[index].style.backgroundColor = "rgba(255, 123, 53, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
-      let allnum = 0;
+      numberFetched[index] = true;
+      let fetchedNumCounter = 0;
       for (let i = 0; i < 5; i++) {
         if (!numberFetched[i]) {
           buttonClickable[i] = true;
-          $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          $(".button")[i].style.backgroundColor = "rgba(48, 159, 48, 1)";
         } else {
-          allnum++;
+          fetchedNumCounter++;
           buttonClickable[i] = false;
           $(".button")[i].style.backgroundColor = "#707070";
         }
       }
-      if (allnum >= 5) {
+      if (fetchedNumCounter >= 5) {
         buttonClickable[5] = true;
-        $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+        $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
       }
     });
   }
@@ -70,7 +70,7 @@ window.onload = function () {
       sum += parseInt($("#C span").html());
       sum += parseInt($("#D span").html());
       sum += parseInt($("#E span").html());
-      $("#sum").html(sum + "");
+      $("#sum").html("" + sum);
       $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
       buttonClickable[5] = false;
     }
