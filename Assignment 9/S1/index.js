@@ -1,5 +1,5 @@
 window.onload = function () {
-  let clickButton = [true, true, true, true, true, false];
+  let buttonClickable = [true, true, true, true, true, false];
   let numberFetched = [false, false, false, false, false];
 
   function Reset() {
@@ -16,7 +16,7 @@ window.onload = function () {
       "rgba(101, 70, 174, 1)"
     );
     $("#info-bar").css("background-color", "#1f1f1fff");
-    clickButton = [true, true, true, true, true, false];
+    buttonClickable = [true, true, true, true, true, false];
     numberFetched = [false, false, false, false, false];
   }
 
@@ -24,7 +24,7 @@ window.onload = function () {
 
   function clickable(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    return clickButton[index] && !numberFetched[index];
+    return buttonClickable[index] && !numberFetched[index];
   }
 
   function action(tar) {
@@ -32,7 +32,7 @@ window.onload = function () {
     $(content).addClass("redSpot");
     $(content).text("...");
     $("#ring-container .button").css("background-color", "#707070");
-    clickButton = [false, false, false, false, false, false];
+    buttonClickable = [false, false, false, false, false, false];
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     numberFetched[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 159, 48, 1)";
@@ -41,16 +41,16 @@ window.onload = function () {
       let allnum = 0;
       for (let i = 0; i < 5; i++) {
         if (!numberFetched[i]) {
-          clickButton[i] = true;
+          buttonClickable[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
         } else {
           allnum++;
-          clickButton[i] = false;
+          buttonClickable[i] = false;
           $(".button")[i].style.backgroundColor = "#707070";
         }
       }
       if (allnum >= 5) {
-        clickButton[5] = true;
+        buttonClickable[5] = true;
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
@@ -63,7 +63,7 @@ window.onload = function () {
   });
 
   function getSum() {
-    if (clickButton[5]) {
+    if (buttonClickable[5]) {
       let sum = 0;
       sum += parseInt($("#A span").html());
       sum += parseInt($("#B span").html());
@@ -72,7 +72,7 @@ window.onload = function () {
       sum += parseInt($("#E span").html());
       $("#sum").html(sum + "");
       $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
-      clickButton[5] = false;
+      buttonClickable[5] = false;
     }
   }
 
