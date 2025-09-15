@@ -35,7 +35,7 @@ window.onload = function () {
     clickButton = [false, false, false, false, false, false];
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     numberFetched[index] = true;
-    $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+    $(".button")[index].style.backgroundColor = "rgba(48, 159, 48, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       let allnum = 0;
