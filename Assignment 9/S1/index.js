@@ -71,7 +71,7 @@ window.onload = function () {
       sum += parseInt($("#D span").html());
       sum += parseInt($("#E span").html());
       $("#sum").html(sum + "");
-      $("#info-bar").css("background-color", "#707070");
+      $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
       clickButton[5] = false;
     }
   }
