@@ -7,12 +7,6 @@ window.onload = function () {
   const INFO_BAR = 5;
 
   function Reset() {
-    // This selector will match all <span> elements on the page, clearing their contents.
-    // There are the following <span> tags:
-    // 1. <span id="sum"></span>
-    // Located within the #info-bar, it displays the total.
-    // 2. <span class="text"></span> tags within the five buttons
-    // Inside the five <li> tags A, B, C, D, and E, they display the corresponding numbers.
     $("span").html("");
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
