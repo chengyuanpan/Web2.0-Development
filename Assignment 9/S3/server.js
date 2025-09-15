@@ -55,13 +55,13 @@ function getRandomNumber(limit) {
 }
 
 function handleAjax(req, res) {
-  // Generate a random delay time of 1000ms ~ 2999ms
-  const random_time = 1000 + getRandomNumber(2000);
+  // Generate a random delay time of 1000ms ~ 1500ms
+  const random_time = 1000 + getRandomNumber(500);
   const random_num = 1 + getRandomNumber(9);
   // After a delay of random_time milliseconds, return a response
   setTimeout(function () {
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("handleAjax, random_num: " + random_num);
+    res.end("" + random_num);
   }, random_time);
 }
 
