@@ -1,6 +1,8 @@
 window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false];
   let numberFetched = [false, false, false, false, false];
+  const $buttons = $("#ring-container .button");
+  const $sum = $("#sum");
 
   function Reset() {
     // This selector will match all <span> elements on the page, clearing their contents.
@@ -22,8 +24,12 @@ window.onload = function () {
 
   $("#button").mouseleave(Reset);
 
+  function getIndex(tar) {
+    return tar.id.charCodeAt() - "A".charCodeAt();
+  }
+
   function clickable(tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = getIndex(tar);
     return buttonClickable[index] && !numberFetched[index];
   }
 
@@ -33,8 +39,8 @@ window.onload = function () {
     $(content).text("...");
     $("#ring-container .button").css("background-color", "#707070");
     buttonClickable = [false, false, false, false, false, false];
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
-    $(".button")[index].style.backgroundColor = "rgba(255, 123, 53, 1)";
+    let index = getIndex(tar);
+    $buttons[index].style.backgroundColor = "rgba(255, 123, 53, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       numberFetched[index] = true;
@@ -42,11 +48,11 @@ window.onload = function () {
       for (let i = 0; i < 5; i++) {
         if (!numberFetched[i]) {
           buttonClickable[i] = true;
-          $(".button")[i].style.backgroundColor = "rgba(48, 159, 48, 1)";
+          $buttons[i].style.backgroundColor = "rgba(48, 159, 48, 1)";
         } else {
           fetchedNumCounter++;
           buttonClickable[i] = false;
-          $(".button")[i].style.backgroundColor = "#707070";
+          $buttons[i].style.backgroundColor = "#707070";
         }
       }
       if (fetchedNumCounter >= 5) {
@@ -70,7 +76,7 @@ window.onload = function () {
       sum += parseInt($("#C span").html());
       sum += parseInt($("#D span").html());
       sum += parseInt($("#E span").html());
-      $("#sum").html("" + sum);
+      $sum.html("" + sum);
       $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
       buttonClickable[5] = false;
     }
