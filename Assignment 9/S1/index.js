@@ -1,6 +1,6 @@
 window.onload = function () {
-  var clickbutton = [true, true, true, true, true, false];
-  var Number = [false, false, false, false, false];
+  let clickButton = [true, true, true, true, true, false];
+  let number = [false, false, false, false, false];
 
   $("#button").mouseleave(Reset);
 
@@ -20,13 +20,13 @@ window.onload = function () {
       "rgba(48, 63, 159, 1)"
     );
     $("#info-bar").css("background-color", "#707070");
-    clickbutton = [true, true, true, true, true, false];
-    Number = [false, false, false, false, false];
+    clickButton = [true, true, true, true, true, false];
+    number = [false, false, false, false, false];
   }
 
   function getsum() {
-    if (clickbutton[5]) {
-      var sum = 0;
+    if (clickButton[5]) {
+      let sum = 0;
       sum += parseInt($("#A span").html());
       sum += parseInt($("#B span").html());
       sum += parseInt($("#C span").html());
@@ -34,39 +34,39 @@ window.onload = function () {
       sum += parseInt($("#E span").html());
       $("#sum").html(sum + "");
       $("#info-bar").css("background-color", "#707070");
-      clickbutton[5] = false;
+      clickButton[5] = false;
     }
   }
 
   function Click(tar) {
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
-    return clickbutton[index] && !Number[index];
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    return clickButton[index] && !number[index];
   }
 
   function action(tar) {
-    var content = $(tar).find("span");
+    let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
     $("#ring-container .button").css("background-color", "#707070");
-    clickbutton = [false, false, false, false, false, false];
-    var index = tar.id.charCodeAt() - "A".charCodeAt();
-    Number[index] = true;
+    clickButton = [false, false, false, false, false, false];
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    number[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
-      var allnum = 0;
-      for (var i = 0; i < 5; i++) {
-        if (!Number[i]) {
-          clickbutton[i] = true;
+      let allnum = 0;
+      for (let i = 0; i < 5; i++) {
+        if (!number[i]) {
+          clickButton[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
         } else {
           allnum++;
-          clickbutton[i] = false;
+          clickButton[i] = false;
           $(".button")[i].style.backgroundColor = "#707070";
         }
       }
       if (allnum >= 5) {
-        clickbutton[5] = true;
+        clickButton[5] = true;
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
