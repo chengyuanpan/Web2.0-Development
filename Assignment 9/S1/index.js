@@ -13,7 +13,7 @@ window.onload = function () {
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
       "background-color",
-      "rgba(48, 63, 159, 1)"
+      "rgba(48, 159, 146, 1)"
     );
     $("#info-bar").css("background-color", "#1f1f1fff");
     clickButton = [true, true, true, true, true, false];
