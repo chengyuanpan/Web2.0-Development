@@ -2,16 +2,6 @@ window.onload = function () {
   let clickButton = [true, true, true, true, true, false];
   let number = [false, false, false, false, false];
 
-  $("#button").mouseleave(Reset);
-
-  $("#ring-container .button").click(function (event) {
-    if (Click(event.target)) {
-      action(event.target);
-    }
-  });
-
-  $("#info-bar").click(getsum);
-
   function Reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
@@ -23,6 +13,16 @@ window.onload = function () {
     clickButton = [true, true, true, true, true, false];
     number = [false, false, false, false, false];
   }
+
+  $("#button").mouseleave(Reset);
+
+  $("#ring-container .button").click(function (event) {
+    if (Click(event.target)) {
+      action(event.target);
+    }
+  });
+
+  $("#info-bar").click(getsum);
 
   function getsum() {
     if (clickButton[5]) {
