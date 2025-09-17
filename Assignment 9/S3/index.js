@@ -77,13 +77,6 @@ window.onload = function () {
 
   $("#info-bar").click(getSum);
 
-  $(".apb").click(function (event) {
-    if (buttonClickable[AT_BUTTON]) {
-      buttonClickable[AT_BUTTON] = false;
-      selectAll();
-    }
-  });
-
   function allNumber() {
     for (let i = 0; i < INFO_BAR; i++) {
       if (
@@ -125,4 +118,11 @@ window.onload = function () {
     let callback = Callback();
     for (let i = 0; i < callback.length; i++) callback[i]();
   }
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
+      selectAll();
+    }
+  });
 };
