@@ -61,16 +61,7 @@ window.onload = function () {
     }
   });
 
-  $("#info-bar").click(getsum);
-
-  $(".apb").click(function (event) {
-    if (buttonClickable[AT_BUTTON]) {
-      buttonClickable[AT_BUTTON] = false;
-      selectAll();
-    }
-  });
-
-  function getsum() {
+  function getSum() {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html(), DECIMAL);
@@ -83,6 +74,15 @@ window.onload = function () {
       buttonClickable[INFO_BAR] = false;
     }
   }
+
+  $("#info-bar").click(getSum);
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
+      selectAll();
+    }
+  });
 
   function allNumber() {
     for (let i = 0; i < INFO_BAR; i++) {
@@ -112,7 +112,7 @@ window.onload = function () {
             if (allNumber()) {
               buttonClickable[INFO_BAR] = true;
               $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
-              getsum();
+              getSum();
             }
           });
         };
