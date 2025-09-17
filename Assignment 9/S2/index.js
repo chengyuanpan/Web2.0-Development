@@ -23,8 +23,12 @@ window.onload = function () {
 
   $("#button").mouseleave(reset);
 
+  const getIndex = function (tar) {
+    return tar.id.charCodeAt() - "A".charCodeAt();
+  };
+
   const isClickable = function (tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = getIndex(tar);
     return buttonClickable[index] && !fetchedNumber[index];
   };
 
@@ -34,7 +38,7 @@ window.onload = function () {
     $(content).text("...");
     $buttons.css("background-color", "#707070");
     buttonClickable.fill(false);
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = getIndex(tar);
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
       fetchedNumber[index] = true;
@@ -95,7 +99,7 @@ window.onload = function () {
           $(content).text("...");
           $buttons.css("background-color", "#707070");
           buttonClickable.fill(false);
-          let index = tar.id.charCodeAt() - "A".charCodeAt();
+          let index = getIndex(tar);
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
           // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
