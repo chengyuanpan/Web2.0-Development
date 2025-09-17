@@ -50,9 +50,9 @@ window.onload = function () {
     });
   };
 
-  $("#ring-container .button").click(function (event) {
-    if (clickable(event.target)) {
-      action(event.target);
+  $("#ring-container .button").click(function () {
+    if (clickable(this)) {
+      action(this);
     }
   });
 
