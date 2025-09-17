@@ -77,14 +77,7 @@ window.onload = function () {
   $("#info-bar").click(getSumAndDisplay);
 
   function fetchedAllNumber() {
-    for (let i = 0; i < INFO_BAR; i++) {
-      if (
-        $(".text").eq(i).html() == "" ||
-        $(".text").eq(i).html() == "..."
-      )
-        return false;
-    }
-    return true;
+    return fetchedNumber.slice(0, INFO_BAR).every(Boolean);
   }
 
   function Callback() {
