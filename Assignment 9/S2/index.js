@@ -75,7 +75,7 @@ window.onload = function () {
   $("#info-bar").click(getSum);
 
   function inorder() {
-    let order = ["A", "B", "C", "D", "E"];
+    const order = ["A", "B", "C", "D", "E"];
     const callback = Callback(order);
     callback[0]();
   }
