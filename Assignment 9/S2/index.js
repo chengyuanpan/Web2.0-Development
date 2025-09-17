@@ -92,6 +92,7 @@ window.onload = function () {
           buttonClickable.fill(false);
           let index = tar.id.charCodeAt() - "A".charCodeAt();
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
             fetchedNumber[index] = true;
             $(content).text(res);
@@ -106,6 +107,10 @@ window.onload = function () {
                 $(".button")[i].style.backgroundColor = "#707070";
               }
             }
+            // $.get is asynchronous.
+            // The function inside it executes only after the Ajax request completes.
+            // This gives the outer for loop enough time to complete the assignment of all callback[i] values.
+            // Therefore, callback[next] won't be called before a value is assigned.
             callback[next]();
           });
         };
