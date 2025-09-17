@@ -148,7 +148,7 @@ body {
   bottom: 97px;
   left: 77px;
   border-radius: 50%;
-  background: url("../images/atplus_white.png") center no-repeat;
+  background: url("images/atplus_white.png") center no-repeat;
   background-color: #989fcf;
   background-size: 20px 15px;
   transition: all 0.5s;
@@ -159,7 +159,7 @@ body {
   height: 50px;
   bottom: 85px;
   left: 65px;
-  background: url("../images/atplus_green.png") center no-repeat;
+  background: url("images/atplus_green.png") center no-repeat;
   background-size: 32px 24px;
   background-color: rgba(48, 63, 159, 1);
   cursor: pointer;
