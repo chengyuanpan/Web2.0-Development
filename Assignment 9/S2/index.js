@@ -1,7 +1,7 @@
 window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
   let fetchedNumber = [false, false, false, false, false];
-  const INFO_BAR = 5;
+  const INFO_BAR = 6;
 
   const Reset = function() {
     $("span").html("");
