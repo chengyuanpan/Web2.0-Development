@@ -7,7 +7,9 @@
 
 S1: You should click A-E buttons one by one, after they all have fetched the number, click info-bar button(the biggest button located above "AT PLUS" button) to get the sum and display;
 
-S2: It has all features S1 has, and it allows you to click the "AT PLUS" button to mimic a robot to get A-E buttons' number automatically, then get and display the sum on info-bar button;
+S2: It has all features S1 has, and it allows you to click the "AT PLUS" button to mimic a robot to get A-E buttons' number automatically and sequently, then get and display the sum on info-bar button;
+
+S2: It has all features S1 has, and it allows you to click the "AT PLUS" button to mimic a robot to get A-E buttons' number automatically and parallelly, then get and display the sum on info-bar button;
 
 ## Preview of Assignment 9
 
