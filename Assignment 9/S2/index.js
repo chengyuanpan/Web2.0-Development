@@ -6,11 +6,13 @@ window.onload = function () {
   // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
+  const $buttons = $("#ring-container .button");
+  const $sum = $("#sum");
 
   const reset = function () {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $("#ring-container .button").css(
+    $buttons.css(
       "background-color",
       "rgba(48, 63, 159, 1)"
     );
@@ -30,7 +32,7 @@ window.onload = function () {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $("#ring-container .button").css("background-color", "#707070");
+    $buttons.css("background-color", "#707070");
     buttonClickable.fill(false);
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -55,7 +57,7 @@ window.onload = function () {
     });
   };
 
-  $("#ring-container .button").click(function () {
+  $buttons.click(function () {
     if (isClickable(this)) {
       fetchNumber(this);
     }
@@ -69,7 +71,7 @@ window.onload = function () {
       sum += parseInt($("#C span").html(), DECIMAL);
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
-      $("#sum").html(sum + "");
+      $sum.html("" + sum);
       $("#info-bar").css("background-color", "#707070");
       buttonClickable[INFO_BAR] = false;
     }
@@ -91,7 +93,7 @@ window.onload = function () {
           let content = $(tar).find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
-          $("#ring-container .button").css("background-color", "#707070");
+          $buttons.css("background-color", "#707070");
           buttonClickable.fill(false);
           let index = tar.id.charCodeAt() - "A".charCodeAt();
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
