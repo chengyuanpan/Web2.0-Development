@@ -21,35 +21,6 @@ window.onload = function () {
     return buttonClickable[index] && !fetchedNumber[index];
   }
 
-  $("#ring-container .button").click(function (event) {
-    if (clickable(event.target)) {
-      action(event.target);
-    }
-  });
-
-  $("#info-bar").click(getsum);
-
-  $(".apb").click(function (event) {
-    if (buttonClickable[6]) {
-      buttonClickable[6] = false;
-      inorder();
-    }
-  });
-
-  function getsum() {
-    if (buttonClickable[5]) {
-      let sum = 0;
-      sum += parseInt($("#A span").html());
-      sum += parseInt($("#B span").html());
-      sum += parseInt($("#C span").html());
-      sum += parseInt($("#D span").html());
-      sum += parseInt($("#E span").html());
-      $("#sum").html(sum + "");
-      $("#info-bar").css("background-color", "#707070");
-      buttonClickable[5] = false;
-    }
-  }
-
   function action(tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
@@ -77,6 +48,35 @@ window.onload = function () {
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
+  }
+
+  $("#ring-container .button").click(function (event) {
+    if (clickable(event.target)) {
+      action(event.target);
+    }
+  });
+
+  $("#info-bar").click(getsum);
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[6]) {
+      buttonClickable[6] = false;
+      inorder();
+    }
+  });
+
+  function getsum() {
+    if (buttonClickable[5]) {
+      let sum = 0;
+      sum += parseInt($("#A span").html());
+      sum += parseInt($("#B span").html());
+      sum += parseInt($("#C span").html());
+      sum += parseInt($("#D span").html());
+      sum += parseInt($("#E span").html());
+      $("#sum").html(sum + "");
+      $("#info-bar").css("background-color", "#707070");
+      buttonClickable[5] = false;
+    }
   }
 
   function Callback(order) {
