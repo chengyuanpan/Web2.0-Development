@@ -16,13 +16,13 @@ window.onload = function () {
 
   $("#button").mouseleave(Reset);
 
-  function Click(tar) {
+  function clickable(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     return buttonClickable[index] && !fetchedNumber[index];
   }
 
   $("#ring-container .button").click(function (event) {
-    if (Click(event.target)) {
+    if (clickable(event.target)) {
       action(event.target);
     }
   });
