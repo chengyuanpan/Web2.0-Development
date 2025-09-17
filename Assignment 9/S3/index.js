@@ -22,7 +22,7 @@ window.onload = function () {
   $("#button").mouseleave(reset);
 
   function isClickable(tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = $(tar).data("index");
     return buttonClickable[index] && !fetchedNumber[index];
   }
 
@@ -32,7 +32,7 @@ window.onload = function () {
     $(content).text("...");
     $buttons.css("background-color", "#707070");
     buttonClickable.fill(false);
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = $(tar).data("index");
     $(".button").eq(index).css("background-color", "rgba(48, 63, 159, 1)");
     $.get("http://localhost:3000", function (res, status, XHR) {
       fetchedNumber[index] = true;
