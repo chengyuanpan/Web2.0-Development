@@ -79,13 +79,6 @@ window.onload = function () {
     callback[0]();
   }
 
-  $(".apb").click(function (event) {
-    if (buttonClickable[6]) {
-      buttonClickable[6] = false;
-      inorder();
-    }
-  });
-
   function Callback(order) {
     let callback = [];
     let buttons = [];
@@ -130,4 +123,11 @@ window.onload = function () {
     };
     return callback;
   }
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[6]) {
+      buttonClickable[6] = false;
+      inorder();
+    }
+  });
 };
