@@ -1,6 +1,6 @@
 window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
-  let fetchedNumber = [false, false, false, false, false];
+  let fetchedNumber.fill(false);
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
 
@@ -13,7 +13,7 @@ window.onload = function () {
     );
     $("#info-bar").css("background-color", "#707070");
     buttonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber = [false, false, false, false, false];
+    fetchedNumber.fill(false);
   };
 
   $("#button").mouseleave(Reset);
@@ -95,7 +95,7 @@ window.onload = function () {
           $(content).addClass("redSpot");
           $(content).text("...");
           $("#ring-container .button").css("background-color", "#707070");
-          buttonClickable = [false, false, false, false, false, false];
+          buttonClickable.fill(false);
           let index = tar.id.charCodeAt() - "A".charCodeAt();
           fetchedNumber[index] = true;
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
