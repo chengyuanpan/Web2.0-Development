@@ -1,5 +1,5 @@
 # SYSU-Web2.0
-All course materials and assignments of Sun Yat-sen University's Web 2.0 course
+All courseware and assignments of Sun Yat-sen University's Web 2.0 course
 
 ## Preview of Assignment 1
 ![1](https://github.com/user-attachments/assets/20a4e942-2669-46b5-b246-e09534787c1b)
