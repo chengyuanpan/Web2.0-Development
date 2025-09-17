@@ -9,7 +9,7 @@ window.onload = function () {
   function Reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $("#ring-container .button").css(
+    $buttons.css(
       "background-color",
       "rgba(48, 159, 48, 1)"
     );
