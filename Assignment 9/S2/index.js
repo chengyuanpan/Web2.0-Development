@@ -2,7 +2,7 @@ window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
   let fetchedNumber = [false, false, false, false, false];
 
-  function Reset() {
+  const Reset = function() {
     $("span").html("");
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
@@ -12,7 +12,7 @@ window.onload = function () {
     $("#info-bar").css("background-color", "#707070");
     buttonClickable = [true, true, true, true, true, false, true];
     fetchedNumber = [false, false, false, false, false];
-  }
+  };
 
   $("#button").mouseleave(Reset);
 
