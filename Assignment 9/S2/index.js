@@ -81,7 +81,7 @@ window.onload = function () {
       buttons[i] = document.querySelector("#" + order[i]);
     }
     for (let i = 0; i < INFO_BAR; i++) {
-      (function (i) {
+      (function (i) { // IIFE
         let next = i + 1;
         callback[i] = function () {
           let tar = buttons[i];
