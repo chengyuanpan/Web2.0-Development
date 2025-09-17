@@ -9,34 +9,37 @@ window.onload = function () {
   const $buttons = $("#ring-container .button");
   const $sum = $("#sum");
 
+  function reset() {
+    $("span").html("");
+    $(".text").removeClass("redSpot");
+    $buttons.css("background-color", "rgba(48, 63, 159, 1)");
+    $("#info-bar").css("background-color", "#707070");
+    buttonClickable = [true, true, true, true, true, false, true];
+    fetchedNumber.fill(false);
+    $sum.html("");
+  }
+
   $("#button").mouseleave(reset);
 
   $buttons.click(function (event) {
-    if (Click(event.target)) {
+    if (isClickable(event.target)) {
       action(event.target);
     }
   });
 
   $("#info-bar").click(getsum);
 
+  function isClickable(tar) {
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    return buttonClickable[index] && !fetchedNumber[index];
+  }
+
   $(".apb").click(function (event) {
     if (buttonClickable[AT_BUTTON]) {
       buttonClickable[AT_BUTTON] = false;
-      seleteall();
+      selectAll();
     }
   });
-
-  function reset() {
-    $("span").html("");
-    $(".text").removeClass("redSpot");
-    $buttons.css(
-      "background-color",
-      "rgba(48, 63, 159, 1)"
-    );
-    $("#info-bar").css("background-color", "#707070");
-    buttonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber = [false, false, false, false, false];
-  }
 
   function getsum() {
     if (buttonClickable[INFO_BAR]) {
@@ -50,11 +53,6 @@ window.onload = function () {
       $("#info-bar").css("background-color", "#707070");
       buttonClickable[INFO_BAR] = false;
     }
-  }
-
-  function Click(tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
-    return buttonClickable[index] && !fetchedNumber[index];
   }
 
   function action(tar) {
@@ -123,7 +121,7 @@ window.onload = function () {
     return callback;
   }
 
-  function seleteall() {
+  function selectAll() {
     let callback = Callback();
     for (let i = 0; i < callback.length; i++) callback[i]();
   }
