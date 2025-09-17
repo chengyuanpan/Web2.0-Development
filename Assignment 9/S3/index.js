@@ -33,22 +33,22 @@ window.onload = function () {
     $buttons.css("background-color", "#707070");
     buttonClickable.fill(false);
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    fetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
     $.get("http://localhost:3000", function (res, status, XHR) {
+      fetchedNumber[index] = true;
       $(content).text(res);
-      let allnum = 0;
+      let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!fetchedNumber[i]) {
           buttonClickable[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
         } else {
-          allnum++;
+          fetchedNumCounter++;
           buttonClickable[i] = false;
           $(".button")[i].style.backgroundColor = "#707070";
         }
       }
-      if (allnum >= INFO_BAR) {
+      if (fetchedNumCounter >= INFO_BAR) {
         buttonClickable[INFO_BAR] = true;
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
