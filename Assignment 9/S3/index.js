@@ -55,9 +55,9 @@ window.onload = function () {
     });
   }
 
-  $buttons.click(function (event) {
-    if (isClickable(event.target)) {
-      fetchNumber(event.target);
+  $buttons.click(function () {
+    if (isClickable(this)) {
+      fetchNumber(this);
     }
   });
 
