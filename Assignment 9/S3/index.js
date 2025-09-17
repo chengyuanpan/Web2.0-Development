@@ -108,8 +108,7 @@ window.onload = function () {
   }
 
   function parallelFetchNum() {
-    let callback = Callback();
-    for (let i = 0; i < callback.length; i++) callback[i]();
+    Callback().forEach(fn => fn());
   }
 
   $(".apb").click(function (event) {
