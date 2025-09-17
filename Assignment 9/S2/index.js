@@ -3,6 +3,7 @@ window.onload = function () {
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
+  const DECIMAL = 10;
 
   const reset = function () {
     $("span").html("");
@@ -61,11 +62,11 @@ window.onload = function () {
   const getSum = function () {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
-      sum += parseInt($("#A span").html());
-      sum += parseInt($("#B span").html());
-      sum += parseInt($("#C span").html());
-      sum += parseInt($("#D span").html());
-      sum += parseInt($("#E span").html());
+      sum += parseInt($("#A span").html(), DECIMAL);
+      sum += parseInt($("#B span").html(), DECIMAL);
+      sum += parseInt($("#C span").html(), DECIMAL);
+      sum += parseInt($("#D span").html(), DECIMAL);
+      sum += parseInt($("#E span").html(), DECIMAL);
       $("#sum").html(sum + "");
       $("#info-bar").css("background-color", "#707070");
       buttonClickable[INFO_BAR] = false;
