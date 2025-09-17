@@ -33,7 +33,7 @@ window.onload = function () {
     $buttons.css("background-color", "#707070");
     buttonClickable.fill(false);
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+    $(".button").eq(index).css("background-color", "rgba(48, 63, 159, 1)");
     $.get("http://localhost:3000", function (res, status, XHR) {
       fetchedNumber[index] = true;
       $(content).text(res);
@@ -41,11 +41,11 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!fetchedNumber[i]) {
           buttonClickable[i] = true;
-          $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          $(".button").eq(i).css("background-color", "rgba(48, 63, 159, 1)");
         } else {
           fetchedNumCounter++;
           buttonClickable[i] = false;
-          $(".button")[i].style.backgroundColor = "#707070";
+          $(".button").eq(i).css("background-color", "#707070");
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
