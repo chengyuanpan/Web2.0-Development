@@ -91,17 +91,17 @@ window.onload = function () {
   function Callback() {
     let callback = [];
     buttonClickable = [false, false, false, false, false, false, true];
-    for (let index = 0; index < INFO_BAR; index++) {
-      (function (index) {
-        callback[index] = function () {
-          let content = $(".button:eq(" + index + ")").find("span");
+    for (let i = 0; i < INFO_BAR; i++) {
+      (function (i) {
+        callback[i] = function () {
+          let content = $(".button:eq(" + i + ")").find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
-          fetchedNumber[index] = true;
-          $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          fetchedNumber[i] = true;
+          $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
           $.get("http://localhost:3000", function (data) {
-            $(".text:eq(" + index + ")").text(data);
-            $(".button")[index].style.backgroundColor = "#707070";
+            $(".text:eq(" + i + ")").text(data);
+            $(".button")[i].style.backgroundColor = "#707070";
             if (allNumber()) {
               buttonClickable[INFO_BAR] = true;
               $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
@@ -109,7 +109,7 @@ window.onload = function () {
             }
           });
         };
-      })(index);
+      })(i);
     }
     return callback;
   }
