@@ -61,7 +61,7 @@ window.onload = function () {
     }
   });
 
-  function getSum() {
+  function getSumAndDisplay() {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html(), DECIMAL);
@@ -75,13 +75,13 @@ window.onload = function () {
     }
   }
 
-  $("#info-bar").click(getSum);
+  $("#info-bar").click(getSumAndDisplay);
 
-  function allNumber() {
+  function fetchedAllNumber() {
     for (let i = 0; i < INFO_BAR; i++) {
       if (
-        $(".text:eq(" + i + ")").html() == "" ||
-        $(".text:eq(" + i + ")").html() == "..."
+        $(".text").eq(i).html() == "" ||
+        $(".text").eq(i).html() == "..."
       )
         return false;
     }
@@ -103,10 +103,10 @@ window.onload = function () {
           $.get("http://localhost:3000", function (data) {
             $(".text").eq(i).text(data);
             $(".button").eq(i).css("background-color", "#707070");
-            if (allNumber()) {
+            if (fetchedAllNumber()) {
               buttonClickable[INFO_BAR] = true;
               $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
-              getSum();
+              getSumAndDisplay();
             }
           });
         };
