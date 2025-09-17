@@ -91,9 +91,9 @@ window.onload = function () {
           $("#ring-container .button").css("background-color", "#707070");
           buttonClickable.fill(false);
           let index = tar.id.charCodeAt() - "A".charCodeAt();
-          fetchedNumber[index] = true;
           $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
           $.get("http://localhost:3000", function (res, status, XHR) {
+            fetchedNumber[index] = true;
             $(content).text(res);
             let fetchedNumCounter = 0;
             for (let i = 0; i < INFO_BAR; i++) {
