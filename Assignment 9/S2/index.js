@@ -16,6 +16,11 @@ window.onload = function () {
 
   $("#button").mouseleave(Reset);
 
+  function Click(tar) {
+    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    return buttonClickable[index] && !fetchedNumber[index];
+  }
+
   $("#ring-container .button").click(function (event) {
     if (Click(event.target)) {
       action(event.target);
@@ -43,11 +48,6 @@ window.onload = function () {
       $("#info-bar").css("background-color", "#707070");
       buttonClickable[5] = false;
     }
-  }
-
-  function Click(tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
-    return buttonClickable[index] && !fetchedNumber[index];
   }
 
   function action(tar) {
