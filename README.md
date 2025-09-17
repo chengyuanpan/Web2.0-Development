@@ -9,7 +9,7 @@ All courseware and assignments of Sun Yat-sen University's Web 2.0 course
 ![assignment 2](https://github.com/user-attachments/assets/6b02734c-4852-4217-8b5a-e966d03770ee)
 
 ## Preview of Assignment 3
-https://github.com/user-attachments/assets/b4bcab1f-d41c-4741-bdff-7aa2816be7cc
+<img width="1904" height="1234" alt="image" src="https://github.com/user-attachments/assets/8f7b0c81-bce9-49c5-876a-17d5d7950545" />
 
 ## Preview of Assignment 4
 <img width="603" alt="image" src="https://github.com/user-attachments/assets/b709c6e3-1d73-48ad-a070-b8b9fc2af783" />
