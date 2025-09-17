@@ -16,12 +16,12 @@ window.onload = function () {
 
   $("#button").mouseleave(Reset);
 
-  function clickable(tar) {
+  const clickable = function(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     return buttonClickable[index] && !fetchedNumber[index];
-  }
+  };
 
-  function action(tar) {
+  const action = function(tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
@@ -48,7 +48,7 @@ window.onload = function () {
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
-  }
+  };
 
   $("#ring-container .button").click(function (event) {
     if (clickable(event.target)) {
