@@ -31,7 +31,7 @@ window.onload = function () {
     $(content).addClass("redSpot");
     $(content).text("...");
     $buttons.css("background-color", "#707070");
-    buttonClickable = [false, false, false, false, false, false];
+    buttonClickable.fill(false);
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     fetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
