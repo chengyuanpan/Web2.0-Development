@@ -21,41 +21,12 @@ window.onload = function () {
 
   $("#button").mouseleave(reset);
 
-  $buttons.click(function (event) {
-    if (isClickable(event.target)) {
-      action(event.target);
-    }
-  });
-
-  $("#info-bar").click(getsum);
-
   function isClickable(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     return buttonClickable[index] && !fetchedNumber[index];
   }
 
-  $(".apb").click(function (event) {
-    if (buttonClickable[AT_BUTTON]) {
-      buttonClickable[AT_BUTTON] = false;
-      selectAll();
-    }
-  });
-
-  function getsum() {
-    if (buttonClickable[INFO_BAR]) {
-      let sum = 0;
-      sum += parseInt($("#A span").html(), DECIMAL);
-      sum += parseInt($("#B span").html(), DECIMAL);
-      sum += parseInt($("#C span").html(), DECIMAL);
-      sum += parseInt($("#D span").html(), DECIMAL);
-      sum += parseInt($("#E span").html(), DECIMAL);
-      $sum.html("" + sum);
-      $("#info-bar").css("background-color", "#707070");
-      buttonClickable[INFO_BAR] = false;
-    }
-  }
-
-  function action(tar) {
+  function fetchNumber(tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
@@ -82,6 +53,35 @@ window.onload = function () {
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
+  }
+
+  $buttons.click(function (event) {
+    if (isClickable(event.target)) {
+      fetchNumber(event.target);
+    }
+  });
+
+  $("#info-bar").click(getsum);
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
+      selectAll();
+    }
+  });
+
+  function getsum() {
+    if (buttonClickable[INFO_BAR]) {
+      let sum = 0;
+      sum += parseInt($("#A span").html(), DECIMAL);
+      sum += parseInt($("#B span").html(), DECIMAL);
+      sum += parseInt($("#C span").html(), DECIMAL);
+      sum += parseInt($("#D span").html(), DECIMAL);
+      sum += parseInt($("#E span").html(), DECIMAL);
+      $sum.html("" + sum);
+      $("#info-bar").css("background-color", "#707070");
+      buttonClickable[INFO_BAR] = false;
+    }
   }
 
   function allNumber() {
