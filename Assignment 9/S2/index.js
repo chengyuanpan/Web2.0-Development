@@ -1,6 +1,7 @@
 window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
   let fetchedNumber = [false, false, false, false, false];
+  const INFO_BAR = 5;
 
   const Reset = function() {
     $("span").html("");
@@ -33,7 +34,7 @@ window.onload = function () {
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       let allnum = 0;
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < INFO_BAR; i++) {
         if (!fetchedNumber[i]) {
           buttonClickable[i] = true;
           $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -43,8 +44,8 @@ window.onload = function () {
           $(".button")[i].style.backgroundColor = "#707070";
         }
       }
-      if (allnum >= 5) {
-        buttonClickable[5] = true;
+      if (allnum >= INFO_BAR) {
+        buttonClickable[INFO_BAR] = true;
         $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       }
     });
@@ -66,7 +67,7 @@ window.onload = function () {
   });
 
   function getsum() {
-    if (buttonClickable[5]) {
+    if (buttonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html());
       sum += parseInt($("#B span").html());
@@ -75,7 +76,7 @@ window.onload = function () {
       sum += parseInt($("#E span").html());
       $("#sum").html(sum + "");
       $("#info-bar").css("background-color", "#707070");
-      buttonClickable[5] = false;
+      buttonClickable[INFO_BAR] = false;
     }
   }
 
@@ -85,7 +86,7 @@ window.onload = function () {
     for (let i = 0; i < order.length; i++) {
       buttons[i] = document.querySelector("#" + order[i]);
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < INFO_BAR; i++) {
       (function (i) {
         let next = i + 1;
         callback[i] = function () {
@@ -101,7 +102,7 @@ window.onload = function () {
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
             let allnum = 0;
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < INFO_BAR; i++) {
               if (!fetchedNumber[i]) {
                 buttonClickable[i] = true;
                 $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
@@ -116,8 +117,8 @@ window.onload = function () {
         };
       })(i);
     }
-    callback[5] = function () {
-      buttonClickable[5] = true;
+    callback[INFO_BAR] = function () {
+      buttonClickable[INFO_BAR] = true;
       $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
       getsum();
     };
