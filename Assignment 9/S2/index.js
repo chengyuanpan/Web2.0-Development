@@ -3,6 +3,8 @@ window.onload = function () {
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
+  // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
+  // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
 
   const reset = function () {
