@@ -32,16 +32,6 @@ body {
   opacity: 1;
 }
 
-#order {
-  position: absolute;
-  margin: auto;
-  margin-top: -56px;
-  left: 0;
-  right: 0;
-  font-size: 12px;
-  color: black;
-}
-
 #sum {
   position: absolute;
   margin: auto;
