@@ -2,6 +2,18 @@ window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
   let fetchedNumber = [false, false, false, false, false];
 
+  function Reset() {
+    $("span").html("");
+    $(".text").removeClass("redSpot");
+    $("#ring-container .button").css(
+      "background-color",
+      "rgba(48, 63, 159, 1)"
+    );
+    $("#info-bar").css("background-color", "#707070");
+    buttonClickable = [true, true, true, true, true, false, true];
+    fetchedNumber = [false, false, false, false, false];
+  }
+
   $("#button").mouseleave(Reset);
 
   $("#ring-container .button").click(function (event) {
@@ -18,18 +30,6 @@ window.onload = function () {
       inorder();
     }
   });
-
-  function Reset() {
-    $("span").html("");
-    $(".text").removeClass("redSpot");
-    $("#ring-container .button").css(
-      "background-color",
-      "rgba(48, 63, 159, 1)"
-    );
-    $("#info-bar").css("background-color", "#707070");
-    buttonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber = [false, false, false, false, false];
-  }
 
   function getsum() {
     if (buttonClickable[5]) {
