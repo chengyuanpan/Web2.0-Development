@@ -76,7 +76,7 @@ window.onload = function () {
 
   function inorder() {
     let order = ["A", "B", "C", "D", "E"];
-    let callback = Callback(order);
+    const callback = Callback(order);
     callback[0]();
   }
 
