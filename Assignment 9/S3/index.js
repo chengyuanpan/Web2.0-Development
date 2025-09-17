@@ -3,6 +3,8 @@ window.onload = function () {
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
+  const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
+  const COLOR_INACTIVE = "#707070";
   // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
@@ -12,8 +14,8 @@ window.onload = function () {
   function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $buttons.css("background-color", "rgba(48, 63, 159, 1)");
-    $("#info-bar").css("background-color", "#707070");
+    $buttons.css("background-color", "COLOR_ACTIVE");
+    $("#info-bar").css("background-color", COLOR_INACTIVE);
     buttonClickable = [true, true, true, true, true, false, true];
     fetchedNumber.fill(false);
     $sum.html("");
@@ -30,10 +32,10 @@ window.onload = function () {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $buttons.css("background-color", "#707070");
+    $buttons.css("background-color", COLOR_INACTIVE);
     buttonClickable.fill(false);
     let index = $(tar).data("index");
-    $(".button").eq(index).css("background-color", "rgba(48, 63, 159, 1)");
+    $(".button").eq(index).css("background-color", "COLOR_ACTIVE");
     $.get("http://localhost:3000", function (res, status, XHR) {
       fetchedNumber[index] = true;
       $(content).text(res);
@@ -41,16 +43,16 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!fetchedNumber[i]) {
           buttonClickable[i] = true;
-          $(".button").eq(i).css("background-color", "rgba(48, 63, 159, 1)");
+          $(".button").eq(i).css("background-color", "COLOR_ACTIVE");
         } else {
           fetchedNumCounter++;
           buttonClickable[i] = false;
-          $(".button").eq(i).css("background-color", "#707070");
+          $(".button").eq(i).css("background-color", COLOR_INACTIVE);
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
         buttonClickable[INFO_BAR] = true;
-        $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+        $("#info-bar").css("background-color", "COLOR_ACTIVE");
       }
     });
   }
@@ -69,7 +71,7 @@ window.onload = function () {
         sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
       });
       $sum.html("" + sum);
-      $("#info-bar").css("background-color", "#707070");
+      $("#info-bar").css("background-color", COLOR_INACTIVE);
       buttonClickable[INFO_BAR] = false;
     }
   }
@@ -91,13 +93,13 @@ window.onload = function () {
           $(content).addClass("redSpot");
           $(content).text("...");
           fetchedNumber[i] = true;
-          $(".button").eq(i).css("background-color", "rgba(48, 63, 159, 1)");
+          $(".button").eq(i).css("background-color", "COLOR_ACTIVE");
           $.get("http://localhost:3000", function (data) {
             $(".text").eq(i).text(data);
-            $(".button").eq(i).css("background-color", "#707070");
+            $(".button").eq(i).css("background-color", COLOR_INACTIVE);
             if (fetchedAllNumber()) {
               buttonClickable[INFO_BAR] = true;
-              $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+              $("#info-bar").css("background-color", "COLOR_ACTIVE");
               getSumAndDisplay();
             }
           });
