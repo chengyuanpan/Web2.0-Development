@@ -4,7 +4,7 @@ window.onload = function () {
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
 
-  const Reset = function () {
+  const reset = function () {
     $("span").html("");
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
@@ -16,14 +16,14 @@ window.onload = function () {
     fetchedNumber.fill(false);
   };
 
-  $("#button").mouseleave(Reset);
+  $("#button").mouseleave(reset);
 
-  const clickable = function (tar) {
+  const isClickable = function (tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     return buttonClickable[index] && !fetchedNumber[index];
   };
 
-  const action = function (tar) {
+  const fetchNumber = function (tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
@@ -53,8 +53,8 @@ window.onload = function () {
   };
 
   $("#ring-container .button").click(function () {
-    if (clickable(this)) {
-      action(this);
+    if (isClickable(this)) {
+      fetchNumber(this);
     }
   });
 
