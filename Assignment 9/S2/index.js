@@ -57,7 +57,7 @@ window.onload = function () {
     }
   });
 
-  function getSum() {
+  const getSum = function () {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html());
@@ -69,7 +69,7 @@ window.onload = function () {
       $("#info-bar").css("background-color", "#707070");
       buttonClickable[INFO_BAR] = false;
     }
-  }
+  };
 
   $("#info-bar").click(getSum);
 
