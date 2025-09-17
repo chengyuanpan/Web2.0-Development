@@ -115,7 +115,7 @@ window.onload = function () {
     return callback;
   }
 
-  function selectAll() {
+  function parallelFetchNum() {
     let callback = Callback();
     for (let i = 0; i < callback.length; i++) callback[i]();
   }
@@ -123,7 +123,7 @@ window.onload = function () {
   $(".apb").click(function (event) {
     if (buttonClickable[AT_BUTTON]) {
       buttonClickable[AT_BUTTON] = false;
-      selectAll();
+      parallelFetchNum();
     }
   });
 };
