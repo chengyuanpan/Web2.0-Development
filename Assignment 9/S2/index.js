@@ -3,7 +3,7 @@ window.onload = function () {
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
 
-  const Reset = function() {
+  const Reset = function () {
     $("span").html("");
     $(".text").removeClass("redSpot");
     $("#ring-container .button").css(
@@ -17,12 +17,12 @@ window.onload = function () {
 
   $("#button").mouseleave(Reset);
 
-  const clickable = function(tar) {
+  const clickable = function (tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
     return buttonClickable[index] && !fetchedNumber[index];
   };
 
-  const action = function(tar) {
+  const action = function (tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
@@ -57,15 +57,6 @@ window.onload = function () {
     }
   });
 
-  $("#info-bar").click(getsum);
-
-  $(".apb").click(function (event) {
-    if (buttonClickable[6]) {
-      buttonClickable[6] = false;
-      inorder();
-    }
-  });
-
   function getsum() {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
@@ -79,6 +70,15 @@ window.onload = function () {
       buttonClickable[INFO_BAR] = false;
     }
   }
+
+  $("#info-bar").click(getsum);
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[6]) {
+      buttonClickable[6] = false;
+      inorder();
+    }
+  });
 
   function Callback(order) {
     let callback = [];
