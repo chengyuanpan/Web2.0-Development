@@ -57,7 +57,7 @@ window.onload = function () {
     }
   });
 
-  function getsum() {
+  function getSum() {
     if (buttonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html());
@@ -71,7 +71,7 @@ window.onload = function () {
     }
   }
 
-  $("#info-bar").click(getsum);
+  $("#info-bar").click(getSum);
 
   $(".apb").click(function (event) {
     if (buttonClickable[6]) {
@@ -120,7 +120,7 @@ window.onload = function () {
     callback[INFO_BAR] = function () {
       buttonClickable[INFO_BAR] = true;
       $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
-      getsum();
+      getSum();
     };
     return callback;
   }
