@@ -73,6 +73,12 @@ window.onload = function () {
 
   $("#info-bar").click(getSum);
 
+  function inorder() {
+    let order = ["A", "B", "C", "D", "E"];
+    let callback = Callback(order);
+    callback[0]();
+  }
+
   $(".apb").click(function (event) {
     if (buttonClickable[6]) {
       buttonClickable[6] = false;
@@ -123,11 +129,5 @@ window.onload = function () {
       getSum();
     };
     return callback;
-  }
-
-  function inorder() {
-    let order = ["A", "B", "C", "D", "E"];
-    let callback = Callback(order);
-    callback[0]();
   }
 };
