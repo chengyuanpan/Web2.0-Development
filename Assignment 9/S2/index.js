@@ -2,6 +2,7 @@ window.onload = function () {
   let buttonClickable = [true, true, true, true, true, false, true];
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
+  const AT_BUTTON = 6;
 
   const Reset = function () {
     $("span").html("");
@@ -125,8 +126,8 @@ window.onload = function () {
   }
 
   $(".apb").click(function (event) {
-    if (buttonClickable[6]) {
-      buttonClickable[6] = false;
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
       inorder();
     }
   });
