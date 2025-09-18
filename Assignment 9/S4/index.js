@@ -32,7 +32,7 @@ window.onload = function () {
     $buttons.css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
     const index = $(tar).data("index");
-    $(".button").eq(index).css("background-color", COLOR_ACTIVE);
+    $buttons.eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
@@ -40,11 +40,11 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
-          $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
+          $buttons[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
           fetchedNumCounter++;
           isButtonClickable[i] = false;
-          $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
+          $buttons[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
@@ -85,18 +85,18 @@ window.onload = function () {
           isButtonClickable.fill(false);
           let index = $(tar).data("index");
           isFetchedNumber[index] = true;
-          $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
+          $buttons[index].style.backgroundColor = COLOR_ACTIVE;
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
             let fetchedNumCounter = 0;
             for (let i = 0; i < INFO_BAR; i++) {
               if (!isFetchedNumber[i]) {
                 isButtonClickable[i] = true;
-                $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
+                $buttons[i].style.backgroundColor = COLOR_ACTIVE;
               } else {
                 fetchedNumCounter++;
                 isButtonClickable[i] = false;
-                $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
+                $buttons[i].style.backgroundColor = COLOR_INACTIVE;
               }
             }
             callback[next]();

@@ -38,7 +38,7 @@ window.onload = function () {
     $("#ring-container .button").css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
     let index = getIndex(tar);
-    $(".button").eq(index).css("background-color", COLOR_ACTIVE);
+    $buttons.eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
