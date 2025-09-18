@@ -1,5 +1,5 @@
 window.onload = function () {
-  let buttonClickable = [true, true, true, true, true, false];
+  let isButtonClickable = [true, true, true, true, true, false];
   let numberFetched = [false, false, false, false, false];
   const $buttons = $("#ring-container .button");
   const $sum = $("#sum");
@@ -16,7 +16,7 @@ window.onload = function () {
       COLOR_ACTIVE
     );
     $("#info-bar").css("background-color", COLOR_INACTIVE);
-    buttonClickable = [true, true, true, true, true, false];
+    isButtonClickable = [true, true, true, true, true, false];
     numberFetched.fill(false);
   }
 
@@ -28,7 +28,7 @@ window.onload = function () {
 
   function clickable(tar) {
     let index = getIndex(tar);
-    return buttonClickable[index] && !numberFetched[index];
+    return isButtonClickable[index] && !numberFetched[index];
   }
 
   function action(tar) {
@@ -36,7 +36,7 @@ window.onload = function () {
     $(content).addClass("redSpot");
     $(content).text("...");
     $("#ring-container .button").css("background-color", COLOR_INACTIVE);
-    buttonClickable.fill(false);
+    isButtonClickable.fill(false);
     let index = getIndex(tar);
     $(".button").eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
@@ -45,16 +45,16 @@ window.onload = function () {
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!numberFetched[i]) {
-          buttonClickable[i] = true;
+          isButtonClickable[i] = true;
           $buttons[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
           fetchedNumCounter++;
-          buttonClickable[i] = false;
+          isButtonClickable[i] = false;
           $buttons[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
-        buttonClickable[INFO_BAR] = true;
+        isButtonClickable[INFO_BAR] = true;
         $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
     });
@@ -65,7 +65,7 @@ window.onload = function () {
   });
 
   function getSum() {
-    if (buttonClickable[INFO_BAR]) {
+    if (isButtonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html(), DECIMAL);
       sum += parseInt($("#B span").html(), DECIMAL);
@@ -74,7 +74,7 @@ window.onload = function () {
       sum += parseInt($("#E span").html(), DECIMAL);
       $sum.html("" + sum);
       $("#info-bar").css("background-color", COLOR_ACTIVE);
-      buttonClickable[INFO_BAR] = false;
+      isButtonClickable[INFO_BAR] = false;
     }
   }
 
