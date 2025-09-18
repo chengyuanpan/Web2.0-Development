@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./signup.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Register</h1>
+        <form action="http://localhost:8000/signUpPost" method="post">
+            <div class="input"><input class="info" type='text' name='username' placeholder="User Name" /></div>
+            <div><span id="username">User Name</span></div>
+            <div class="input"><input class="info" type='text' name='studentID' placeholder="Student ID" /></div>
+            <div><span id="studentID">Student ID</span></div>
+            <div clasws="input"><input class="info" type='text' name='phone' placeholder="Phone Number" /></div>
+            <div><span id="phone">Phone Number</span></div>
+            <div class="input"><input class="info" type='text' name='email' placeholder="Email" /></div>
+            <div><span id="email">Email</span></div>
+            <div class="input"><input class="pwd" type='password' name='password' placeholder="Password" /></div>
+            <div><span id="password">Password</span></div>
+            <div class="input"><input class="pwdr" type='password' name='passwordR'
+                    placeholder="Please Re-enter password" /></div>
+            <div><span id="passwordR">Repeat password</span></div>
+            <div>
+                <button id="reset" type="button">Reset</button>
+                <input id="reg" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+    <script src="./signup.js"></script>
+</body>
+
+</html>

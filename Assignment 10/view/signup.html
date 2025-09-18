@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./signup.css">
+    <title>注册</title>
+</head>
+<body>
+    <div id="main">
+        <h1>注册</h1>
+        <form action="http://localhost:8000/signUpPost" method="post">
+            <div class="input"><input class="info" type='text' name='username' placeholder="用户名"/></div>
+            <div><span id="username">用户名</span></div>
+            <div class="input"><input class="info" type='text' name='studentID' placeholder="学号"/></div>
+            <div><span id="studentID">学号</span></div>
+            <div clasws="input"><input class="info" type='text' name='phone' placeholder="手机号"/></div>
+            <div><span id="phone">手机号</span></div>
+            <div class="input"><input class="info" type='text' name='email' placeholder="邮箱"/></div>
+            <div><span id="email">邮箱</span></div>
+            <div class="input"><input class="pwd" type='password' name='password' placeholder="密码"/></div>
+            <div><span id="password">密码</span></div>
+            <div class="input"><input class="pwdr" type='password' name='passwordR' placeholder="再次输入密码"/></div>
+            <div><span id="passwordR">重复密码</span></div>
+            <div>
+                <button id="reset" type="button">重置</button>
+                <input id="reg" type="submit" value="注册">    
+            </div>
+        </form>
+    </div>
+    <script src="./signup.js"></script>
+</body>
+</html>

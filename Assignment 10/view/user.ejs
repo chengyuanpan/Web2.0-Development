@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./user.css">
+    <title>详情</title>
+</head>
+<body>
+    <div id="main">
+        <h1>详情</h1>
+        <div class="block">
+            用户名：
+            <span id="username">
+                <%= username %>
+            </span>
+        </div>
+        <div class="block">
+            学号：
+            <span id="studentID">
+                <%= studentID %>
+            </span>
+        </div>
+        <div class="block">
+            手机号：
+            <span id="phone">
+                <%= phone %>
+            </span>
+        </div>
+        <div class="block">
+            邮箱：
+            <span id="email">
+                <%= email %>
+            </span>
+        </div>
+        <div>
+            <button id="logout" type="button">
+                登出
+            </button>
+        </div>
+        
+    </div>
+    <script src="./user.js"></script>
+    <% if (tarUsername != username) { %>
+        <script>
+            alert('只能够访问自己的数据');
+            window.location = 'http://localhost:8000?username=' + '<%= username %>';
+        </script>
+    <% } %>
+</body>
+</html>
