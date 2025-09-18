@@ -5,20 +5,22 @@ window.onload = function () {
   const $sum = $("#sum");
   const DECIMAL = 10;
   const INFO_BAR = 5;
+  const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
+  const COLOR_INACTIVE = "#707070";
 
-  function Reset() {
+  function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
     $buttons.css(
       "background-color",
-      "rgba(48, 159, 48, 1)"
+      COLOR_ACTIVE
     );
-    $("#info-bar").css("background-color", "#808080");
+    $("#info-bar").css("background-color", COLOR_INACTIVE);
     buttonClickable = [true, true, true, true, true, false];
     numberFetched.fill(false);
   }
 
-  $("#button").mouseleave(Reset);
+  $("#button").mouseleave(reset);
 
   function getIndex(tar) {
     return tar.id.charCodeAt() - "A".charCodeAt();
@@ -33,10 +35,10 @@ window.onload = function () {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $("#ring-container .button").css("background-color", "#707070");
+    $("#ring-container .button").css("background-color", COLOR_INACTIVE);
     buttonClickable.fill(false);
     let index = getIndex(tar);
-    $buttons[index].style.backgroundColor = "rgba(255, 123, 53, 1)";
+    $(".button").eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       numberFetched[index] = true;
@@ -44,16 +46,16 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!numberFetched[i]) {
           buttonClickable[i] = true;
-          $buttons[i].style.backgroundColor = "rgba(48, 159, 48, 1)";
+          $buttons[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
           fetchedNumCounter++;
           buttonClickable[i] = false;
-          $buttons[i].style.backgroundColor = "#707070";
+          $buttons[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
         buttonClickable[INFO_BAR] = true;
-        $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
+        $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
     });
   }
@@ -71,7 +73,7 @@ window.onload = function () {
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
       $sum.html("" + sum);
-      $("#info-bar").css("background-color", "rgba(48, 159, 48, 1)");
+      $("#info-bar").css("background-color", COLOR_ACTIVE);
       buttonClickable[INFO_BAR] = false;
     }
   }

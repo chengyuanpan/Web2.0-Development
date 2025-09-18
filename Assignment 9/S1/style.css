@@ -16,7 +16,7 @@ body {
   left: 77px;
   border-radius: 50%;
   background-color: #808080;
-  color: #ffffff;
+  color: #26e79e;
   text-align: center;
   font-size: 20px;
   transition: 0.6s;
@@ -59,14 +59,14 @@ body {
   margin-top: 60px;
   margin-left: 35px;
   border-radius: 50%;
-  background: rgba(48, 159, 48, 1) center no-repeat;
+  background: rgba(48, 63, 159, 1) center no-repeat;
   transition: all 0.5s;
   opacity: 0;
   cursor: pointer;
   text-align: center;
   font-size: 20px;
   line-height: 32px;
-  color: #ffffff;
+  color: #009966;
 }
 
 #button:hover #ring-container li {
@@ -107,7 +107,7 @@ body {
   border-radius: 50%;
   background-color: red;
   font-size: 15px;
-  color: #ffffff;
+  color: #e0d6dc;
   text-align: center;
   line-height: 20px;
 }
