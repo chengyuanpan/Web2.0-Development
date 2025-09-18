@@ -59,11 +59,10 @@ window.onload = function () {
   function getSumAndDisplay() {
     if (isButtonisClickable[INFO_BAR]) {
       let sum = 0;
-      sum += parseInt($("#A span").html(), DECIMAL);
-      sum += parseInt($("#B span").html(), DECIMAL);
-      sum += parseInt($("#C span").html(), DECIMAL);
-      sum += parseInt($("#D span").html(), DECIMAL);
-      sum += parseInt($("#E span").html(), DECIMAL);
+      $buttons.each(function (i) {
+        // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
+        sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
+      });
       $("#sum").html("" + sum);
       $infoBar.css("background-color", COLOR_ACTIVE);
       isButtonisClickable[INFO_BAR] = false;
