@@ -69,7 +69,7 @@ window.onload = function () {
 
   function Callback(letters) {
     let callback = [];
-    let buttons = [];
+    const buttons = [];
     for (let i = 0; i < letters.length; i++) {
       buttons[i] = document.querySelector("#" + letters[i]);
     }
@@ -84,10 +84,10 @@ window.onload = function () {
           $buttons.css("background-color", COLOR_INACTIVE);
           isButtonClickable.fill(false);
           let index = $(tar).data("index");
-          isFetchedNumber[index] = true;
           $buttons.eq(index).css("background-color", COLOR_ACTIVE);
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
+            isFetchedNumber[index] = true;
             let fetchedNumCounter = 0;
             for (let i = 0; i < INFO_BAR; i++) {
               if (!isFetchedNumber[i]) {
@@ -136,9 +136,9 @@ window.onload = function () {
   // Event handler binding
   $("#button").mouseleave(reset);
 
-  $buttons.click(function (event) {
-    if (isClickable(event.target)) {
-      fetchNumber(event.target);
+  $buttons.click(function () {
+    if (isClickable(this)) {
+      fetchNumber(this);
     }
   });
 
