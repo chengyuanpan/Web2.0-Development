@@ -20,7 +20,7 @@ window.onload = function () {
     );
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     buttonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber = [false, false, false, false, false];
+    fetchedNumber.fill(false);
   }
 
   function isClickable(tar) {
@@ -33,7 +33,7 @@ window.onload = function () {
     $(content).addClass("redSpot");
     $(content).text("...");
     $buttons.css("background-color", COLOR_INACTIVE);
-    buttonClickable = [false, false, false, false, false, false];
+    buttonClickable.fill(false);
     let index = $(tar).data("index");
     fetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
@@ -85,7 +85,7 @@ window.onload = function () {
           $(content).addClass("redSpot");
           $(content).text("...");
           $buttons.css("background-color", COLOR_INACTIVE);
-          buttonClickable = [false, false, false, false, false, false];
+          buttonClickable.fill(false);
           let index = $(tar).data("index");
           fetchedNumber[index] = true;
           $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
