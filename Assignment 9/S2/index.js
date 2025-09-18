@@ -1,6 +1,6 @@
 window.onload = function () {
   let isButtonClickable = [true, true, true, true, true, false, true];
-  let fetchedNumber = [false, false, false, false, false];
+  let isFetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
@@ -20,7 +20,7 @@ window.onload = function () {
     );
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber.fill(false);
+    isFetchedNumber.fill(false);
   };
 
   $("#button").mouseleave(reset);
@@ -31,7 +31,7 @@ window.onload = function () {
 
   const isClickable = function (tar) {
     let index = getIndex(tar);
-    return isButtonClickable[index] && !fetchedNumber[index];
+    return isButtonClickable[index] && !isFetchedNumber[index];
   };
 
   const fetchNumber = function (tar) {
@@ -43,11 +43,11 @@ window.onload = function () {
     let index = getIndex(tar);
     $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
-      fetchedNumber[index] = true;
+      isFetchedNumber[index] = true;
       $(content).text(res);
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
-        if (!fetchedNumber[i]) {
+        if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
           $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
@@ -105,11 +105,11 @@ window.onload = function () {
           $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
-            fetchedNumber[index] = true;
+            isFetchedNumber[index] = true;
             $(content).text(res);
             let fetchedNumCounter = 0;
             for (let i = 0; i < INFO_BAR; i++) {
-              if (!fetchedNumber[i]) {
+              if (!isFetchedNumber[i]) {
                 isButtonClickable[i] = true;
                 $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
               } else {

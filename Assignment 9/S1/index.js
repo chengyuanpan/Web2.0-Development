@@ -1,6 +1,6 @@
 window.onload = function () {
   let isButtonClickable = [true, true, true, true, true, false];
-  let numberFetched = [false, false, false, false, false];
+  let isFetchedNumber = [false, false, false, false, false];
   const $buttons = $("#ring-container .button");
   const $sum = $("#sum");
   const DECIMAL = 10;
@@ -17,7 +17,7 @@ window.onload = function () {
     );
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false];
-    numberFetched.fill(false);
+    isFetchedNumber.fill(false);
   }
 
   $("#button").mouseleave(reset);
@@ -28,7 +28,7 @@ window.onload = function () {
 
   function clickable(tar) {
     let index = getIndex(tar);
-    return isButtonClickable[index] && !numberFetched[index];
+    return isButtonClickable[index] && !isFetchedNumber[index];
   }
 
   function action(tar) {
@@ -41,10 +41,10 @@ window.onload = function () {
     $(".button").eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
-      numberFetched[index] = true;
+      isFetchedNumber[index] = true;
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
-        if (!numberFetched[i]) {
+        if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
           $buttons[i].style.backgroundColor = COLOR_ACTIVE;
         } else {

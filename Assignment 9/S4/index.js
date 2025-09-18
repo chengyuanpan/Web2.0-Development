@@ -1,6 +1,6 @@
 window.onload = function () {
   let isButtonClickable = [true, true, true, true, true, false, true];
-  let fetchedNumber = [false, false, false, false, false];
+  let isFetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
@@ -14,18 +14,15 @@ window.onload = function () {
   function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $buttons.css(
-      "background-color",
-      COLOR_ACTIVE
-    );
+    $buttons.css("background-color", COLOR_ACTIVE);
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false, true];
-    fetchedNumber.fill(false);
+    isFetchedNumber.fill(false);
   }
 
   function isClickable(tar) {
     const index = $(tar).data("index");
-    return isButtonClickable[index] && !fetchedNumber[index];
+    return isButtonClickable[index] && !isFetchedNumber[index];
   }
 
   function fetchNumber(tar) {
@@ -35,13 +32,13 @@ window.onload = function () {
     $buttons.css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
     const index = $(tar).data("index");
-    fetchedNumber[index] = true;
+    isFetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       let allnum = 0;
       for (let i = 0; i < INFO_BAR; i++) {
-        if (!fetchedNumber[i]) {
+        if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
           $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
@@ -87,13 +84,13 @@ window.onload = function () {
           $buttons.css("background-color", COLOR_INACTIVE);
           isButtonClickable.fill(false);
           let index = $(tar).data("index");
-          fetchedNumber[index] = true;
+          isFetchedNumber[index] = true;
           $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
             let allnum = 0;
             for (let i = 0; i < INFO_BAR; i++) {
-              if (!fetchedNumber[i]) {
+              if (!isFetchedNumber[i]) {
                 isButtonClickable[i] = true;
                 $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
               } else {
