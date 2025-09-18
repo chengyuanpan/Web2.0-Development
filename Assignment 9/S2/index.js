@@ -49,11 +49,11 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
-          $buttons[i].style.backgroundColor = COLOR_ACTIVE;
+          $buttons.eq(i).css("background-color", COLOR_ACTIVE);
         } else {
           fetchedNumCounter++;
           isButtonClickable[i] = false;
-          $buttons[i].style.backgroundColor = COLOR_INACTIVE;
+          $buttons.eq(i).css("background-color", COLOR_INACTIVE);
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
@@ -102,7 +102,7 @@ window.onload = function () {
           $buttons.css("background-color", COLOR_INACTIVE);
           isButtonClickable.fill(false);
           let index = getIndex(tar);
-          $buttons[index].style.backgroundColor = COLOR_ACTIVE;
+          $buttons.eq(index).css("background-color", COLOR_ACTIVE);
           // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
             isFetchedNumber[index] = true;
@@ -111,11 +111,11 @@ window.onload = function () {
             for (let i = 0; i < INFO_BAR; i++) {
               if (!isFetchedNumber[i]) {
                 isButtonClickable[i] = true;
-                $buttons[i].style.backgroundColor = COLOR_ACTIVE;
+                $buttons.eq(i).css("background-color", COLOR_ACTIVE);
               } else {
                 fetchedNumCounter++;
                 isButtonClickable[i] = false;
-                $buttons[i].style.backgroundColor = COLOR_INACTIVE;
+                $buttons.eq(i).css("background-color", COLOR_INACTIVE);
               }
             }
             // $.get is asynchronous.
