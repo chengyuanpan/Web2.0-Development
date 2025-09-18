@@ -67,11 +67,11 @@ window.onload = function () {
     }
   }
 
-  function Callback(order) {
+  function Callback(letters) {
     let callback = [];
     let buttons = [];
-    for (let i = 0; i < order.length; i++) {
-      buttons[i] = document.querySelector("#" + order[i]);
+    for (let i = 0; i < letters.length; i++) {
+      buttons[i] = document.querySelector("#" + letters[i]);
     }
     for (let i = 0; i < INFO_BAR; i++) {
       (function (i) {
