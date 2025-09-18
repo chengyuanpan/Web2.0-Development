@@ -10,8 +10,13 @@ window.onload = function () {
   const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
   const $infoBar = $("#info-bar");
+  let activeRequests = [];
 
   function reset() {
+    // Cancel all ongoing ajax requests
+    activeRequests.forEach(req => req.abort());
+    activeRequests = [];  // Clear the list
+
     $("span").html("");
     $(".text").removeClass("redSpot");
     $buttons.css("background-color", COLOR_ACTIVE);
@@ -33,7 +38,7 @@ window.onload = function () {
     isButtonClickable.fill(false);
     let index = $(tar).data("index");
     $buttons.eq(index).css("background-color", COLOR_ACTIVE);
-    $.get("http://localhost:3000", function (res, status, XHR) {
+    const req = $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
       let fetchedNumCounter = 0;
@@ -51,7 +56,11 @@ window.onload = function () {
         isButtonClickable[INFO_BAR] = true;
         $infoBar.css("background-color", COLOR_ACTIVE);
       }
+    }).always(function () {
+      // Remove from the list regardless of success or failure to avoid memory leaks
+      activeRequests = activeRequests.filter(r => r !== req);
     });
+    activeRequests.push(req);
   }
 
   function getSumAndDisplay() {
@@ -82,7 +91,7 @@ window.onload = function () {
           $(content).addClass("redSpot");
           $(content).text("...");
           $buttons.eq(i).css("background-color", COLOR_ACTIVE);
-          $.get("http://localhost:3000", function (data) {
+          const req = $.get("http://localhost:3000", function (data) {
             $(".text").eq(i).text(data);
             isFetchedNumber[i] = true;
             isButtonClickable[i] = false;
@@ -92,7 +101,11 @@ window.onload = function () {
               $infoBar.css("background-color", COLOR_ACTIVE);
               getSumAndDisplay();
             }
+          }).always(function () {
+            // Remove from the list regardless of success or failure to avoid memory leaks
+            activeRequests = activeRequests.filter(r => r !== req);
           });
+          activeRequests.push(req);
         };
       })(i);
     }

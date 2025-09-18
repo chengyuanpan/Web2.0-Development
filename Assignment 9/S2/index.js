@@ -10,8 +10,13 @@ window.onload = function () {
   const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
   const $infoBar = $("#info-bar");
+  let activeRequests = [];
 
   const reset = function () {
+    // Cancel all ongoing ajax requests
+    activeRequests.forEach(req => req.abort());
+    activeRequests = [];  // Clear the list
+
     $("span").html("");
     $(".text").removeClass("redSpot");
     $buttons.css("background-color", COLOR_ACTIVE);
@@ -33,7 +38,7 @@ window.onload = function () {
     isButtonClickable.fill(false);
     let index = $(tar).data("index");
     $buttons.eq(index).css("background-color", COLOR_ACTIVE);
-    $.get("http://localhost:3000", function (res, status, XHR) {
+    const req = $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
       isButtonClickable[index] = false;
@@ -52,7 +57,11 @@ window.onload = function () {
         isButtonClickable[INFO_BAR] = true;
         $infoBar.css("background-color", COLOR_ACTIVE);
       }
+    }).always(function () {
+      // Remove from the list regardless of success or failure to avoid memory leaks
+      activeRequests = activeRequests.filter(r => r !== req);
     });
+    activeRequests.push(req);
   };
 
   const getSumAndDisplay = function () {
@@ -87,7 +96,7 @@ window.onload = function () {
           let index = $(tar).data("index");
           $buttons.eq(index).css("background-color", COLOR_ACTIVE);
           // Asynchronous request
-          $.get("http://localhost:3000", function (res, status, XHR) {
+          const req = $.get("http://localhost:3000", function (res, status, XHR) {
             isFetchedNumber[index] = true;
             $(content).text(res);
             let fetchedNumCounter = 0;
@@ -106,7 +115,11 @@ window.onload = function () {
             // This gives the outer for loop enough time to complete the assignment of all callback[i] values.
             // Therefore, callback[next] won't be called before a value is assigned.
             callback[next]();
+          }).always(function () {
+            // Remove from the list regardless of success or failure to avoid memory leaks
+            activeRequests = activeRequests.filter(r => r !== req);
           });
+          activeRequests.push(req);
         };
       })(i);
     }
