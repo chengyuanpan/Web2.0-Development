@@ -81,10 +81,11 @@ window.onload = function () {
           let content = $buttons.eq(i).find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
-          isFetchedNumber[i] = true;
           $buttons.eq(i).css("background-color", COLOR_ACTIVE);
           $.get("http://localhost:3000", function (data) {
             $(".text").eq(i).text(data);
+            isFetchedNumber[i] = true;
+            isButtonClickable[i] = false;
             $buttons.eq(i).css("background-color", COLOR_INACTIVE);
             if (isFetchedAllNumber()) {
               isButtonClickable[INFO_BAR] = true;

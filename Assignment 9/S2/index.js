@@ -36,6 +36,7 @@ window.onload = function () {
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
+      isButtonClickable[index] = false;
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {

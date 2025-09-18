@@ -1,5 +1,5 @@
 window.onload = function () {
-  let isButtonisClickable = [true, true, true, true, true, false];
+  let isButtonClickable = [true, true, true, true, true, false];
   let isFetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
@@ -15,13 +15,13 @@ window.onload = function () {
     $(".text").removeClass("redSpot");
     $buttons.css("background-color", COLOR_ACTIVE);
     $infoBar.css("background-color", COLOR_INACTIVE);
-    isButtonisClickable = [true, true, true, true, true, false];
+    isButtonClickable = [true, true, true, true, true, false];
     isFetchedNumber.fill(false);
   }
 
   function isClickable(tar) {
     let index = $(tar).data("index");
-    return isButtonisClickable[index] && !isFetchedNumber[index];
+    return isButtonClickable[index] && !isFetchedNumber[index];
   }
 
   function fetchNumber(tar) {
@@ -29,32 +29,33 @@ window.onload = function () {
     $(content).addClass("redSpot");
     $(content).text("...");
     $buttons.css("background-color", COLOR_INACTIVE);
-    isButtonisClickable.fill(false);
+    isButtonClickable.fill(false);
     let index = $(tar).data("index");
     $buttons.eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
+      isButtonClickable[index] = false;
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {
-          isButtonisClickable[i] = true;
+          isButtonClickable[i] = true;
           $buttons.eq(i).css("background-color", COLOR_ACTIVE);
         } else {
           fetchedNumCounter++;
-          isButtonisClickable[i] = false;
+          isButtonClickable[i] = false;
           $buttons.eq(i).css("background-color", COLOR_INACTIVE);
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
-        isButtonisClickable[INFO_BAR] = true;
+        isButtonClickable[INFO_BAR] = true;
         $infoBar.css("background-color", COLOR_ACTIVE);
       }
     });
   }
 
   function getSumAndDisplay() {
-    if (isButtonisClickable[INFO_BAR]) {
+    if (isButtonClickable[INFO_BAR]) {
       let sum = 0;
       $buttons.each(function (i) {
         // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
@@ -62,7 +63,7 @@ window.onload = function () {
       });
       $("#sum").html("" + sum);
       $infoBar.css("background-color", COLOR_ACTIVE);
-      isButtonisClickable[INFO_BAR] = false;
+      isButtonClickable[INFO_BAR] = false;
     }
   }
 
