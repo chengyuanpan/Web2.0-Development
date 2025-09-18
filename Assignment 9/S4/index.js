@@ -113,20 +113,17 @@ window.onload = function () {
   }
 
   function getRandomOrder() {
-    let order = [];
-    for (let i = 0; i < INFO_BAR; i++) {
-      order[i] = Math.round(Math.random() * INFO_BAR);
-      order[i] += "A".charCodeAt();
-      order[i] = String.fromCharCode(order[i]);
-      for (let j = 0; j < i; j++) {
-        if (order[j] == order[i] || order[i] == "F") {
-          i--;
-          break;
-        }
-      }
+    const letters = Array.from({ length: INFO_BAR }, (_, i) =>
+      String.fromCharCode("A".charCodeAt(0) + i)
+    );
+
+    for (let i = letters.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [letters[i], letters[j]] = [letters[j], letters[i]];
     }
-    $("#order").text(order.join("、"));
-    return order;
+
+    $("#order").text(letters.join("、"));
+    return letters;
   }
 
   function randomOrder() {
