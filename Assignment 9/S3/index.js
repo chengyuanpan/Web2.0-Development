@@ -37,8 +37,8 @@ window.onload = function () {
     let index = $(tar).data("index");
     $(".button").eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
-      isFetchedNumber[index] = true;
       $(content).text(res);
+      isFetchedNumber[index] = true;
       let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {

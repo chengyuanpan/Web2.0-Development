@@ -32,10 +32,10 @@ window.onload = function () {
     $buttons.css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
     const index = $(tar).data("index");
-    isFetchedNumber[index] = true;
-    $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
+    $(".button").eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
+      isFetchedNumber[index] = true;
       let allnum = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {
