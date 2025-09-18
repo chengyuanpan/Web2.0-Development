@@ -36,18 +36,18 @@ window.onload = function () {
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       isFetchedNumber[index] = true;
-      let allnum = 0;
+      let fetchedNumCounter = 0;
       for (let i = 0; i < INFO_BAR; i++) {
         if (!isFetchedNumber[i]) {
           isButtonClickable[i] = true;
           $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
-          allnum++;
+          fetchedNumCounter++;
           isButtonClickable[i] = false;
           $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
-      if (allnum >= INFO_BAR) {
+      if (fetchedNumCounter >= INFO_BAR) {
         isButtonClickable[INFO_BAR] = true;
         $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
@@ -88,13 +88,13 @@ window.onload = function () {
           $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
-            let allnum = 0;
+            let fetchedNumCounter = 0;
             for (let i = 0; i < INFO_BAR; i++) {
               if (!isFetchedNumber[i]) {
                 isButtonClickable[i] = true;
                 $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
               } else {
-                allnum++;
+                fetchedNumCounter++;
                 isButtonClickable[i] = false;
                 $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
               }
