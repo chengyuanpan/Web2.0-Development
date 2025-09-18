@@ -116,13 +116,11 @@ window.onload = function () {
     const letters = Array.from({ length: INFO_BAR }, (_, i) =>
       String.fromCharCode("A".charCodeAt(0) + i)
     );
-
     // Fisher–Yates shuffle
     for (let i = letters.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1)); // j : [0, i]
       [letters[i], letters[j]] = [letters[j], letters[i]];
     }
-
     $("#order").text(letters.join("、"));
     return letters;
   }
