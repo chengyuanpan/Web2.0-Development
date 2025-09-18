@@ -5,15 +5,18 @@ body {
 	font-size: 8pt;
 	font-family: Verdana, Tahoma, sans-serif;
 }
+
 #banner {
 	text-align: center;
 }
+
 #heading {
 	text-align: center;
 	font-size: 24pt;
 	font-weight: bold;
 	font-family: Verdana, Tahoma, sans-serif;
 }
+
 #commentborder {
 	position: relative;
 	width: 800px;
@@ -22,10 +25,12 @@ body {
 	overflow: hidden;
 	padding-bottom: 0px;
 }
+
 #rotten {
 	background-image: url("rottenbackground.png");
-	background-repeat:repeat-x;
+	background-repeat: repeat-x;
 }
+
 #percent {
 	font-size: 48pt;
 	font-weight: bold;
@@ -33,17 +38,20 @@ body {
 	vertical-align: top;
 	font-family: Verdana, Tahoma, sans-serif;
 }
+
 #total {
 	font-size: 8pt;
 	color: rgb(41, 180, 187);
 	vertical-align: 180%;
 }
+
 .comment {
 	background-color: #E1D697;
 	border: 2px solid gray;
 	padding: 8px;
 	margin: 0px;
 }
+
 .comment p {
 	font-size: 8pt;
 	font-weight: bold;
@@ -51,50 +59,62 @@ body {
 	margin: 0px;
 	overflow: hidden;
 }
+
 .icon {
 	margin-bottom: 5px;
 }
+
 img.icon {
 	margin-right: 5px;
 	float: left;
 }
+
 .reviewer {
 	padding-top: 5px;
 	margin-bottom: 3em;
 }
+
 .job {
 	font-style: italic;
 }
+
 .reviewer img {
 	float: left;
 }
+
 #rightsection {
 	float: right;
 	width: 250px;
 	margin-bottom: 0px;
 	background-color: #b9c98a;
 }
+
 #rightsection dt {
 	font-weight: bold;
 }
+
 dl dt {
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
 #leftcomment {
 	margin-left: 11px;
 	width: 258.5px;
 	float: left;
 }
+
 #rightcomment {
 	margin-left: 11px;
 	width: 258.5px;
 	float: left;
-	margin-right:11px;
+	margin-right: 11px;
 }
+
 #bar {
 	margin-top: 0px;
 }
+
 #bar p {
 	position: absolute;
 	bottom: 0%;
@@ -104,12 +124,14 @@ dl dt {
 	padding-bottom: 0px;
 	margin-bottom: 0px;
 }
+
 #valid {
 	float: right;
 	position: absolute;
 	bottom: 0;
 	right: 0;
 }
+
 dt {
 	margin-top: 1em;
 }
