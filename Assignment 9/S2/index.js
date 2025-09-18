@@ -3,6 +3,8 @@ window.onload = function () {
   let fetchedNumber = [false, false, false, false, false];
   const INFO_BAR = 5;
   const AT_BUTTON = 6;
+  const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
+  const COLOR_INACTIVE = "#707070";
   // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
@@ -14,9 +16,9 @@ window.onload = function () {
     $(".text").removeClass("redSpot");
     $buttons.css(
       "background-color",
-      "rgba(48, 63, 159, 1)"
+      COLOR_ACTIVE
     );
-    $("#info-bar").css("background-color", "#707070");
+    $("#info-bar").css("background-color", COLOR_INACTIVE);
     buttonClickable = [true, true, true, true, true, false, true];
     fetchedNumber.fill(false);
   };
@@ -36,10 +38,10 @@ window.onload = function () {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $buttons.css("background-color", "#707070");
+    $buttons.css("background-color", COLOR_INACTIVE);
     buttonClickable.fill(false);
     let index = getIndex(tar);
-    $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+    $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
       fetchedNumber[index] = true;
       $(content).text(res);
@@ -47,16 +49,16 @@ window.onload = function () {
       for (let i = 0; i < INFO_BAR; i++) {
         if (!fetchedNumber[i]) {
           buttonClickable[i] = true;
-          $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
           fetchedNumCounter++;
           buttonClickable[i] = false;
-          $(".button")[i].style.backgroundColor = "#707070";
+          $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
       if (fetchedNumCounter >= INFO_BAR) {
         buttonClickable[INFO_BAR] = true;
-        $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+        $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
     });
   };
@@ -76,7 +78,7 @@ window.onload = function () {
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
       $sum.html("" + sum);
-      $("#info-bar").css("background-color", "#707070");
+      $("#info-bar").css("background-color", COLOR_INACTIVE);
       buttonClickable[INFO_BAR] = false;
     }
   };
@@ -97,10 +99,10 @@ window.onload = function () {
           let content = $(tar).find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
-          $buttons.css("background-color", "#707070");
+          $buttons.css("background-color", COLOR_INACTIVE);
           buttonClickable.fill(false);
           let index = getIndex(tar);
-          $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
             fetchedNumber[index] = true;
@@ -109,11 +111,11 @@ window.onload = function () {
             for (let i = 0; i < INFO_BAR; i++) {
               if (!fetchedNumber[i]) {
                 buttonClickable[i] = true;
-                $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+                $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
               } else {
                 fetchedNumCounter++;
                 buttonClickable[i] = false;
-                $(".button")[i].style.backgroundColor = "#707070";
+                $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
               }
             }
             // $.get is asynchronous.
@@ -127,7 +129,7 @@ window.onload = function () {
     }
     callback[INFO_BAR] = function () {
       buttonClickable[INFO_BAR] = true;
-      $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+      $("#info-bar").css("background-color", COLOR_ACTIVE);
       getSum();
     };
     return callback;
