@@ -117,8 +117,9 @@ window.onload = function () {
       String.fromCharCode("A".charCodeAt(0) + i)
     );
 
+    // Fisher–Yates shuffle
     for (let i = letters.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(Math.random() * (i + 1)); // j : [0, i]
       [letters[i], letters[j]] = [letters[j], letters[i]];
     }
 
@@ -127,8 +128,8 @@ window.onload = function () {
   }
 
   function randomOrder() {
-    const order = getRandomOrder();
-    const callback = Callback(order);
+    const letters = getRandomOrder();
+    const callback = Callback(letters);
     callback[0]();
   }
 
