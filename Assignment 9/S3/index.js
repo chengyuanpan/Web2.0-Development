@@ -67,7 +67,7 @@ window.onload = function () {
     }
   }
 
-  function fetchedAllNumber() {
+  function isFetchedAllNumber() {
     return isFetchedNumber.slice(0, INFO_BAR).every(Boolean);
   }
 
@@ -86,7 +86,7 @@ window.onload = function () {
           $.get("http://localhost:3000", function (data) {
             $(".text").eq(i).text(data);
             $buttons.eq(i).css("background-color", COLOR_INACTIVE);
-            if (fetchedAllNumber()) {
+            if (isFetchedAllNumber()) {
               isButtonClickable[INFO_BAR] = true;
               $infoBar.css("background-color", COLOR_ACTIVE);
               getSumAndDisplay();
