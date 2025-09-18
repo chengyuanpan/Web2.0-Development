@@ -1,80 +1,88 @@
 window.onload = function () {
-  let clickbutton = [true, true, true, true, true, false, true];
-  let Number = [false, false, false, false, false];
+  let buttonClickable = [true, true, true, true, true, false, true];
+  let fetchedNumber = [false, false, false, false, false];
+  const INFO_BAR = 5;
+  const AT_BUTTON = 6;
+  const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
+  const COLOR_INACTIVE = "#707070";
+  // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
+  // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
+  const DECIMAL = 10;
+  const $buttons = $("#ring-container .button");
+  const $sum = $("#sum");
 
-  $("#button").mouseleave(Reset);
+  $("#button").mouseleave(reset);
 
-  $("#ring-container .button").click(function (event) {
-    if (Click(event.target)) {
-      action(event.target);
+  $buttons.click(function (event) {
+    if (isClickable(event.target)) {
+      fetchNumber(event.target);
     }
   });
 
-  $("#info-bar").click(getsum);
+  $("#info-bar").click(getSumAndDisplay);
 
   $(".apb").click(function (event) {
-    if (clickbutton[6]) {
-      clickbutton[6] = false;
-      randomorder();
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
+      randomOrder();
     }
   });
 
-  function Reset() {
+  function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $("#ring-container .button").css(
+    $buttons.css(
       "background-color",
-      "rgba(48, 63, 159, 1)"
+      COLOR_ACTIVE
     );
-    $("#info-bar").css("background-color", "#707070");
-    clickbutton = [true, true, true, true, true, false, true];
-    Number = [false, false, false, false, false];
+    $("#info-bar").css("background-color", COLOR_INACTIVE);
+    buttonClickable = [true, true, true, true, true, false, true];
+    fetchedNumber = [false, false, false, false, false];
   }
 
-  function getsum() {
-    if (clickbutton[5]) {
+  function getSumAndDisplay() {
+    if (buttonClickable[INFO_BAR]) {
       let sum = 0;
-      sum += parseInt($("#A span").html());
-      sum += parseInt($("#B span").html());
-      sum += parseInt($("#C span").html());
-      sum += parseInt($("#D span").html());
-      sum += parseInt($("#E span").html());
-      $("#sum").html(sum + "");
-      $("#info-bar").css("background-color", "#707070");
-      clickbutton[5] = false;
+      $buttons.each(function (i) {
+        // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
+        sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
+      });
+      $sum.html("" + sum);
+      $("#info-bar").css("background-color", COLOR_INACTIVE);
+      buttonClickable[INFO_BAR] = false;
     }
   }
 
-  function Click(tar) {
+  function isClickable(tar) {
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    return clickbutton[index] && !Number[index];
+    return buttonClickable[index] && !fetchedNumber[index];
   }
 
-  function action(tar) {
+  function fetchNumber(tar) {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $("#ring-container .button").css("background-color", "#707070");
-    clickbutton = [false, false, false, false, false, false];
+    $buttons.css("background-color", COLOR_INACTIVE);
+    buttonClickable = [false, false, false, false, false, false];
     let index = tar.id.charCodeAt() - "A".charCodeAt();
-    Number[index] = true;
-    $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+    fetchedNumber[index] = true;
+    $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
       let allnum = 0;
-      for (let i = 0; i < 5; i++) {
-        if (!Number[i]) {
-          clickbutton[i] = true;
-          $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+      for (let i = 0; i < INFO_BAR; i++) {
+        if (!fetchedNumber[i]) {
+          buttonClickable[i] = true;
+          $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
         } else {
           allnum++;
-          clickbutton[i] = false;
-          $(".button")[i].style.backgroundColor = "#707070";
+          buttonClickable[i] = false;
+          $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
         }
       }
-      if (allnum >= 5) {
-        clickbutton[5] = true;
-        $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
+      if (allnum >= INFO_BAR) {
+        buttonClickable[INFO_BAR] = true;
+        $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
     });
   }
@@ -85,7 +93,7 @@ window.onload = function () {
     for (let i = 0; i < order.length; i++) {
       buttons[i] = document.querySelector("#" + order[i]);
     }
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < INFO_BAR; i++) {
       (function (i) {
         let next = i + 1;
         callback[i] = function () {
@@ -93,22 +101,22 @@ window.onload = function () {
           let content = $(tar).find("span");
           $(content).addClass("redSpot");
           $(content).text("...");
-          $("#ring-container .button").css("background-color", "#707070");
-          clickbutton = [false, false, false, false, false, false];
+          $buttons.css("background-color", COLOR_INACTIVE);
+          buttonClickable = [false, false, false, false, false, false];
           let index = tar.id.charCodeAt() - "A".charCodeAt();
-          Number[index] = true;
-          $(".button")[index].style.backgroundColor = "rgba(48, 63, 159, 1)";
+          fetchedNumber[index] = true;
+          $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           $.get("http://localhost:3000", function (res, status, XHR) {
             $(content).text(res);
             let allnum = 0;
-            for (let i = 0; i < 5; i++) {
-              if (!Number[i]) {
-                clickbutton[i] = true;
-                $(".button")[i].style.backgroundColor = "rgba(48, 63, 159, 1)";
+            for (let i = 0; i < INFO_BAR; i++) {
+              if (!fetchedNumber[i]) {
+                buttonClickable[i] = true;
+                $(".button")[i].style.backgroundColor = COLOR_ACTIVE;
               } else {
                 allnum++;
-                clickbutton[i] = false;
-                $(".button")[i].style.backgroundColor = "#707070";
+                buttonClickable[i] = false;
+                $(".button")[i].style.backgroundColor = COLOR_INACTIVE;
               }
             }
             callback[next]();
@@ -116,18 +124,18 @@ window.onload = function () {
         };
       })(i);
     }
-    callback[5] = function () {
-      clickbutton[5] = true;
-      $("#info-bar").css("background-color", "rgba(48, 63, 159, 1)");
-      getsum();
+    callback[INFO_BAR] = function () {
+      buttonClickable[INFO_BAR] = true;
+      $("#info-bar").css("background-color", COLOR_ACTIVE);
+      getSumAndDisplay();
     };
     return callback;
   }
 
-  function getrandomorder() {
+  function getRandomOrder() {
     let order = [];
-    for (let i = 0; i < 5; i++) {
-      order[i] = Math.round(Math.random() * 5);
+    for (let i = 0; i < INFO_BAR; i++) {
+      order[i] = Math.round(Math.random() * INFO_BAR);
       order[i] += "A".charCodeAt();
       order[i] = String.fromCharCode(order[i]);
       for (let j = 0; j < i; j++) {
@@ -141,8 +149,8 @@ window.onload = function () {
     return order;
   }
 
-  function randomorder() {
-    let order = getrandomorder();
+  function randomOrder() {
+    let order = getRandomOrder();
     let callback = Callback(order);
     callback[0]();
   }
