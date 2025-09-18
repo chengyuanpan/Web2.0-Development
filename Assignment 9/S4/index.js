@@ -24,17 +24,17 @@ window.onload = function () {
   }
 
   function isClickable(tar) {
-    let index = $(tar).data("index");
+    const index = $(tar).data("index");
     return isButtonClickable[index] && !fetchedNumber[index];
   }
 
   function fetchNumber(tar) {
-    let content = $(tar).find("span");
+    const content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
     $buttons.css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
-    let index = $(tar).data("index");
+    const index = $(tar).data("index");
     fetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
@@ -133,8 +133,8 @@ window.onload = function () {
   }
 
   function randomOrder() {
-    let order = getRandomOrder();
-    let callback = Callback(order);
+    const order = getRandomOrder();
+    const callback = Callback(order);
     callback[0]();
   }
 
