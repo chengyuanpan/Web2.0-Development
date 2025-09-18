@@ -11,23 +11,6 @@ window.onload = function () {
   const $buttons = $("#ring-container .button");
   const $sum = $("#sum");
 
-  $("#button").mouseleave(reset);
-
-  $buttons.click(function (event) {
-    if (isClickable(event.target)) {
-      fetchNumber(event.target);
-    }
-  });
-
-  $("#info-bar").click(getSumAndDisplay);
-
-  $(".apb").click(function (event) {
-    if (buttonClickable[AT_BUTTON]) {
-      buttonClickable[AT_BUTTON] = false;
-      randomOrder();
-    }
-  });
-
   function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
@@ -38,19 +21,6 @@ window.onload = function () {
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     buttonClickable = [true, true, true, true, true, false, true];
     fetchedNumber = [false, false, false, false, false];
-  }
-
-  function getSumAndDisplay() {
-    if (buttonClickable[INFO_BAR]) {
-      let sum = 0;
-      $buttons.each(function (i) {
-        // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
-        sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
-      });
-      $sum.html("" + sum);
-      $("#info-bar").css("background-color", COLOR_INACTIVE);
-      buttonClickable[INFO_BAR] = false;
-    }
   }
 
   function isClickable(tar) {
@@ -85,6 +55,19 @@ window.onload = function () {
         $("#info-bar").css("background-color", COLOR_ACTIVE);
       }
     });
+  }
+
+  function getSumAndDisplay() {
+    if (buttonClickable[INFO_BAR]) {
+      let sum = 0;
+      $buttons.each(function (i) {
+        // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
+        sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
+      });
+      $sum.html("" + sum);
+      $("#info-bar").css("background-color", COLOR_INACTIVE);
+      buttonClickable[INFO_BAR] = false;
+    }
   }
 
   function Callback(order) {
@@ -154,4 +137,22 @@ window.onload = function () {
     let callback = Callback(order);
     callback[0]();
   }
+
+  $buttons.click(function (event) {
+    if (isClickable(event.target)) {
+      fetchNumber(event.target);
+    }
+  });
+
+  $("#button").mouseleave(reset);
+
+  $("#info-bar").click(getSumAndDisplay);
+
+  $(".apb").click(function (event) {
+    if (buttonClickable[AT_BUTTON]) {
+      buttonClickable[AT_BUTTON] = false;
+      randomOrder();
+    }
+  });
+
 };
