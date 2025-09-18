@@ -138,13 +138,14 @@ window.onload = function () {
     callback[0]();
   }
 
+  // Event handler binding
+  $("#button").mouseleave(reset);
+
   $buttons.click(function (event) {
     if (isClickable(event.target)) {
       fetchNumber(event.target);
     }
   });
-
-  $("#button").mouseleave(reset);
 
   $("#info-bar").click(getSumAndDisplay);
 
