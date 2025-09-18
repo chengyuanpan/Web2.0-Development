@@ -20,8 +20,6 @@ window.onload = function () {
     isFetchedNumber.fill(false);
   }
 
-  $("#button").mouseleave(reset);
-
   function isClickable(tar) {
     let index = $(tar).data("index");
     return isButtonClickable[index] && !isFetchedNumber[index];
@@ -56,12 +54,6 @@ window.onload = function () {
     });
   }
 
-  $buttons.click(function () {
-    if (isClickable(this)) {
-      fetchNumber(this);
-    }
-  });
-
   function getSumAndDisplay() {
     if (isButtonClickable[INFO_BAR]) {
       let sum = 0;
@@ -74,8 +66,6 @@ window.onload = function () {
       isButtonClickable[INFO_BAR] = false;
     }
   }
-
-  $infoBar.click(getSumAndDisplay);
 
   function fetchedAllNumber() {
     return isFetchedNumber.slice(0, INFO_BAR).every(Boolean);
@@ -111,6 +101,17 @@ window.onload = function () {
   function parallelFetchNum() {
     Callback().forEach(fn => fn());
   }
+
+  // Event handler binding
+  $("#button").mouseleave(reset);
+
+  $buttons.click(function () {
+    if (isClickable(this)) {
+      fetchNumber(this);
+    }
+  });
+
+  $infoBar.click(getSumAndDisplay);
 
   $(".apb").click(function (event) {
     if (isButtonClickable[AT_BUTTON]) {

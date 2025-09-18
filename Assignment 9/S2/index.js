@@ -23,8 +23,6 @@ window.onload = function () {
     isFetchedNumber.fill(false);
   };
 
-  $("#button").mouseleave(reset);
-
   const isClickable = function (tar) {
     let index = $(tar).data("index");
     return isButtonClickable[index] && !isFetchedNumber[index];
@@ -59,12 +57,6 @@ window.onload = function () {
     });
   };
 
-  $buttons.click(function () {
-    if (isClickable(this)) {
-      fetchNumber(this);
-    }
-  });
-
   const getSumAndDisplay = function () {
     if (isButtonClickable[INFO_BAR]) {
       let sum = 0;
@@ -78,8 +70,6 @@ window.onload = function () {
       isButtonClickable[INFO_BAR] = false;
     }
   };
-
-  $infoBar.click(getSumAndDisplay);
 
   function Callback(order) {
     let callback = [];
@@ -136,6 +126,17 @@ window.onload = function () {
     const callback = Callback(order);
     callback[0]();
   }
+
+  // Event handler binding
+  $("#button").mouseleave(reset);
+
+  $buttons.click(function () {
+    if (isClickable(this)) {
+      fetchNumber(this);
+    }
+  });
+
+  $infoBar.click(getSumAndDisplay);
 
   $(".apb").click(function (event) {
     if (isButtonClickable[AT_BUTTON]) {

@@ -1,6 +1,8 @@
 window.onload = function () {
   let isButtonisClickable = [true, true, true, true, true, false];
   let isFetchedNumber = [false, false, false, false, false];
+  // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
+  // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
   const INFO_BAR = 5;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
@@ -20,8 +22,6 @@ window.onload = function () {
     isFetchedNumber.fill(false);
   }
 
-  $("#button").mouseleave(reset);
-
   function isClickable(tar) {
     let index = $(tar).data("index");
     return isButtonisClickable[index] && !isFetchedNumber[index];
@@ -31,7 +31,7 @@ window.onload = function () {
     let content = $(tar).find("span");
     $(content).addClass("redSpot");
     $(content).text("...");
-    $("#ring-container .button").css("background-color", COLOR_INACTIVE);
+    $buttons.css("background-color", COLOR_INACTIVE);
     isButtonisClickable.fill(false);
     let index = $(tar).data("index");
     $buttons.eq(index).css("background-color", COLOR_ACTIVE);
@@ -56,12 +56,6 @@ window.onload = function () {
     });
   }
 
-  $("#ring-container .button").click(function () {
-    if (isClickable(this)) {
-      fetchNumber(this);
-    }
-  });
-
   function getSumAndDisplay() {
     if (isButtonisClickable[INFO_BAR]) {
       let sum = 0;
@@ -75,6 +69,15 @@ window.onload = function () {
       isButtonisClickable[INFO_BAR] = false;
     }
   }
+
+  // Event handler binding
+  $("#button").mouseleave(reset);
+
+  $buttons.click(function () {
+    if (isClickable(this)) {
+      fetchNumber(this);
+    }
+  });
 
   $infoBar.click(getSumAndDisplay);
 };
