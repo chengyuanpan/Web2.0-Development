@@ -1,4 +1,4 @@
-# Preview of Assignment 3
+# Preview of Assignment 03
 
 <img width="1504" height="924" alt="image" src="https://github.com/user-attachments/assets/bd827855-7e19-4428-98d1-1b9b581d4488" />
 
