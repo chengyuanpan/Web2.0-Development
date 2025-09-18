@@ -25,12 +25,8 @@ window.onload = function () {
 
   $("#button").mouseleave(reset);
 
-  const getIndex = function (tar) {
-    return tar.id.charCodeAt() - "A".charCodeAt();
-  };
-
   const isClickable = function (tar) {
-    let index = getIndex(tar);
+    let index = $(tar).data("index");
     return isButtonClickable[index] && !isFetchedNumber[index];
   };
 
@@ -40,7 +36,7 @@ window.onload = function () {
     $(content).text("...");
     $buttons.css("background-color", COLOR_INACTIVE);
     isButtonClickable.fill(false);
-    let index = getIndex(tar);
+    let index = $(tar).data("index");
     $buttons.eq(index).css("background-color", COLOR_ACTIVE);
     $.get("http://localhost:3000", function (res, status, XHR) {
       $(content).text(res);
@@ -69,7 +65,7 @@ window.onload = function () {
     }
   });
 
-  const getSum = function () {
+  const getSumAndDisplay = function () {
     if (isButtonClickable[INFO_BAR]) {
       let sum = 0;
       sum += parseInt($("#A span").html(), DECIMAL);
@@ -83,7 +79,7 @@ window.onload = function () {
     }
   };
 
-  $infoBar.click(getSum);
+  $infoBar.click(getSumAndDisplay);
 
   function Callback(order) {
     let callback = [];
@@ -101,7 +97,7 @@ window.onload = function () {
           $(content).text("...");
           $buttons.css("background-color", COLOR_INACTIVE);
           isButtonClickable.fill(false);
-          let index = getIndex(tar);
+          let index = $(tar).data("index");
           $buttons.eq(index).css("background-color", COLOR_ACTIVE);
           // Asynchronous request
           $.get("http://localhost:3000", function (res, status, XHR) {
@@ -130,7 +126,7 @@ window.onload = function () {
     callback[INFO_BAR] = function () {
       isButtonClickable[INFO_BAR] = true;
       $infoBar.css("background-color", COLOR_ACTIVE);
-      getSum();
+      getSumAndDisplay();
     };
     return callback;
   }
