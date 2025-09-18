@@ -1,11 +1,12 @@
 window.onload = function () {
   let isButtonClickable = [true, true, true, true, true, false];
   let isFetchedNumber = [false, false, false, false, false];
-  const $buttons = $("#ring-container .button");
   const DECIMAL = 10;
   const INFO_BAR = 5;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
   const COLOR_INACTIVE = "#707070";
+  const $buttons = $("#ring-container .button");
+  const $infoBar = $("#info-bar");
 
   function reset() {
     $("span").html("");
@@ -14,7 +15,7 @@ window.onload = function () {
       "background-color",
       COLOR_ACTIVE
     );
-    $("#info-bar").css("background-color", COLOR_INACTIVE);
+    $infoBar.css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false];
     isFetchedNumber.fill(false);
   }
@@ -54,7 +55,7 @@ window.onload = function () {
       }
       if (fetchedNumCounter >= INFO_BAR) {
         isButtonClickable[INFO_BAR] = true;
-        $("#info-bar").css("background-color", COLOR_ACTIVE);
+        $infoBar.css("background-color", COLOR_ACTIVE);
       }
     });
   }
@@ -72,10 +73,10 @@ window.onload = function () {
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
       $("#sum").html("" + sum);
-      $("#info-bar").css("background-color", COLOR_ACTIVE);
+      $infoBar.css("background-color", COLOR_ACTIVE);
       isButtonClickable[INFO_BAR] = false;
     }
   }
 
-  $("#info-bar").click(getSum);
+  $infoBar.click(getSum);
 };

@@ -9,6 +9,7 @@ window.onload = function () {
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
+  const $infoBar = $("#info-bar");
 
   const reset = function () {
     $("span").html("");
@@ -17,7 +18,7 @@ window.onload = function () {
       "background-color",
       COLOR_ACTIVE
     );
-    $("#info-bar").css("background-color", COLOR_INACTIVE);
+    $infoBar.css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false, true];
     isFetchedNumber.fill(false);
   };
@@ -57,7 +58,7 @@ window.onload = function () {
       }
       if (fetchedNumCounter >= INFO_BAR) {
         isButtonClickable[INFO_BAR] = true;
-        $("#info-bar").css("background-color", COLOR_ACTIVE);
+        $infoBar.css("background-color", COLOR_ACTIVE);
       }
     });
   };
@@ -77,12 +78,12 @@ window.onload = function () {
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
       $("#sum").html("" + sum);
-      $("#info-bar").css("background-color", COLOR_INACTIVE);
+      $infoBar.css("background-color", COLOR_INACTIVE);
       isButtonClickable[INFO_BAR] = false;
     }
   };
 
-  $("#info-bar").click(getSum);
+  $infoBar.click(getSum);
 
   function Callback(order) {
     let callback = [];
@@ -128,7 +129,7 @@ window.onload = function () {
     }
     callback[INFO_BAR] = function () {
       isButtonClickable[INFO_BAR] = true;
-      $("#info-bar").css("background-color", COLOR_ACTIVE);
+      $infoBar.css("background-color", COLOR_ACTIVE);
       getSum();
     };
     return callback;
