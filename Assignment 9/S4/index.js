@@ -54,7 +54,7 @@ window.onload = function () {
   }
 
   function isClickable(tar) {
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = $(tar).data("index");
     return buttonClickable[index] && !fetchedNumber[index];
   }
 
@@ -64,7 +64,7 @@ window.onload = function () {
     $(content).text("...");
     $buttons.css("background-color", COLOR_INACTIVE);
     buttonClickable = [false, false, false, false, false, false];
-    let index = tar.id.charCodeAt() - "A".charCodeAt();
+    let index = $(tar).data("index");
     fetchedNumber[index] = true;
     $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
     $.get("http://localhost:3000", function (res, status, XHR) {
@@ -103,7 +103,7 @@ window.onload = function () {
           $(content).text("...");
           $buttons.css("background-color", COLOR_INACTIVE);
           buttonClickable = [false, false, false, false, false, false];
-          let index = tar.id.charCodeAt() - "A".charCodeAt();
+          let index = $(tar).data("index");
           fetchedNumber[index] = true;
           $(".button")[index].style.backgroundColor = COLOR_ACTIVE;
           $.get("http://localhost:3000", function (res, status, XHR) {
