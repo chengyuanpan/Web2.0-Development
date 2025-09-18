@@ -9,7 +9,6 @@ window.onload = function () {
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
-  const $sum = $("#sum");
 
   function reset() {
     $("span").html("");
@@ -18,7 +17,6 @@ window.onload = function () {
     $("#info-bar").css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false, true];
     isFetchedNumber.fill(false);
-    $sum.html("");
   }
 
   $("#button").mouseleave(reset);
@@ -70,7 +68,7 @@ window.onload = function () {
         // || 0 is a fault-tolerant way of writing, ensuring that when parseInt fails (returns NaN), sum can still be accumulated normally without error.
         sum += parseInt($(this).find("span").html(), DECIMAL) || 0;
       });
-      $sum.html("" + sum);
+      $("#sum").html("" + sum);
       $("#info-bar").css("background-color", COLOR_INACTIVE);
       isButtonClickable[INFO_BAR] = false;
     }

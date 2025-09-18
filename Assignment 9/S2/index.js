@@ -9,7 +9,6 @@ window.onload = function () {
   // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
   const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
-  const $sum = $("#sum");
 
   const reset = function () {
     $("span").html("");
@@ -77,7 +76,7 @@ window.onload = function () {
       sum += parseInt($("#C span").html(), DECIMAL);
       sum += parseInt($("#D span").html(), DECIMAL);
       sum += parseInt($("#E span").html(), DECIMAL);
-      $sum.html("" + sum);
+      $("#sum").html("" + sum);
       $("#info-bar").css("background-color", COLOR_INACTIVE);
       isButtonClickable[INFO_BAR] = false;
     }
