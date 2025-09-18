@@ -1,22 +1,19 @@
 window.onload = function () {
   let isButtonisClickable = [true, true, true, true, true, false];
   let isFetchedNumber = [false, false, false, false, false];
-  // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
-  // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
-  const DECIMAL = 10;
   const INFO_BAR = 5;
   const COLOR_ACTIVE = "rgba(48, 63, 159, 1)";
   const COLOR_INACTIVE = "#707070";
+  // Writing 10 ensures that it is parsed as a decimal integer to avoid compatibility issues.
+  // If you don't specify the base, some browsers will automatically identify the base based on the string prefix (such as "0x", "0"), which may result in strange results.
+  const DECIMAL = 10;
   const $buttons = $("#ring-container .button");
   const $infoBar = $("#info-bar");
 
   function reset() {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $buttons.css(
-      "background-color",
-      COLOR_ACTIVE
-    );
+    $buttons.css("background-color", COLOR_ACTIVE);
     $infoBar.css("background-color", COLOR_INACTIVE);
     isButtonisClickable = [true, true, true, true, true, false];
     isFetchedNumber.fill(false);

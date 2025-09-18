@@ -14,10 +14,7 @@ window.onload = function () {
   const reset = function () {
     $("span").html("");
     $(".text").removeClass("redSpot");
-    $buttons.css(
-      "background-color",
-      COLOR_ACTIVE
-    );
+    $buttons.css("background-color", COLOR_ACTIVE);
     $infoBar.css("background-color", COLOR_INACTIVE);
     isButtonClickable = [true, true, true, true, true, false, true];
     isFetchedNumber.fill(false);
