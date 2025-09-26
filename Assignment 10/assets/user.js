@@ -14,8 +14,8 @@
   }
 
   function main() {
-    $('#logout').click(function () {
-      $.get('http://localhost:8000/logout');
+    $('#logOut').click(function () {
+      $.get('http://localhost:8000/logOut');
       window.location = 'http://localhost:8000/login';
     });
   }

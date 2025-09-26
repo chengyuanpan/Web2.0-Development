@@ -108,7 +108,7 @@ app.post('/login', urlencodedParser, (req, res, next) => {
 });
 
 // 登出
-app.get('/logout', urlencodedParser, (req, res) => {
+app.get('/logOut', urlencodedParser, (req, res) => {
   req.session.user = {};
   res.redirect('http://localhost:8000/login');
 });
