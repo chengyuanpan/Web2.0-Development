@@ -1,6 +1,6 @@
 # SYSU-Web2.0
 
-All courseware and assignments for Sun Yat-sen University's Web 2.0 Development course
+Web 2.0 Development courseware and assignments of Sun Yat-sen University
 
 ## Preview of Assignment 01
 
