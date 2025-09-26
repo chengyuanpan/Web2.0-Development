@@ -15,7 +15,7 @@
 
   function initial() {
     let reg = {
-      username: /^[a-zA-Z][\w_]{5,17}$/, // 用户名6~18位英文字母、数字或下划线，必须以英文字母开头
+      userName: /^[a-zA-Z][\w_]{5,17}$/, // 用户名6~18位英文字母、数字或下划线，必须以英文字母开头
       studentID: /^[1-9]\d{7}$/, //学号8位数字，不能以0开头
       phone: /^[1-9]\d{10}$/, //电话11位数字，不能以0开头
       email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/, //
@@ -111,7 +111,7 @@
       $('input[type=text]').blur();
       if (
         !(
-          status.username &&
+          status.userName &&
           status.studentID &&
           status.phone &&
           status.email &&
@@ -126,7 +126,7 @@
   }
 
   const status = {
-    username: false,
+    userName: false,
     studentID: false,
     email: false,
     phone: false,
@@ -142,4 +142,4 @@
 // window.onload = () => {
 //     alert('只能够访问自己的数据');
 // }
-// window.location = 'http://localhost:8000?username=abc';
+// window.location = 'http://localhost:8000?userName=abc';
