@@ -1,6 +1,6 @@
 let fs = require('fs');
 let express = require('express');
-let session = require('express-session'); // 利用session来管理cookie
+let session = require('express-session'); // Use session to manage cookies
 let app = express();
 let bodyParser = require('body-parser');
 let crypto = require('crypto');
@@ -18,26 +18,26 @@ app.use(
     resave: true,
     saveUninitialized: true,
     cookie: {
-      maxAge: 2147483647, // cookie持续时间为xx分钟
+      maxAge: 2147483647, // Cookie duration is xx minutes
     },
   })
 );
 
-// 注册页面
+// Registration page
 app.get('/regist', (req, res) => {
   fs.readFile('./view/signup.html', 'utf-8', (err, data) => {
     res.send(data);
   });
 });
 
-// 利用ajax查询数据是否符合要求
+// Use ajax to query whether the data meets the requirements
 app.get('/signSearch', (req, res) => {
   db.find(req.query, (result) => {
     res.send(`${result.length != 0}`);
   });
 });
 
-// 注册表单提交
+// Registration form submission
 app.post('/signUpPost', urlencodedParser, (req, res) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
@@ -60,12 +60,12 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
       });
     } else res.render('./jump', { tarStr: '用户已经存在', tarAdd: '/regist' });
     // {
-    //     res.redirect('http://localhost:8000/jump?string=用户已经存在了')
+    //     res.redirect('http://localhost:8000/jump?string=The user already exists')
     // }
   });
 });
 
-// 登录页面
+// Login page
 app.get('/login', (req, res) => {
   // console.log(req.originalUrl);
   fs.readFile('./view/login.html', 'utf-8', (err, data) => {
@@ -74,7 +74,7 @@ app.get('/login', (req, res) => {
   });
 });
 
-// 登录
+// Log in
 app.post('/login', urlencodedParser, (req, res, next) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
@@ -83,20 +83,20 @@ app.post('/login', urlencodedParser, (req, res, next) => {
     password: hash.digest('hex').toString(),
   };
   db.find({ userName: tar.userName }, (result) => {
-    // 用户名不存在
+    // The username does not exist
     if (result.length == 0) {
       res.render('./jump', { tarStr: '用户名不存在', tarAdd: '/login' });
       // res.redirect('http://localhost:8000/jump?string=用户名不存在');
       return;
     } else {
       db.find(tar, (result) => {
-        // 密码错误
+        // Error password
         if (result.length == 0) {
           res.render('./jump', { tarStr: '密码错误', tarAdd: '/login' });
           // res.redirect('http://localhost:8000/jump?string=密码错误');
           return;
         } else {
-          // 登录成功
+          // Login successfully
           req.session.user = { userName: tar.userName };
           // console.log(req.session);
           res.redirect(`http://localhost:8000?userName=${tar.userName}`);
@@ -107,18 +107,18 @@ app.post('/login', urlencodedParser, (req, res, next) => {
   });
 });
 
-// 登出
+// Sign out
 app.get('/logOut', urlencodedParser, (req, res) => {
   req.session.user = {};
   res.redirect('http://localhost:8000/login');
 });
 
-// 详情
+// Details
 app.get('/', (req, res) => {
   let tar = req.session.user;
   // console.log(req.session);
   if (!tar)
-    res.redirect('http://localhost:8000/login'); // 没有cookie，跳转到登录页面
+    res.redirect('http://localhost:8000/login'); // No cookies, jump to login page
   else if (!req.query.userName)
     res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
