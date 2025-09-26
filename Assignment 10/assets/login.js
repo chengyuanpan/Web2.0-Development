@@ -14,7 +14,7 @@
   }
 
   status = {
-    username: false,
+    userName: false,
     password: false,
   };
 

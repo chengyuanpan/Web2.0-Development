@@ -42,7 +42,7 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
   let tar = {
-    username: req.body.username,
+    userName: req.body.userName,
     password: hash.digest('hex').toString(),
     email: req.body.email,
     phone: req.body.phone,
@@ -53,9 +53,9 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
       db.insert(tar, (result) => {
         if (result) {
           req.session.user = {
-            username: tar.username,
+            userName: tar.userName,
           };
-          res.redirect(`http://localhost:8000?username=${tar.username}`);
+          res.redirect(`http://localhost:8000?userName=${tar.userName}`);
         }
       });
     } else res.render('./jump', { tarStr: '用户已经存在', tarAdd: '/regist' });
@@ -79,10 +79,10 @@ app.post('/login', urlencodedParser, (req, res, next) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
   let tar = {
-    username: req.body.username,
+    userName: req.body.userName,
     password: hash.digest('hex').toString(),
   };
-  db.find({ username: tar.username }, (result) => {
+  db.find({ userName: tar.userName }, (result) => {
     // 用户名不存在
     if (result.length == 0) {
       res.render('./jump', { tarStr: '用户名不存在', tarAdd: '/login' });
@@ -97,9 +97,9 @@ app.post('/login', urlencodedParser, (req, res, next) => {
           return;
         } else {
           // 登录成功
-          req.session.user = { username: tar.username };
+          req.session.user = { userName: tar.userName };
           // console.log(req.session);
-          res.redirect(`http://localhost:8000?username=${tar.username}`);
+          res.redirect(`http://localhost:8000?userName=${tar.userName}`);
           return next();
         }
       });
@@ -119,13 +119,13 @@ app.get('/', (req, res) => {
   // console.log(req.session);
   if (!tar)
     res.redirect('http://localhost:8000/login'); // 没有cookie，跳转到登录页面
-  else if (!req.query.username)
-    res.redirect(`http://localhost:8000?username=${tar.username}`);
+  else if (!req.query.userName)
+    res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
-    db.find({ username: tar.username }, (result) => {
+    db.find({ userName: tar.userName }, (result) => {
       // console.log(result);
       tar = result[0];
-      tar.tarUsername = req.query.username;
+      tar.tarUsername = req.query.userName;
       res.render('./user', tar);
     });
   }
