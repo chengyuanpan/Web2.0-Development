@@ -10,7 +10,7 @@
       <h1>详情</h1>
       <div class="block">
         用户名：
-        <span id="userName"> <%= userName %> </span>
+        <span id="username"> <%= username %> </span>
       </div>
       <div class="block">
         学号：
@@ -29,10 +29,10 @@
       </div>
     </div>
     <script src="./user.js"></script>
-    <% if (tarUsername != userName) { %>
+    <% if (tarUsername != username) { %>
     <script>
       alert('只能够访问自己的数据');
-      window.location = 'http://localhost:8000?userName=' + '<%= userName %>';
+      window.location = 'http://localhost:8000?username=' + '<%= username %>';
     </script>
     <% } %>
   </body>
