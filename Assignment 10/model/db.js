@@ -15,7 +15,7 @@ function initialDB() {
   });
 }
 
-// Find the database
+// Find from the database
 function find(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
@@ -31,7 +31,7 @@ function find(obj, callback) {
   });
 }
 
-// Insert the database
+// Insert to the database
 function insert(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
