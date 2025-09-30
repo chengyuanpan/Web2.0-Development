@@ -71,7 +71,6 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
 
 // Login page
 app.get('/login', (req, res) => {
-  // console.log(req.originalUrl);
   fs.readFile('./view/login.html', 'utf-8', (err, data) => {
     res.send(data);
     return;
@@ -102,7 +101,6 @@ app.post('/login', urlencodedParser, (req, res, next) => {
         } else {
           // Login successfully
           req.session.user = { userName: tar.userName };
-          // console.log(req.session);
           res.redirect(`http://localhost:8000?userName=${tar.userName}`);
           return next();
         }
@@ -120,14 +118,12 @@ app.get('/logOut', urlencodedParser, (req, res) => {
 // Details
 app.get('/', (req, res) => {
   let tar = req.session.user;
-  // console.log(req.session);
   if (!tar)
     res.redirect('http://localhost:8000/login'); // No cookies, jump to login page
   else if (!req.query.userName)
     res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
     db.find({ userName: tar.userName }, (result) => {
-      // console.log(result);
       tar = result[0];
       tar.tarUsername = req.query.userName;
       res.render('./user', tar);
@@ -138,7 +134,6 @@ app.get('/', (req, res) => {
 let server = app.listen(8000, () => {
   let host = server.address().address;
   let port = server.address().port;
-  // initialDB();
   db.initialDB();
-  // console.log('server ready');
+  console.log('Server ready');
 });
