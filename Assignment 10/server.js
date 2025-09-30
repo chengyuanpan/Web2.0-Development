@@ -12,13 +12,17 @@ app.set('view engine', 'ejs'); // Use EJS as the template engine.
 app.set('views', './view'); // Specifies the folder where your view templates (EJS files) are located.
 app.use(express.static('./assets')); // Use static to send other files
 app.use(express.static('./view'));
-app.use(
-  session({
-    secret: 'keyborad cat',
-    resave: true,
-    saveUninitialized: true,
+app.use( // Registers middleware in Express
+  session({ // Creates a session middleware that manages user sessions via cookies.
+    secret: 'keyborad cat', // A string used to sign the session ID cookie.
+    // true → Every request rewrites the session in the store, even if nothing changed.
+    // false → Session is only saved if it was modified during the request.
+    resave: true, // Controls whether the session is saved back to the session store on every request, even if it wasn’t modified.
+    // 	true → can inflate your session store with useless empty sessions.
+    // 	false → better for privacy laws (GDPR) and saves storage, only create sessions for active users.
+    saveUninitialized: true, // Save all new sessions to the store even if they are empty.
     cookie: {
-      maxAge: 2147483647, // Cookie duration is xx minutes
+      maxAge: 2147483647, // The lifetime of the cookie (in milliseconds).
     },
   })
 );
