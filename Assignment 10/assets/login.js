@@ -26,7 +26,7 @@
 
     $('#login').click(function () {
       if ($('.info').val() == '' || $('.pwd').val() == '') {
-        alert('请填写用户名与密码');
+        alert('Please fill in your username and password');
         event.preventDefault();
       }
     });
