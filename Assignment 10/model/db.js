@@ -2,7 +2,7 @@ let dataPath = 'mongodb://localhost:27017';
 let mongodb = require('mongodb');
 let mongoClient = mongodb.MongoClient;
 
-// 初始化数据库
+// Initialize the database
 function initialDB() {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
@@ -15,7 +15,7 @@ function initialDB() {
   });
 }
 
-// 查找数据库
+// Find the database
 function find(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
@@ -25,14 +25,13 @@ function find(obj, callback) {
       .find(obj)
       .toArray((err, result) => {
         if (err) throw err;
-        // console.log(result);
         callback(result);
         db.close();
       });
   });
 }
 
-// 插入数据库
+// Insert the database
 function insert(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
