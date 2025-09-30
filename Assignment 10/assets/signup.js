@@ -140,6 +140,6 @@
 })();
 
 // window.onload = () => {
-//     alert('只能够访问自己的数据');
+//     alert('Only able to access your own data');
 // }
 // window.location = 'http://localhost:8000?userName=abc';
