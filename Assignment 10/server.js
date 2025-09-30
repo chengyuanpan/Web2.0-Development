@@ -8,9 +8,9 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false });
 let db = require('./model/db');
 let ejs = require('ejs');
 
-app.set('view engine', 'ejs');
-app.set('views', './view');
-app.use(express.static('./assets')); // use static to send other file
+app.set('view engine', 'ejs'); // Use EJS as the template engine.
+app.set('views', './view'); // Specifies the folder where your view templates (EJS files) are located.
+app.use(express.static('./assets')); // Use static to send other files
 app.use(express.static('./view'));
 app.use(
   session({
