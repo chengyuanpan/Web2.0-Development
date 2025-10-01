@@ -47,6 +47,7 @@ app.get('/signSearch', (req, res) => {
 app.post('/signUpPost', urlencodedParser, (req, res) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
+  // tar is the “user document” you want to save to MongoDB
   let tar = {
     userName: req.body.userName,
     password: hash.digest('hex').toString(),
@@ -55,19 +56,16 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
     studentID: req.body.studentID,
   };
   db.find(tar, (result) => {
-    if (result.length == 0) {
+    if (result.length == 0) { // If user does not exist
       db.insert(tar, (result) => {
         if (result) {
-          req.session.user = {
-            userName: tar.userName,
-          };
+          req.session.user = { userName: tar.userName }; // Store username in session → logs them in automatically.
           res.redirect(`http://localhost:8000?userName=${tar.userName}`);
         }
       });
-    } else res.render('./jump', { tarStr: 'User already exists', tarAdd: '/regist' });
-    // {
-    //     res.redirect('http://localhost:8000/jump?string=The user already exists')
-    // }
+    } else { // If user exists
+      res.render('./jump', { tarStr: 'User already exists', tarAdd: '/regist' });
+    }
   });
 });
 
