@@ -63,8 +63,8 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
           res.redirect(`http://localhost:8000?userName=${tar.userName}`);
         }
       });
-    } else { // If user exists
-      res.render('./jump', { tarStr: 'User already exists', tarAdd: '/regist' });
+    } else { // If user already exists
+      res.render('jump', { tarStr: 'User already exists', tarAdd: '/regist' });
     }
   });
 });
