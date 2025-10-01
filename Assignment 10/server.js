@@ -37,6 +37,8 @@ app.get('/regist', (req, res) => {
 // Use ajax to query whether the data meets the requirements
 app.get('/signSearch', (req, res) => {
   db.find(req.query, (result) => {
+    // `${...}` → A template literal (string interpolation in JavaScript). It ensures the expression inside {} is converted to a string.
+    // This line will send either "true" or "false" (as strings, not booleans) to the client.
     res.send(`${result.length != 0}`);
   });
 });
