@@ -9,9 +9,9 @@ let db = require('./model/db');
 let ejs = require('ejs');
 
 app.set('view engine', 'ejs'); // Use EJS as the template engine.
-app.set('views', './view'); // Specifies the folder where your view templates (EJS files) are located.
+app.set('views', './views'); // Specifies the folder where your view templates (EJS files) are located.
 app.use(express.static('./assets')); // Use static to send other files
-app.use(express.static('./view'));
+app.use(express.static('./views'));
 app.use( // Registers middleware in Express
   session({ // Creates a session middleware that manages user sessions via cookies.
     secret: 'keyborad cat', // A string used to sign the session ID cookie.
@@ -29,7 +29,7 @@ app.use( // Registers middleware in Express
 
 // Registration page
 app.get('/regist', (req, res) => {
-  fs.readFile('./view/signup.html', 'utf-8', (err, data) => {
+  fs.readFile('./views/signup.html', 'utf-8', (err, data) => {
     res.send(data);
   });
 });
@@ -71,7 +71,7 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
 
 // Login page
 app.get('/login', (req, res) => {
-  fs.readFile('./view/login.html', 'utf-8', (err, data) => {
+  fs.readFile('./views/login.html', 'utf-8', (err, data) => {
     res.send(data);
     return;
   });
