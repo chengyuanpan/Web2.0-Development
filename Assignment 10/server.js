@@ -29,7 +29,7 @@ app.use( // Registers middleware in Express
 
 // Registration page
 app.get('/regist', (req, res) => {
-  fs.readFile('./views/signup.html', 'utf-8', (err, data) => {
+  fs.readFile('signup.html', 'utf-8', (err, data) => {
     res.send(data);
   });
 });
@@ -71,7 +71,7 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
 
 // Login page
 app.get('/login', (req, res) => {
-  fs.readFile('./views/login.html', 'utf-8', (err, data) => {
+  fs.readFile('login.html', 'utf-8', (err, data) => {
     res.send(data);
     return;
   });
