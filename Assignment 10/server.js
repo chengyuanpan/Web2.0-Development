@@ -87,14 +87,14 @@ app.post('/login', urlencodedParser, (req, res, next) => {
   db.find({ userName: tar.userName }, (result) => {
     // The username does not exist
     if (result.length == 0) {
-      res.render('jump', { tarStr: 'UsernameDoesNotExist', tarAdd: '/login' });
+      res.render('jump', { tarStr: 'User Name Does Not Exist', tarAdd: '/login' });
       // res.redirect('http://localhost:8000/jump?string=UsernameDoesNotExist');
       return;
     } else {
       db.find(tar, (result) => {
         // Error password
         if (result.length == 0) {
-          res.render('jump', { tarStr: 'IncorrectPassword', tarAdd: '/login' });
+          res.render('jump', { tarStr: 'Incorrect Password', tarAdd: '/login' });
           // res.redirect('http://localhost:8000/jump?string=IncorrectPassword');
           return;
         } else {
