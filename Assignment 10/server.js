@@ -11,7 +11,6 @@ let ejs = require('ejs');
 app.set('view engine', 'ejs'); // Use EJS as the template engine.
 app.set('views', './views'); // Specifies the folder where your view templates (EJS files) are located.
 app.use(express.static('./assets')); // Use static to send other files
-app.use(express.static('./views'));
 app.use( // Registers middleware in Express
   session({ // Creates a session middleware that manages user sessions via cookies.
     secret: 'keyborad cat', // A string used to sign the session ID cookie.
