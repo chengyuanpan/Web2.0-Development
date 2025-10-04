@@ -11,8 +11,10 @@ let ejs = require('ejs');
 app.set('view engine', 'ejs'); // Use EJS as the template engine.
 app.set('views', './views'); // Specifies the folder where your view templates (EJS files) are located.
 app.use(express.static('./assets')); // Use static to send other files
-app.use( // Registers middleware in Express
-  session({ // Creates a session middleware that manages user sessions via cookies.
+app.use(
+  // Registers middleware in Express
+  session({
+    // Creates a session middleware that manages user sessions via cookies.
     secret: 'keyborad cat', // A string used to sign the session ID cookie.
     // true → Every request rewrites the session in the store, even if nothing changed.
     // false → Session is only saved if it was modified during the request.
@@ -55,14 +57,16 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
     studentID: req.body.studentID,
   };
   db.find(tar, (result) => {
-    if (result.length == 0) { // If user does not exist
+    if (result.length == 0) {
+      // If user does not exist
       db.insert(tar, (result) => {
         if (result) {
           req.session.user = { userName: tar.userName }; // Store username in session → logs them in automatically.
           res.redirect(`http://localhost:8000?userName=${tar.userName}`);
         }
       });
-    } else { // If user already exists
+    } else {
+      // If user already exists
       res.render('jump', { tarStr: 'User already exists', tarAdd: '/regist' });
     }
   });
@@ -85,15 +89,23 @@ app.post('/login', urlencodedParser, (req, res, next) => {
     password: hash.digest('hex').toString(),
   };
   db.find({ userName: tar.userName }, (result) => {
-    if (result.length == 0) { // If user does not exist
-      res.render('jump', { tarStr: 'User Name Does Not Exist', tarAdd: '/login' });
+    if (result.length == 0) {
+      // If user does not exist
+      res.render('jump', {
+        tarStr: 'User Name Does Not Exist',
+        tarAdd: '/login',
+      });
       // res.redirect('http://localhost:8000/jump?string=UsernameDoesNotExist');
       return;
-    } else { // If user already exists
+    } else {
+      // If user already exists
       db.find(tar, (result) => {
         // Error password
         if (result.length == 0) {
-          res.render('jump', { tarStr: 'Incorrect Password', tarAdd: '/login' });
+          res.render('jump', {
+            tarStr: 'Incorrect Password',
+            tarAdd: '/login',
+          });
           // res.redirect('http://localhost:8000/jump?string=IncorrectPassword');
           return;
         } else {
@@ -117,7 +129,9 @@ app.get('/logOut', urlencodedParser, (req, res) => {
 app.get('/', (req, res) => {
   let tar = req.session.user;
   if (!tar)
-    res.redirect('http://localhost:8000/login'); // No cookies, jump to login page
+    res.redirect(
+      'http://localhost:8000/login'
+    ); // No cookies, jump to login page
   else if (!req.query.userName)
     res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
