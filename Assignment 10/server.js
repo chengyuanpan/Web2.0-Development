@@ -128,10 +128,8 @@ app.get('/logOut', urlencodedParser, (req, res) => {
 // Details
 app.get('/', (req, res) => {
   let tar = req.session.user;
-  if (!tar)
-    res.redirect(
-      'http://localhost:8000/login'
-    ); // No cookies, jump to login page
+  if (!tar) res.redirect('http://localhost:8000/login');
+  // No cookies, jump to login page
   else if (!req.query.userName)
     res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
