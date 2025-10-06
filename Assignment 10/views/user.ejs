@@ -31,8 +31,8 @@
     <script src="./../assets/js/user.js"></script>
     <% if (tarUsername != userName) { %>
     <script>
-      alert('Only able to access your own data');
-      window.location = 'http://localhost:8000?userName=' + '<%= userName %>';
+      alert("Only able to access your own data");
+      window.location = "http://localhost:8000?userName=" + "<%= userName %>";
     </script>
     <% } %>
   </body>
