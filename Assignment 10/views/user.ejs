@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./../assets/css/user.css" />
-    <title>Details</title>
-  </head>
-  <body>
-    <div id="main">
-      <h1>Details</h1>
-      <div class="block">
-        User Name:
-        <span id="userName"> <%= userName %> </span>
-      </div>
-      <div class="block">
-        StudentID:
-        <span id="studentID"> <%= studentID %> </span>
-      </div>
-      <div class="block">
-        Phone Number:
-        <span id="phone"> <%= phone %> </span>
-      </div>
-      <div class="block">
-        Email:
-        <span id="email"> <%= email %> </span>
-      </div>
-      <div>
-        <button id="logOut" type="button">登出</button>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="./../assets/css/user.css" />
+  <title>Details</title>
+</head>
+
+<body>
+  <div id="main">
+    <h1>Details</h1>
+    <div class="block">
+      User Name:
+      <span id="userName">
+        <%= userName %>
+      </span>
     </div>
-    <script src="./../assets/js/user.js"></script>
-    <% if (tarUsername != userName) { %>
+    <div class="block">
+      StudentID:
+      <span id="studentID">
+        <%= studentID %>
+      </span>
+    </div>
+    <div class="block">
+      Phone Number:
+      <span id="phone">
+        <%= phone %>
+      </span>
+    </div>
+    <div class="block">
+      Email:
+      <span id="email">
+        <%= email %>
+      </span>
+    </div>
+    <div>
+      <button id="logOut" type="button">登出</button>
+    </div>
+  </div>
+  <script src="./../assets/js/user.js"></script>
+  <% if (tarUsername !=userName) { %>
     <script>
       alert("Only able to access your own data");
       window.location = "http://localhost:8000?userName=" + "<%= userName %>";
     </script>
     <% } %>
-  </body>
+</body>
+
 </html>
