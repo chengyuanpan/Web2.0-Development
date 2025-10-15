@@ -90,7 +90,6 @@ app.post("/login", urlencodedParser, (req, res, next) => {
   };
   db.find({ userName: tar.userName }, (result) => {
     if (result.length == 0) {
-      // If user does not exist
       res.render("jump", {
         tarStr: "User Name Does Not Exist",
         tarAdd: "/login",
@@ -98,7 +97,6 @@ app.post("/login", urlencodedParser, (req, res, next) => {
       // res.redirect('http://localhost:8000/jump?string=UsernameDoesNotExist');
       return;
     } else {
-      // If user already exists
       db.find(tar, (result) => {
         // Error password
         if (result.length == 0) {
