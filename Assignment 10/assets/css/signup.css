@@ -4,7 +4,7 @@
   height: 650px;
   background-color: #ffffff;
   text-align: center;
-  font-family: "宋体", "Consolas";
+  font-family: "Helvetica", sans-serif;
   border-radius: 5px;
 }
 
@@ -42,7 +42,7 @@ button,
   border-radius: 5px;
   border: none;
   font-size: 18px;
-  font-family: "幼圆";
+  font-family: "Helvetica", sans-serif;
   color: white;
 }
 
