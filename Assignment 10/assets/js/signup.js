@@ -71,7 +71,7 @@
       } else if (!reg[name].test($(this).val())) {
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
-        $(`#${name}`).text(`${$(this).attr("placeholder")}不符合规则`);
+        $(`#${name}`).text(`${$(this).attr("placeholder")} is not valid`);
         status[name] = false;
       } else {
         $(`#${name}`).css("opacity", "1");
