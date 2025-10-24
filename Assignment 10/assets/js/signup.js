@@ -15,17 +15,17 @@
 
   function initial() {
     let reg = {
-      userName: /^[a-zA-Z][\w_]{5,17}$/, // 用户名6~18位英文字母、数字或下划线，必须以英文字母开头
-      studentID: /^[1-9]\d{7}$/, //学号8位数字，不能以0开头
-      phone: /^[1-9]\d{10}$/, //电话11位数字，不能以0开头
-      email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/, //
-      password: /[\w-]{6,12}/, //密码为6~12位数字、大小写字母、中划线、下划线
+      userName: /^[a-zA-Z][\w_]{5,17}$/, // userName 6~18 characters, must start with a letter
+      studentID: /^[1-9]\d{7}$/, // studentID 8 digits, cannot start with 0
+      phone: /^[1-9]\d{10}$/, // phone 11 digits, cannot start with 0
+      email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/, // email format
+      password: /[\w-]{6,12}/, // password 6~12 characters, can include letters, numbers, underscores, and hyphens
     };
     $(".info").blur(function () {
       let name = $(this).attr("name");
       if ($(this).val().length == 0) {
         status[$(this).attr("name")] = false;
-        $(`#${name}`).text(`请填写${$(this).attr("placeholder")}`);
+        $(`#${name}`).text(`Please fill in ${$(this).attr("placeholder")}`);
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
         status[name] = false;
@@ -38,19 +38,19 @@
             if (!reg[name].test($(this).val())) {
               $(`#${name}`).css("opacity", "1");
               $(`#${name}`).css("color", `#ff5a6a`);
-              $(`#${name}`).text(`${$(this).attr("placeholder")}不符合规则`);
+              $(`#${name}`).text(`${$(this).attr("placeholder")} is not valid`);
               status[name] = false;
             } else if (data == "true") {
-              //用户名已经存在
+              // userName has existed
               $(`#${name}`).css("opacity", "1");
               $(`#${name}`).css("color", `#ff5a6a`);
-              $(`#${name}`).text(`${$(this).attr("placeholder")}已经存在`);
+              $(`#${name}`).text(`${$(this).attr("placeholder")} has existed`);
               status[name] = false;
               // $("#name").css("opacity", "1");
             } else {
               $(`#${name}`).css("opacity", "1");
               $(`#${name}`).css("color", `#ff5a6a`);
-              $(`#${name}`).text(`该${$(this).attr("placeholder")}可以使用`);
+              $(`#${name}`).text(`This ${$(this).attr("placeholder")} can be used`);
               $(`#${name}`).css("color", "#42ca6b");
               status[name] = true;
               // $("#name").css("opacity", "1");
@@ -64,7 +64,7 @@
       let name = $(this).attr("name");
       if ($(this).val().length == 0) {
         status[$(this).attr("name")] = false;
-        $(`#${name}`).text(`请填写${$(this).attr("placeholder")}`);
+        $(`#${name}`).text(`Please fill in ${$(this).attr("placeholder")}`);
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
         status[name] = false;
@@ -76,7 +76,7 @@
       } else {
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
-        $(`#${name}`).text(`该${$(this).attr("placeholder")}可以使用`);
+        $(`#${name}`).text(`This ${$(this).attr("placeholder")} can be used`);
         $(`#${name}`).css("color", "#42ca6b");
         status[name] = true;
       }
