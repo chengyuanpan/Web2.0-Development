@@ -125,6 +125,7 @@
     });
   }
 
+  // 0 null, 1 error, 2 ok
   const status = {
     userName: false,
     studentID: false,
@@ -132,7 +133,7 @@
     phone: false,
     password: false,
     passwordR: false,
-  }; // 0 null, 1 error, 2 ok
+  };
 
   function main() {
     initial();
