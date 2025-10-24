@@ -87,16 +87,16 @@
       if ($(this).val().length == 0) {
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
-        $(`#${name}`).text(`${$(this).attr("placeholder")}为空`);
+        $(`#${name}`).text(`${$(this).attr("placeholder")} is empty`);
       } else if ($(this).val() != $(".pwd").val()) {
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
-        $(`#${name}`).text(`${$(this).attr("placeholder")}不一样`);
+        $(`#${name}`).text(`${$(this).attr("placeholder")} is not the same`);
         status[name] = false;
       } else {
         $(`#${name}`).css("opacity", "1");
         $(`#${name}`).css("color", `#ff5a6a`);
-        $(`#${name}`).text(`${$(this).attr("placeholder")}一样`);
+        $(`#${name}`).text(`${$(this).attr("placeholder")} is the same`);
         $(`#${name}`).css("color", "#42ca6b");
         status[name] = true;
       }
