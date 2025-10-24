@@ -119,7 +119,7 @@
           status.passwordR
         )
       ) {
-        alert(`请正确填写用户信息`);
+        alert(`Please fill in the user information correctly`);
         event.preventDefault();
       }
     });
