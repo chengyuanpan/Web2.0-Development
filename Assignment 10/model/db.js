@@ -1,15 +1,15 @@
-let dataPath = "mongodb://localhost:27017";
-let mongodb = require("mongodb");
+let dataPath = 'mongodb://localhost:27017';
+let mongodb = require('mongodb');
 let mongoClient = mongodb.MongoClient;
 
 // Initialize the database
 function initialDB() {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
-    let dbo = db.db("users");
-    dbo.createCollection("user", (err, res) => {
+    let dbo = db.db('users');
+    dbo.createCollection('user', (err, res) => {
       if (err) throw err;
-      console.log("database ready");
+      console.log('database ready');
       db.close();
     });
   });
@@ -19,9 +19,9 @@ function initialDB() {
 function find(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
-    let dbo = db.db("users");
+    let dbo = db.db('users');
     dbo
-      .collection("user")
+      .collection('user')
       .find(obj)
       .toArray((err, result) => {
         if (err) throw err;
@@ -35,8 +35,8 @@ function find(obj, callback) {
 function insert(obj, callback) {
   mongoClient.connect(dataPath, { useNewUrlParser: true }, (err, db) => {
     if (err) throw err;
-    let dbo = db.db("users");
-    dbo.collection("user").insertOne(obj, (err, result) => {
+    let dbo = db.db('users');
+    dbo.collection('user').insertOne(obj, (err, result) => {
       if (err) throw err;
       callback(result);
       db.close();

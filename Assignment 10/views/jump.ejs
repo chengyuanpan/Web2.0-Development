@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ensure that it can adapt to the mobile phone -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Compatible with old versions of IE -->
+    <title>Jump</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Ensure that it can adapt to the mobile phone -->
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <!-- Compatible with old versions of IE -->
-  <title>Jump</title>
-</head>
+  <body>
+    <p id="msg"></p>
+    <p>Will automatically redirect in 2 seconds.</p>
+  </body>
+  <script>
+    window.onload = () => {
+      const msg = "<%= tarStr %>"; // Prompt information sent from the backend
+      const url = "http://localhost:8000" + "<%= tarAdd %>"; // Redirect address
 
-<body>
-  <p id="msg"></p>
-  <p>Will automatically redirect in 2 seconds.</p>
-</body>
-<script>
-  window.onload = () => {
-    const msg = "<%= tarStr %>"; // Prompt information sent from the backend
-    const url = "http://localhost:8000" + "<%= tarAdd %>"; // Redirect address
+      document.getElementById("msg").innerText = msg + " >_<";
+      alert(msg + " >_<");
 
-    document.getElementById("msg").innerText = msg + " >_<";
-    alert(msg + " >_<");
-
-    // Automatically redirect after 2 seconds delay
-    setTimeout(() => {
-      window.location.href = url;
-    }, 2000);
-  };
-</script>
-
+      // Automatically redirect after 2 seconds delay
+      setTimeout(() => {
+        window.location.href = url;
+      }, 2000);
+    };
+  </script>
 </html>
