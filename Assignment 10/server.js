@@ -28,7 +28,7 @@ app.use(
   })
 );
 
-// Registration page
+// Read and return the registration page signup.html
 app.get('/regist', (req, res) => {
   fs.readFile('./assets/html/signup.html', 'utf-8', (err, data) => {
     res.send(data);
@@ -44,7 +44,7 @@ app.get('/signSearch', (req, res) => {
   });
 });
 
-// Registration form submission
+// Registration Logic
 app.post('/signUpPost', urlencodedParser, (req, res) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
@@ -72,7 +72,7 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
   });
 });
 
-// Login page
+// Return to the login page login.html
 app.get('/login', (req, res) => {
   fs.readFile('./assets/html/login.html', 'utf-8', (err, data) => {
     res.send(data);
@@ -80,7 +80,7 @@ app.get('/login', (req, res) => {
   });
 });
 
-// Log in
+// Login logic
 app.post('/login', urlencodedParser, (req, res, next) => {
   let hash = crypto.createHash('md5');
   hash.update(req.body.password);
@@ -117,13 +117,13 @@ app.post('/login', urlencodedParser, (req, res, next) => {
   });
 });
 
-// Log out
+// Logout logic
 app.get('/logOut', urlencodedParser, (req, res) => {
   req.session.user = {};
   return res.redirect('http://localhost:8000/login');
 });
 
-// Details
+// User Home Page
 app.get('/', (req, res) => {
   let tar = req.session.user;
   if (!tar) { // No cookies, jump to login page
@@ -139,6 +139,7 @@ app.get('/', (req, res) => {
   }
 });
 
+// Start the server on port 8000
 let server = app.listen(8000, () => {
   let host = server.address().address;
   let port = server.address().port;
