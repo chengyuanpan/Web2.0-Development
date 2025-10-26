@@ -1,12 +1,12 @@
-let fs = require('fs');
-let express = require('express');
-let session = require('express-session'); // Use session to manage cookies
+let fs = require('fs'); // Node.js file system module, used to read and write files (such as reading login.html)
+let express = require('express'); // Web framework for quickly building servers
+let session = require('express-session'); // To save the login status on the server side (identify the user through cookies)
 let app = express();
-let bodyParser = require('body-parser');
-let crypto = require('crypto');
+let bodyParser = require('body-parser'); // Used to parse form data (req.body)
+let crypto = require('crypto'); // Used to encrypt passwords (MD5 is used here)
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
-let db = require('./model/db');
-let ejs = require('ejs');
+let db = require('./model/db'); // The database operation module I wrote myself encapsulates the addition, deletion, query and modification
+let ejs = require('ejs'); // Template engine, used to render dynamic pages (such as user personal homepages)
 
 app.set('view engine', 'ejs'); // Use EJS as the template engine.
 app.set('views', './views'); // Specifies the folder where your view templates (EJS files) are located.
