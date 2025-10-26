@@ -62,7 +62,7 @@ app.post('/signUpPost', urlencodedParser, (req, res) => {
       db.insert(tar, (result) => {
         if (result) {
           req.session.user = { userName: tar.userName }; // Store username in session → logs them in automatically.
-          res.redirect(`http://localhost:8000?userName=${tar.userName}`);
+          return res.redirect(`http://localhost:8000?userName=${tar.userName}`);
         }
       });
     } else {
@@ -120,16 +120,16 @@ app.post('/login', urlencodedParser, (req, res, next) => {
 // Log out
 app.get('/logOut', urlencodedParser, (req, res) => {
   req.session.user = {};
-  res.redirect('http://localhost:8000/login');
+  return res.redirect('http://localhost:8000/login');
 });
 
 // Details
 app.get('/', (req, res) => {
   let tar = req.session.user;
-  if (!tar) res.redirect('http://localhost:8000/login');
+  if (!tar) return res.redirect('http://localhost:8000/login');
   // No cookies, jump to login page
   else if (!req.query.userName)
-    res.redirect(`http://localhost:8000?userName=${tar.userName}`);
+    return res.redirect(`http://localhost:8000?userName=${tar.userName}`);
   else {
     db.find({ userName: tar.userName }, (result) => {
       tar = result[0];
