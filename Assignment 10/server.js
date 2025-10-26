@@ -117,7 +117,7 @@ app.post('/login', urlencodedParser, (req, res, next) => {
   });
 });
 
-// Sign out
+// Log out
 app.get('/logOut', urlencodedParser, (req, res) => {
   req.session.user = {};
   res.redirect('http://localhost:8000/login');
