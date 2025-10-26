@@ -143,5 +143,5 @@ let server = app.listen(8000, () => {
   let host = server.address().address;
   let port = server.address().port;
   db.initialDB();
-  console.log('Server ready');
+  console.log('Server is ready');
 });
