@@ -126,11 +126,11 @@ app.get('/logOut', urlencodedParser, (req, res) => {
 // Details
 app.get('/', (req, res) => {
   let tar = req.session.user;
-  if (!tar) return res.redirect('http://localhost:8000/login');
-  // No cookies, jump to login page
-  else if (!req.query.userName)
+  if (!tar) { // No cookies, jump to login page
+    return res.redirect('http://localhost:8000/login');
+  } else if (!req.query.userName) {
     return res.redirect(`http://localhost:8000?userName=${tar.userName}`);
-  else {
+  } else {
     db.find({ userName: tar.userName }, (result) => {
       tar = result[0];
       tar.tarUsername = req.query.userName;
